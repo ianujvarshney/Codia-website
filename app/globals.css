@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 226 28% 5%;
+    --foreground: 210 40% 98%;
+
+    --card: 225 31% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 225 31% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 191 100% 50%;
+    --primary-foreground: 226 28% 5%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 215 84% 47%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 100% / 0.12;
+    --input: 0 0% 100% / 0.12;
+    --ring: 191 100% 50%;
+
+    --radius: 0.75rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+    background-color: #0a0c12;
+    font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  body {
+    background-color: #0a0c12;
+    color: #f1f5f9;
+    font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  button, input, textarea, select, optgroup {
+    font-family: inherit;
+  }
+
+  code, pre, kbd, samp {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Text Selection */
+  ::selection {
+    background-color: rgba(0, 210, 255, 0.28);
+    color: #00d2ff;
+  }
+
+  /* Custom Thin Glass Scrollbars */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.14);
+    border-radius: 9999px;
+    backdrop-filter: blur(10px);
+    transition: background-color 0.2s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 210, 255, 0.45);
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+  }
+}
+
+@layer components {
+  /* Glassmorphic Helper Classes */
+  .glass-card {
+    background: rgba(18, 24, 34, 0.82);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.65), 
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-card-hover {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .glass-card-hover:hover {
+    border-color: rgba(0, 210, 255, 0.35);
+    box-shadow: 0 25px 50px -12px rgba(0, 210, 255, 0.12),
+                inset 0 1px 0 0 rgba(0, 210, 255, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .glass-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25), 
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    color: #e2e8f0;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .glass-pill:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(0, 210, 255, 0.4);
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.2), 
+                inset 0 1px 0 0 rgba(0, 210, 255, 0.3);
+  }
+
+  .glass-border {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .glass-glow-subtle {
+    background: radial-gradient(circle at 50% 0%, rgba(0, 210, 255, 0.15) 0%, transparent 70%);
+  }
+
+  /* Text & Border Gradients */
+  .text-gradient-cyan-blue {
+    background: linear-gradient(135deg, #00d2ff 0%, #1068e2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-glow {
+    background: linear-gradient(135deg, #ffffff 30%, #00d2ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Stealth Glow Effects */
+  .glow-cyan {
+    box-shadow: 0 0 30px -5px rgba(0, 210, 255, 0.35);
+  }
+
+  .glow-cyan-sm {
+    box-shadow: 0 0 15px -2px rgba(0, 210, 255, 0.25);
+  }
+
+  /* Stealth HUD Dynamic Notch Container */
+  .hud-notch {
+    background: rgba(14, 16, 24, 0.92);
+    backdrop-filter: blur(28px) saturate(200%);
+    -webkit-backdrop-filter: blur(28px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.8),
+                0 0 20px -3px rgba(0, 210, 255, 0.2),
+                inset 0 1px 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  /* Subtle Stealth Grid Background */
+  .stealth-grid {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  }
+
+  /* Codia Exact Font-Size Hierarchy */
+  .codia-answer-area {
+    font-size: 14px;
+    letter-spacing: 0.15px;
+    font-weight: 400;
+    line-height: 1.65;
+  }
+
+  .bubble-text {
+    font-size: 13px;
+    letter-spacing: 0.15px;
+    line-height: 1.5;
+  }
+
+  .stealth-tooltip {
+    font-size: 11px;
+    letter-spacing: 0.2px;
+    font-weight: 500;
+  }
+
+  .modal-row-sub {
+    font-size: 11px;
+    letter-spacing: 0.2px;
+    font-weight: 500;
+  }
+
+  .kbd-badge {
+    font-size: 11px;
+    letter-spacing: 0.2px;
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .stealth-badge {
+    font-size: 10px;
+    letter-spacing: 0.2px;
+    font-weight: 600;
+    font-family: 'Poppins', system-ui, sans-serif;
+  }
+}
