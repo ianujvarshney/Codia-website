@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Shield,
@@ -33,38 +34,38 @@ export function StealthComparison() {
     {
       id: 'content-protection',
       icon: Shield,
-      title: 'Content Protection API',
-      headline: 'OS-Level Screen Capture Barrier',
+      title: 'OS Content Protection API',
+      headline: 'Platform Display Affinity Exclusion',
       description:
-        'Codia invokes low-level OS kernel window flags (SetWindowDisplayAffinity with WDA_EXCLUDE on Windows & NSWindow.sharingType = .none on macOS). Screen capture pipelines (Zoom, Teams, Meet, OBS) receive pure background buffer frames.',
-      techSpec: 'Windows: WDA_EXCLUDE | macOS: CGWindowSharingNone',
+        'Codia configures native operating system window display affinity (SetWindowDisplayAffinity with WDA_EXCLUDE on Windows & NSWindow.sharingType = .none on macOS). Standard desktop screen capture software receives the background buffer without Codia’s pixel layer.',
+      techSpec: 'Windows: WDA_EXCLUDE | macOS: NSWindowSharingNone',
     },
     {
       id: 'universal-cursor',
       icon: MousePointer,
-      title: 'Universal Arrow Cursor',
-      headline: 'Zero Pointer Hand Giveaways',
+      title: 'Default Arrow Cursor',
+      headline: 'Consistent Desktop Cursor Style',
       description:
-        'Interviewers often notice when a candidate’s cursor morphs into a pointer-hand or text-beam in mid-air. Codia forces the system default arrow cursor across all HUD interactive zones so screen shares reveal zero anomalies.',
-      techSpec: 'Hardware cursor lock: IDC_ARROW override',
+        'Codia enforces the standard default system arrow cursor across its overlay windows, avoiding unexpected cursor morphing or pointer-hand indicators during live coding and screen-sharing sessions.',
+      techSpec: 'CSS Universal Cursor Rule · Default System Arrow',
     },
     {
-      id: 'zero-eye-movement',
+      id: 'top-anchored-dock',
       icon: Eye,
-      title: 'Zero Eye Movement',
-      headline: 'Locked Directly Beneath Webcam Line',
+      title: 'Top-Anchored Island Dock',
+      headline: 'Positioned Near Top Display Line',
       description:
-        'Reading dual monitors or second laptops causes noticeable downward or sideways eye darting. Codia floats 15px directly beneath your webcam lens so your gaze angle stays under 1.2°, maintaining natural eye contact.',
-      techSpec: 'Optical axis alignment: <1.2° deviation',
+        'The compact main Island window floats anchored near the top of your display, keeping status indicators and audio cues aligned with your natural forward gaze line.',
+      techSpec: 'Top-Border Dock Positioning · Compact HUD Footprint',
     },
     {
       id: 'click-through',
       icon: Keyboard,
-      title: 'Alt+A Click-Through',
-      headline: 'Type Directly Through the HUD',
+      title: 'Interaction Mode Shortcut (Alt+A)',
+      headline: 'Transparent Mouse Event Passthrough',
       description:
-        'With WS_EX_TRANSPARENT enabled, your mouse clicks, scrolling, and keystrokes pass directly to LeetCode or VS Code underneath. You can type code seamlessly while reading the Codia solution.',
-      techSpec: 'Input passthrough: WS_EX_TRANSPARENT | Alt+A',
+        'Pressing Alt+A (or Cmd+Shift+I) toggles interaction mode via Electron’s setIgnoreMouseEvents API. When enabled with forward: true, mouse events pass through Codia’s overlay to underlying desktop windows without minimizing the HUD.',
+      techSpec: 'Electron setIgnoreMouseEvents({ forward: true }) · Alt+A / Cmd+Shift+I',
     },
   ];
 
@@ -103,7 +104,7 @@ export function StealthComparison() {
       <div className="h-10 bg-[#161b22] border-b border-[#30363d] px-3 sm:px-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           {/* Active File Tab */}
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-t-md bg-[#0d1117] border-t-2 border-codia-cyan text-slate-200 text-xs">
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded-t-md bg-[#0d1117] border-t-2 border-royal-indigo dark:border-codia-cyan text-slate-200 text-xs">
             <span className="text-yellow-400 font-bold">PY</span>
             <span className="font-semibold">solution.py</span>
             <span className="w-1.5 h-1.5 rounded-full bg-slate-500" />
@@ -121,7 +122,7 @@ export function StealthComparison() {
           <button className="px-2.5 py-1 rounded bg-[#21262d] text-slate-300 hover:bg-[#30363d] text-[11px]">
             Run Code
           </button>
-          <button className="px-3 py-1 rounded bg-codia-green text-slate-950 font-bold hover:brightness-110 text-[11px]">
+          <button className="px-3 py-1 rounded bg-emerald-500 text-slate-950 font-bold hover:brightness-110 text-[11px]">
             Submit
           </button>
         </div>
@@ -143,8 +144,6 @@ export function StealthComparison() {
                   <span className="text-slate-500 italic">{line.text}</span>
                 ) : line.text.includes('return') || line.text.includes('for ') || line.text.includes('if ') ? (
                   <span className="text-pink-400">{line.text}</span>
-                ) : line.text.includes('range') || line.text.includes('min') || line.text.includes('len') ? (
-                  <span className="text-blue-400">{line.text}</span>
                 ) : (
                   <span className="text-slate-300">{line.text}</span>
                 )}
@@ -153,56 +152,61 @@ export function StealthComparison() {
           ))}
         </div>
 
-        {/* CANDIDATE VIEW OVERLAY: FLOATING CODIA HUD (Only rendered when showHud is true) */}
-        {showHud ? (
-          <div className="absolute top-3 left-1/2 -translate-x-1/2 w-[95%] sm:w-[500px] z-20 pointer-events-auto">
-            <motion.div
-              initial={{ scale: 0.98, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              className="rounded-2xl border border-codia-cyan/60 shadow-[0_20px_50px_-5px_rgba(0,210,255,0.45)] relative overflow-hidden backdrop-blur-2xl bg-black/60"
-            >
-              <div className="flex items-center justify-between px-3 py-1.5 bg-[#090c14]/95 border-b border-codia-border text-[10px] font-mono">
-                <span className="flex items-center gap-1.5 text-codia-cyan font-bold">
-                  <span className="w-2 h-2 rounded-full bg-codia-green animate-pulse" />
-                  Actual Electron Desktop HUD
+        {/* FLOATING HUD OVERLAY (Shown ONLY in Candidate View) */}
+        {showHud && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.2 }}
+            className="absolute top-6 right-6 sm:right-10 w-[290px] sm:w-[350px] p-4 rounded-2xl bg-[#0e121e]/95 backdrop-blur-xl border border-royal-indigo/60 dark:border-codia-cyan/50 shadow-2xl shadow-indigo-950/40 z-20"
+          >
+            {/* HUD Header */}
+            <div className="flex items-center justify-between pb-2.5 border-b border-slate-800">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="text-xs font-bold font-mono text-white tracking-wide">
+                  Codia Solution HUD
                 </span>
-                <span className="text-codia-green font-semibold">WDA_EXCLUDE: ACTIVE</span>
               </div>
-              <Image
-                src="/codia-hud-screenshot.png"
-                alt="Actual Codia Native HUD Screenshot"
-                width={780}
-                height={620}
-                className="w-full h-auto object-contain select-none"
-                priority
-              />
-            </motion.div>
-          </div>
-        ) : (
-          /* INTERVIEWER VIEW WATERMARK / VERIFICATION */
-          <div className="absolute top-4 right-4 z-10 pointer-events-none">
-            <div className="glass-pill px-3 py-1.5 text-[10px] font-mono text-emerald-400 border-emerald-500/40 bg-black/60 backdrop-blur-md shadow-lg flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Screen Capture: 0 Pixels Leaked (Verified Clean)</span>
+              <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+                Content Protection Active
+              </span>
             </div>
-          </div>
-        )}
 
-        {/* INTERVIEWER VIDEO CALL FLOATING STREAM WATERMARK */}
-        {!showHud && (
-          <div className="absolute bottom-4 right-4 z-10 pointer-events-none hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/75 border border-white/10 text-[10px] font-mono text-slate-300">
-            <Video className="w-3 h-3 text-red-500 animate-pulse" />
-            <span>Zoom Live Feed: Screen 1 (Candidate Code Only)</span>
-          </div>
+            {/* Answer Content */}
+            <div className="mt-3 space-y-2">
+              <div className="text-[11px] text-royal-lavender dark:text-codia-cyan font-bold flex items-center justify-between">
+                <span>Manacher’s Algorithm O(N) Time</span>
+                <span className="text-slate-400 text-[10px] font-mono">Space: O(N)</span>
+              </div>
+              <p className="text-[11px] text-slate-300 leading-relaxed font-sans">
+                Transforms string with delimiters <code className="text-pink-300 font-mono">#</code> to handle odd/even centers uniformly. Keeps track of center <code className="text-pink-300 font-mono">c</code> and right boundary <code className="text-pink-300 font-mono">r</code> to avoid redundant expansions.
+              </p>
+              <div className="p-2 rounded-lg bg-black/50 border border-slate-800 text-[10px] font-mono text-emerald-300">
+                <code>p[i] = min(r - i, p[2 * c - i]) if r &gt; i else 0</code>
+              </div>
+            </div>
+
+            {/* HUD Footer Status */}
+            <div className="mt-3 pt-2 border-t border-slate-800/80 flex items-center justify-between text-[10px] text-slate-400">
+              <span className="flex items-center gap-1">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                Excluded from Screen Capture
+              </span>
+              <kbd className="px-1 py-0.5 rounded bg-white/10 text-slate-300 font-mono">
+                Alt+A
+              </kbd>
+            </div>
+          </motion.div>
         )}
       </div>
     </div>
   );
 
   return (
-    <section id="stealth-comparison" className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 border-t border-codia-border">
+    <section id="stealth-comparison" className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 border-t border-royal-border dark:border-codia-border">
       {/* Ambient Radial Accent */}
-      <div className="absolute top-24 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-codia-cyan/10 blur-[130px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute top-24 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-royal-glow dark:bg-codia-cyan/10 blur-[130px] rounded-full pointer-events-none -z-10" />
 
       {/* 1. SECTION HEADER */}
       <div className="text-center max-w-3xl mx-auto mb-12">
@@ -210,10 +214,10 @@ export function StealthComparison() {
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border-codia-cyan/40 text-xs font-mono text-codia-cyan uppercase tracking-wider mb-4 shadow-codia-cyan-sm"
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-slate-900/80 border border-royal-border dark:border-slate-700 text-xs font-mono text-royal-indigo dark:text-slate-300 uppercase tracking-wider mb-4 shadow-royal-sm dark:shadow-sm"
         >
-          <Shield className="w-3.5 h-3.5 text-codia-cyan" />
-          <span>Military-Grade Stealth</span>
+          <Shield className="w-3.5 h-3.5 text-royal-indigo dark:text-codia-cyan" />
+          <span>Screen Capture Display Affinity</span>
         </motion.div>
 
         <motion.h2
@@ -221,10 +225,10 @@ export function StealthComparison() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-[1.15]"
+          className="text-3xl sm:text-5xl font-extrabold text-royal-text-primary dark:text-white tracking-tight leading-[1.15]"
         >
-          Completely Invisible on{' '}
-          <span className="text-gradient-cyan-blue">Every Screen Share.</span>
+          Window Protection on{' '}
+          <span className="text-gradient-royal dark:text-gradient-cyan-blue">Standard Screen Shares.</span>
         </motion.h2>
 
         <motion.p
@@ -232,9 +236,9 @@ export function StealthComparison() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="mt-4 text-base sm:text-lg text-slate-400 leading-relaxed"
+          className="mt-4 text-base sm:text-lg text-royal-text-secondary dark:text-slate-400 leading-relaxed"
         >
-          Operating system window protection prevents meeting apps from capturing Codia’s pixels. You see the code solutions; your interviewer only sees your code editor.
+          Operating system window display affinity instructs video conference software to omit Codia’s floating interfaces. You see real-time suggestions; meeting attendees see only your clean desktop.
         </motion.p>
 
         {/* View Mode Switcher Tabs */}
@@ -243,14 +247,14 @@ export function StealthComparison() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="mt-8 inline-flex items-center p-1.5 rounded-2xl glass-card border-codia-border"
+          className="mt-8 inline-flex items-center p-1.5 rounded-2xl bg-white dark:bg-codia-card border border-royal-border dark:border-slate-800 shadow-royal-sm dark:shadow-none"
         >
           <button
             onClick={() => setActiveTab('candidate')}
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer ${
               activeTab === 'candidate'
-                ? 'bg-gradient-to-r from-codia-cyan to-codia-blue text-slate-950 font-bold shadow-codia-cyan-sm'
-                : 'text-slate-400 hover:text-white'
+                ? 'btn-royal-primary dark:bg-gradient-to-r dark:from-codia-cyan dark:to-codia-blue dark:text-slate-950 font-bold shadow-royal-sm dark:shadow-codia-cyan-sm'
+                : 'text-royal-text-secondary dark:text-slate-400 hover:text-royal-text-primary dark:hover:text-white'
             }`}
           >
             <Eye className="w-4 h-4" />
@@ -261,8 +265,8 @@ export function StealthComparison() {
             onClick={() => setActiveTab('split')}
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer ${
               activeTab === 'split'
-                ? 'bg-gradient-to-r from-codia-cyan to-codia-blue text-slate-950 font-bold shadow-codia-cyan-sm'
-                : 'text-slate-400 hover:text-white'
+                ? 'btn-royal-primary dark:bg-gradient-to-r dark:from-codia-cyan dark:to-codia-blue dark:text-slate-950 font-bold shadow-royal-sm dark:shadow-codia-cyan-sm'
+                : 'text-royal-text-secondary dark:text-slate-400 hover:text-royal-text-primary dark:hover:text-white'
             }`}
           >
             <Sparkles className="w-4 h-4" />
@@ -273,12 +277,12 @@ export function StealthComparison() {
             onClick={() => setActiveTab('interviewer')}
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer ${
               activeTab === 'interviewer'
-                ? 'bg-gradient-to-r from-codia-cyan to-codia-blue text-slate-950 font-bold shadow-codia-cyan-sm'
-                : 'text-slate-400 hover:text-white'
+                ? 'btn-royal-primary dark:bg-gradient-to-r dark:from-codia-cyan dark:to-codia-blue dark:text-slate-950 font-bold shadow-royal-sm dark:shadow-codia-cyan-sm'
+                : 'text-royal-text-secondary dark:text-slate-400 hover:text-royal-text-primary dark:hover:text-white'
             }`}
           >
             <EyeOff className="w-4 h-4" />
-            <span>Interviewer’s Screen (Zoom / Meet)</span>
+            <span>Interviewer Stream (Excluded by OS)</span>
           </button>
         </motion.div>
       </div>
@@ -289,13 +293,13 @@ export function StealthComparison() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.35 }}
-        className="max-w-5xl mx-auto"
+        className="max-w-5xl mx-auto rounded-2xl overflow-hidden border border-royal-border dark:border-slate-800 shadow-royal-lg dark:shadow-2xl"
       >
         <ComparisonSlider
           sliderMode={activeTab}
           onModeChange={(mode) => setActiveTab(mode)}
-          leftLabel="Candidate Screen (HUD Visible)"
-          rightLabel="Interviewer Stream (Zoom / Meet: 100% Invisible)"
+          leftLabel="Candidate Screen (HUD Active)"
+          rightLabel="Interviewer Stream (Window Excluded by OS Affinity)"
           leftContent={renderEditorBase(true)}
           rightContent={renderEditorBase(false)}
         />
@@ -316,64 +320,64 @@ export function StealthComparison() {
               transition={{ delay: 0.1 * idx }}
               onMouseEnter={() => setActiveTooltip(feat.id)}
               onMouseLeave={() => setActiveTooltip(null)}
-              className="glass-card glass-card-hover rounded-2xl p-6 border-codia-border flex flex-col justify-between relative group"
+              className="rounded-2xl p-6 bg-white dark:bg-codia-card border border-royal-border dark:border-slate-800 shadow-royal-sm dark:shadow-none hover:shadow-royal-md dark:hover:border-slate-700 flex flex-col justify-between relative group transition-all"
             >
               <div>
                 {/* Top Badge Icon */}
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-11 h-11 rounded-xl bg-codia-surface border border-codia-cyan/40 flex items-center justify-center text-codia-cyan shadow-codia-cyan-sm group-hover:scale-110 transition-transform">
+                  <div className="w-11 h-11 rounded-xl bg-royal-highlight dark:bg-slate-900 border border-royal-indigo/30 dark:border-slate-700 flex items-center justify-center text-royal-indigo dark:text-codia-cyan shadow-sm">
                     <IconComp className="w-5 h-5" />
                   </div>
-                  <span className="glass-pill text-[10px] font-mono text-codia-green border-codia-green/30">
-                    Verified Clean
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-50 dark:bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30">
+                    Verified
                   </span>
                 </div>
 
                 {/* Title & Headline */}
-                <h3 className="text-base font-bold text-white">{feat.title}</h3>
-                <p className="text-xs font-semibold text-codia-cyan font-mono mt-1">
+                <h3 className="text-base font-bold text-royal-text-primary dark:text-white">{feat.title}</h3>
+                <p className="text-xs font-semibold text-royal-indigo dark:text-codia-cyan font-mono mt-1">
                   {feat.headline}
                 </p>
 
                 {/* Description */}
-                <p className="text-xs text-slate-400 mt-3 leading-relaxed">
+                <p className="text-xs text-royal-text-secondary dark:text-slate-400 mt-3 leading-relaxed">
                   {feat.description}
                 </p>
               </div>
 
               {/* Technical Spec Tag */}
-              <div className="mt-5 pt-3.5 border-t border-codia-border/60 flex items-center justify-between text-[10px] font-mono text-slate-400">
-                <span className="text-slate-500">Tech Spec:</span>
-                <span className="text-codia-cyan font-semibold">{feat.techSpec}</span>
+              <div className="mt-5 pt-3.5 border-t border-royal-border dark:border-slate-800/80 flex items-center justify-between text-[10px] font-mono text-royal-text-secondary dark:text-slate-400">
+                <span className="text-royal-text-secondary/80 dark:text-slate-500">Tech Spec:</span>
+                <span className="text-royal-indigo dark:text-codia-cyan font-semibold">{feat.techSpec}</span>
               </div>
             </motion.div>
           );
         })}
       </div>
 
-      {/* 4. OS HARDWARE EXCLUSION BANNER */}
-      <div className="mt-12 p-6 rounded-2xl glass-card border-codia-border max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      {/* 4. OS EXCLUSION TRANSPARENCY BANNER */}
+      <div className="mt-12 p-6 rounded-2xl bg-white dark:bg-codia-card border border-royal-border dark:border-slate-800 shadow-royal-sm dark:shadow-none max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-codia-cyan/15 border border-codia-cyan/40 flex items-center justify-center text-codia-cyan shrink-0">
-            <ShieldCheck className="w-5 h-5" />
+          <div className="w-9 h-9 rounded-xl bg-royal-highlight dark:bg-slate-900 border border-royal-indigo/30 dark:border-slate-700 flex items-center justify-center text-royal-indigo dark:text-codia-cyan shrink-0">
+            <ShieldCheck className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
           </div>
           <div>
-            <h4 className="text-sm font-bold text-white">
-              Hardware-Accelerated Invisibility Protocol
+            <h4 className="text-sm font-bold text-royal-text-primary dark:text-white">
+              Operating System Window Affinity Mechanism
             </h4>
-            <p className="text-xs text-slate-400 mt-0.5">
-              Verified against Zoom, Google Meet, Microsoft Teams, Slack Huddles, HackerRank, CoderPad, and OBS Studio.
+            <p className="text-xs text-royal-text-secondary dark:text-slate-400 mt-0.5">
+              Effective for desktop video conferencing clients using standard OS window sharing APIs. Capture resistance is platform-dependent and does not apply to external HDMI splitters, capture cards, or physical cameras.
             </p>
           </div>
         </div>
 
-        <a
-          href="#download"
-          className="px-4 py-2 rounded-lg text-xs font-bold text-slate-950 bg-gradient-to-r from-codia-cyan to-codia-blue shadow-codia-cyan-sm hover:brightness-110 transition-all whitespace-nowrap flex items-center gap-1.5"
+        <Link
+          href="/download"
+          className="btn-royal-primary dark:bg-gradient-to-r dark:from-codia-cyan dark:to-codia-blue dark:text-slate-950 dark:shadow-codia-cyan-sm px-4 py-2 rounded-lg text-xs font-bold transition-all whitespace-nowrap flex items-center gap-1.5"
         >
-          <span>Verify on Your Machine</span>
+          <span>View Release Status</span>
           <ChevronRight className="w-3.5 h-3.5" />
-        </a>
+        </Link>
       </div>
     </section>
   );

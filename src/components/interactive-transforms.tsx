@@ -258,7 +258,7 @@ export function InteractiveTransforms() {
                 Live Intercept
               </span>
               <span className="text-[10px] tracking-[0.2px] font-mono text-slate-500">
-                Interviewer Audio • 160ms Whisper Local
+                Audio Stream • Whisper / Azure STT
               </span>
             </div>
             {/* User Question Bubble */}
@@ -323,7 +323,7 @@ export function InteractiveTransforms() {
 
           <div className="flex items-center gap-3">
             <span className="text-[10px] tracking-[0.2px] text-slate-500 hidden sm:inline font-mono">
-              AST Latency: {activeData.latency}
+              Preset: {activeData.tag}
             </span>
             <button
               onClick={handleCopy}
@@ -379,7 +379,7 @@ export function InteractiveTransforms() {
                   </div>
                   <div className="flex items-center gap-2 text-[11px] tracking-[0.2px] font-mono text-slate-400">
                     <span className="w-2 h-2 rounded-full bg-codia-cyan animate-pulse" />
-                    <span>Eye contact indicator: Aligned 0.8° beneath webcam line</span>
+                    <span>Display anchor: Top Island window positioned beneath webcam line</span>
                   </div>
                 </div>
               )}

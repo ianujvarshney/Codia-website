@@ -89,7 +89,7 @@ export function FeaturesBento() {
                   <Mic className="w-5 h-5" />
                 </div>
                 <span className="glass-pill text-[10px] text-codia-cyan border-codia-cyan/30 font-semibold">
-                  Sub-500ms Audio Pipeline
+                  Dual Speech Pipeline
                 </span>
               </div>
               <span className="text-xs text-emerald-400 flex items-center gap-1.5 font-bold">
@@ -102,7 +102,7 @@ export function FeaturesBento() {
               Real-Time Voice Transcription & Speaker Separation
             </h3>
             <p className="text-xs sm:text-sm text-slate-400 mt-2 max-w-2xl leading-relaxed">
-              Hybrid acoustic stack combining quantized local on-device Whisper models with ultra-fast cloud Azure speech streaming. Automatically distinguishes between your voice and the interviewer’s voice with zero echo.
+              Hybrid acoustic stack supporting optional local Whisper speech-to-text (requiring a local binary and model) alongside Azure Speech streaming. Audio transcription is processed locally while AI reasoning uses configured cloud models.
             </p>
 
             {/* Audio Waveform and Real-Time Dialogue Simulation */}
@@ -112,7 +112,7 @@ export function FeaturesBento() {
                   <span className="text-codia-cyan font-bold">Active Audio Tap:</span>
                   <span>WASAPI Hardware Loopback (Echo-Free)</span>
                 </div>
-                <span className="text-codia-green font-bold">Latency: 140ms</span>
+                <span className="text-codia-green font-bold">Streaming Active</span>
               </div>
 
               {/* Speaker Dialogue Rows */}
@@ -155,8 +155,8 @@ export function FeaturesBento() {
           </div>
 
           <div className="mt-6 pt-4 border-t border-codia-border flex items-center justify-between text-xs text-slate-400">
-            <span>Offline Capable: Fallback Whisper.cpp</span>
-            <span className="text-codia-cyan font-bold">&lt;0.05% Word Error Rate</span>
+            <span>Local Transcription: Whisper.cpp</span>
+            <span className="text-codia-cyan font-semibold font-mono">Dual Speech Pipeline</span>
           </div>
         </motion.div>
 
@@ -209,7 +209,7 @@ export function FeaturesBento() {
 
           <div className="mt-5 pt-3.5 border-t border-codia-border/60 text-[11px] text-slate-400 flex items-center justify-between">
             <span>Direct Area Snapping</span>
-            <span className="text-purple-400 font-semibold">1,000ms End-to-End</span>
+            <span className="text-purple-400 font-semibold font-mono">In-Memory Buffer</span>
           </div>
         </motion.div>
 
@@ -245,7 +245,7 @@ export function FeaturesBento() {
               <div className="flex items-center justify-between text-xs">
                 <span className="text-white flex items-center gap-1.5 font-semibold">
                   <FileCode className="w-4 h-4 text-codia-cyan" />
-                  anuj_senior_swe.pdf
+                  candidate_profile_swe.pdf
                 </span>
                 <span className="text-codia-green text-[10px] font-bold">PARSED</span>
               </div>
@@ -264,7 +264,7 @@ export function FeaturesBento() {
 
           <div className="mt-5 pt-3.5 border-t border-codia-border/60 text-[11px] text-slate-400 flex items-center justify-between">
             <span>STAR Story Grounding</span>
-            <span className="text-blue-400 font-semibold">Zero Hallucinations</span>
+            <span className="text-blue-400 font-semibold font-mono">Personal Stack Context</span>
           </div>
         </motion.div>
 
@@ -322,7 +322,7 @@ export function FeaturesBento() {
                     ⚡ Ask Mode (Live Interview Sprint):
                   </span>
                   <p className="text-slate-300 text-[11px]">
-                    Sub-200ms instantaneous answers, optimal algorithmic code, and immediate Big-O breakdown.
+                    Concise verbal scripts, optimal algorithmic code blocks, and immediate Big-O space/time breakdown.
                   </p>
                 </div>
               ) : (
@@ -339,8 +339,8 @@ export function FeaturesBento() {
           </div>
 
           <div className="mt-5 pt-3.5 border-t border-codia-border/60 text-[11px] text-slate-400 flex items-center justify-between">
-            <span>Hotkey Switch</span>
-            <span className="text-emerald-400 font-semibold font-mono">Alt + M Switch</span>
+            <span>Mode Selection</span>
+            <span className="text-emerald-400 font-semibold font-mono">Ask / Meeting Toggle</span>
           </div>
         </motion.div>
 
@@ -375,27 +375,27 @@ export function FeaturesBento() {
             </div>
 
             <h3 className="text-lg sm:text-xl font-bold text-white">
-              Click-Through Glassmorphism
+              Mouse Event Pass-Through
             </h3>
             <p className="text-xs text-slate-400 mt-2 leading-relaxed">
-              No window focus stealing. Mouse clicks, drags, and keystrokes pass directly into LeetCode or VS Code underneath the HUD.
+              Toggle interaction mode with Alt+A or Ctrl+Shift+I. Electron setIgnoreMouseEvents with forward: true passes mouse clicks directly through the overlay to underlying windows.
             </p>
 
             {/* Click-Through Interactive Demo Box */}
             <div className="mt-4 p-3 rounded-xl bg-codia-bg/90 border border-codia-border text-xs space-y-1.5">
               <div className="flex items-center justify-between text-[10px] text-slate-400 font-mono">
-                <span>Window Flag: WS_EX_TRANSPARENT</span>
+                <span>Mouse Passthrough: setIgnoreMouseEvents</span>
                 <span className="text-codia-green">Active</span>
               </div>
               <p className="text-[11px] text-slate-300">
-                Type directly into your code editor without minimizing or touching Codia.
+                Click through to your code editor without minimizing or closing Codia’s overlay.
               </p>
             </div>
           </div>
 
           <div className="mt-5 pt-3.5 border-t border-codia-border/60 text-[11px] text-slate-400 flex items-center justify-between">
-            <span>Focus Stealing</span>
-            <span className="text-codia-cyan font-semibold">0% Zero Focus Loss</span>
+            <span>Interaction Mode</span>
+            <span className="text-codia-cyan font-semibold font-mono">Mouse Pass-Through</span>
           </div>
         </motion.div>
       </div>

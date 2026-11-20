@@ -1,55 +1,55 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { ThemeProvider } from '@/hooks/useTheme';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://codia.ai'),
   title: {
-    default: 'Codia — Undetectable AI Copilot for Live Technical Interviews & Meetings',
-    template: '%s | Codia AI Copilot',
+    default: 'Codia — AI Desktop Assistant for Technical Interviews & Focus',
+    template: '%s | Codia AI',
   },
   description:
-    'Codia is an undetectable AI desktop assistant engineered for live technical interviews, coding challenges, and high-stakes meetings. Invisible to screen-share software with sub-300ms speech-to-code synthesis.',
+    'Codia is a private AI desktop assistant engineered for live technical interviews, algorithmic problem-solving, and engineering meetings. Powered by four synchronized floating interfaces, local Whisper transcription, and platform content protection.',
   applicationName: 'Codia',
-  authors: [{ name: 'Codia AI Engineering Team', url: 'https://codia.ai' }],
+  authors: [{ name: 'Codia Engineering Team', url: 'https://codia.ai' }],
   creator: 'Codia Technologies',
-  publisher: 'Codia Technologies Inc.',
+  publisher: 'Codia Technologies',
   keywords: [
-    'AI Copilot',
-    'Undetectable Interview AI',
+    'AI Desktop Assistant',
+    'Technical Interview Copilot',
     'Coding Interview Assistant',
     'Live Meeting Copilot',
     'LeetCode Assistant',
     'System Design Interview',
-    'Stealth Desktop HUD',
+    'Desktop HUD',
     'Real-time Audio Transcription',
-    'Bypass Screen Share Detection',
-    'CoderPad Assistant',
-    'HackerRank Copilot',
+    'Window Content Protection',
+    'Whisper Speech Recognition',
   ],
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://codia.ai',
     siteName: 'Codia AI',
-    title: 'Codia — Undetectable AI Copilot for Live Technical Interviews & Meetings',
+    title: 'Codia — AI Desktop Assistant for Technical Interviews & Focus',
     description:
-      'Pass any technical interview in real time. Invisible HUD overlay, zero-latency speech-to-code generation, and automated system design synthesis.',
+      'Four native floating interfaces seamlessly synchronized across your desktop workflow with local audio processing, multimodal screen analysis, and OS window content protection.',
     images: [
       {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Codia - Undetectable Live Interview AI Copilot',
+        url: '/app-icon.png',
+        width: 512,
+        height: 512,
+        alt: 'Codia - AI Desktop Assistant',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Codia — Undetectable AI Copilot for Live Technical Interviews',
+    title: 'Codia — AI Desktop Assistant for Technical Interviews & Focus',
     description:
-      'Stealth desktop AI assistant for live coding rounds and engineering meetings. Zero screen-share capture, sub-300ms voice transcription.',
+      'Private AI desktop copilot for technical interviews and engineering meetings with local Whisper speech processing and direct cloud API integration.',
     creator: '@codia_ai',
-    images: ['/og-image.png'],
+    images: ['/app-icon.png'],
   },
   robots: {
     index: true,
@@ -63,12 +63,19 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://codia.ai',
+    canonical: '/',
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
+      { url: '/favicon-48x48.png', type: 'image/png', sizes: '48x48' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: ['/favicon.ico'],
   },
 };
 
@@ -77,33 +84,19 @@ const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   name: 'Codia',
-  alternateName: 'Codia Undetectable AI Copilot',
+  alternateName: 'Codia AI Desktop Assistant',
   applicationCategory: 'DeveloperApplication',
-  operatingSystem: 'macOS 12.0+, Windows 10/11, Ubuntu 22.04+',
+  operatingSystem: 'Windows 10/11 (64-bit), macOS 12.0+',
   description:
-    'Undetectable AI Copilot desktop application engineered for live technical interviews, system design rounds, and high-stakes engineering meetings with real-time audio transcription and invisible HUD overlays.',
+    'Private AI desktop assistant engineered for technical interviews, algorithmic problem-solving, and live meetings with real-time speech transcription and floating HUD overlays.',
   url: 'https://codia.ai',
-  softwareVersion: '2.4.0',
-  offers: {
-    '@type': 'AggregateOffer',
-    priceCurrency: 'USD',
-    lowPrice: '29',
-    highPrice: '99',
-    offerCount: '3',
-  },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.97',
-    ratingCount: '1840',
-    bestRating: '5',
-    worstRating: '1',
-  },
+  softwareVersion: '1.0.0',
   featureList: [
-    'Invisible Dynamic HUD overlay undetectable on Zoom, Google Meet, Microsoft Teams, HackerRank, and CoderPad screen-sharing',
-    'Sub-300ms Whisper-based Real-time Interview Speech Recognition',
-    'Instant algorithmic solutions with optimal Time & Space complexity analysis',
-    'Live system design diagrams and architectural tradeoff reasoning',
-    'Global hardware stealth hotkeys and eye-tracking gaze alignment',
+    'Four synchronized native floating windows (Island dock, Solution HUD, Chat, and Preferences)',
+    'Optional local speech-to-text transcription via whisper.cpp',
+    'Direct in-memory screen analysis with multimodal models (Gemini & Claude)',
+    'Operating system window content protection (SetWindowDisplayAffinity / NSWindowSharingNone)',
+    'Global keyboard shortcuts and transparent click-through mouse mode',
   ],
 };
 
@@ -113,12 +106,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth font-sans">
+    <html lang="en" className="scroll-smooth font-sans" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('codia-theme')||'light';if(t==='dark'){document.documentElement.classList.add('dark');document.documentElement.classList.remove('light');document.documentElement.style.colorScheme='dark';}else{document.documentElement.classList.remove('dark');document.documentElement.classList.add('light');document.documentElement.style.colorScheme='light';}}catch(e){}})();`,
+          }}
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
@@ -130,15 +124,17 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className="min-h-screen bg-codia-bg text-slate-100 font-sans antialiased selection:bg-codia-cyan/25 selection:text-codia-cyan">
-        <div className="relative min-h-screen flex flex-col bg-codia-bg">
-          {/* Global Ambient Glow Gradient */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none fixed inset-0 -z-10 bg-glass-glow opacity-80"
-          />
-          {children}
-        </div>
+      <body className="min-h-screen bg-royal-bg-primary dark:bg-codia-bg text-royal-text-primary dark:text-slate-100 font-sans antialiased transition-colors duration-300">
+        <ThemeProvider>
+          <div className="relative min-h-screen flex flex-col bg-royal-bg-primary dark:bg-codia-bg transition-colors duration-300">
+            {/* Global Ambient Glow Gradient */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none fixed inset-0 -z-10 bg-royal-glow dark:bg-glass-glow opacity-80 transition-opacity duration-500"
+            />
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
