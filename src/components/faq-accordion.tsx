@@ -24,35 +24,35 @@ interface FaqItem {
 const FAQS: FaqItem[] = [
   {
     id: 'faq-screen-share',
-    question: 'Will the interviewer see Codia if I share my entire screen on Zoom, Google Meet, or Teams?',
-    category: 'Stealth & Invisibility',
+    question: 'Will the interviewer see Codia if I share my screen on Zoom, Google Meet, or Teams?',
+    category: 'Window Content Protection',
     answerText:
-      'No. Codia is engineered with OS-level hardware window protection. On Windows, Codia invokes SetWindowDisplayAffinity(WDA_EXCLUDE); on macOS, it binds NSWindow.sharingType = .none via Electron / Metal. When video conference software (Zoom, Google Meet, Microsoft Teams, Webex) requests screen buffer pixels from the Desktop Window Manager or Quartz Compositor, the operating system compositor automatically omits Codia’s pixel layer, streaming only your clean IDE underneath.',
-    technicalHighlight: 'Operating System Compositor Bypass: SetWindowDisplayAffinity(WDA_EXCLUDE) & NSWindow.sharingType = .none',
+      'Codia configures native operating system window display affinity (SetWindowDisplayAffinity with WDA_EXCLUDE on Windows, and NSWindow.sharingType = .none on macOS via Electron). When standard desktop video conferencing software (Zoom, Google Meet, Microsoft Teams) captures the screen, the operating system compositor omits Codia’s window layer. Note: protection is platform-dependent and does not apply to external HDMI capture cards, hypervisors, or physical cameras pointed at your display.',
+    technicalHighlight: 'OS Window Display Affinity: SetWindowDisplayAffinity(WDA_EXCLUDE) & NSWindow.sharingType = .none',
   },
   {
     id: 'faq-cursor',
     question: 'Does Codia change my mouse cursor or show hover indicators?',
-    category: 'Cursor Stealth',
+    category: 'Cursor Styling',
     answerText:
-      'Never. In conventional web apps or overlay tools, hovering over buttons morphs your cursor from the standard arrow into a pointing hand or I-beam text cursor—which instantly tips off technical interviewers watching your mouse during live coding. Codia enforces a universal hardware arrow cursor (cursor: default !important; with native OS cursor lock) across all HUD controls, interactive pills, and buttons. Your cursor remains an arrow 100% of the time.',
-    technicalHighlight: 'Enforced Hardware Cursor Lock: IDC_ARROW across all window coordinates',
+      'No. In conventional web apps or overlay tools, hovering over buttons morphs your cursor from the standard arrow into a pointing hand or I-beam text cursor—which can be noticeable during live screen sharing. Codia enforces the standard default arrow cursor across all HUD controls, interactive pills, and buttons to maintain visual consistency.',
+    technicalHighlight: 'Consistent Default Cursor: Avoids pointer-hand morphing on HUD surfaces',
   },
   {
     id: 'faq-click-through',
     question: 'Can I type in my code editor while Codia is on top of my screen?',
     category: 'Usability & Input',
     answerText:
-      'Yes. Pressing Alt+A toggles Click-Through Mode (WS_EX_TRANSPARENT on Windows, ignoresMouseEvents = true on macOS). In this mode, every mouse click, scroll wheel action, selection, and keystroke passes straight through Codia’s translucent glass card directly into VS Code, LeetCode, or CoderPad underneath. You can write and execute code while the optimal solution remains right in front of your eyes without stealing window focus.',
-    technicalHighlight: 'Transparent Input Passthrough: WS_EX_TRANSPARENT flag without focus theft',
+      'Yes. Pressing Alt+A (or Ctrl/Cmd+Shift+I) toggles interaction mode using Electron setIgnoreMouseEvents with forward: true. In click-through mode, mouse events pass through Codia’s overlay to underlying applications so you can interact with your code editor without hiding the HUD. Keyboard events continue to follow standard operating system window focus.',
+    technicalHighlight: 'Mouse Passthrough: Electron setIgnoreMouseEvents({ forward: true })',
   },
   {
     id: 'faq-resume-injection',
     question: 'How does Codia know about my personal background and past projects?',
     category: 'Personalization',
     answerText:
-      'Before your interview, you can upload your resume (PDF or DOCX) in Codia’s settings. Codia’s local parser extracts your genuine career history, previous company roles, tech stack (e.g., Kubernetes, Kafka, Go, React), and quantifiable metrics into an encrypted local session index. When the interviewer asks behavioral or background questions ("Tell me about an outage you resolved"), Codia structures STAR answers using your authentic past projects rather than generic fictional stories.',
-    technicalHighlight: 'Local Vector Grounding: Eliminates AI hallucinations & matches your authentic voice',
+      'In settings, you can attach your resume (PDF or DOCX). Codia’s local parser extracts your genuine career roles, past projects, and technical stack (e.g., Kubernetes, Kafka, Go, React) into session memory. When you ask behavioral or technical questions, Codia grounds responses in your actual work experience.',
+    technicalHighlight: 'Local Resume Grounding: Grounded in your authentic projects and tech stack',
   },
   {
     id: 'faq-shortcuts',
@@ -88,7 +88,7 @@ const OFFICIAL_KEYBOARD_SHORTCUTS = [
   {
     key: 'Alt + A (or Ctrl / Cmd + Shift + I)',
     action: 'Toggle Click-Through Mode',
-    desc: 'Enables pass-through mouse events to type in IDE underneath without focus loss',
+    desc: 'Toggles mouse-event pass-through to click through to underlying desktop windows',
   },
   {
     key: '↑ / ↓ (Arrow Keys)',
@@ -117,9 +117,9 @@ export function FaqAccordion() {
   };
 
   return (
-    <section id="faq" className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 border-t border-codia-border">
+    <section id="faq" className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 border-t border-royal-border dark:border-codia-border">
       {/* Background Accent */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[750px] h-[400px] bg-gradient-to-tr from-codia-blue/15 via-codia-cyan/10 to-transparent blur-[130px] pointer-events-none -z-10" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[750px] h-[400px] bg-royal-glow dark:bg-gradient-to-tr dark:from-codia-blue/15 dark:via-codia-cyan/10 to-transparent blur-[130px] pointer-events-none -z-10" />
 
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto mb-16">
@@ -127,9 +127,9 @@ export function FaqAccordion() {
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border-codia-cyan/40 text-xs text-codia-cyan uppercase tracking-wider mb-4 shadow-codia-cyan-sm font-semibold"
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-slate-900/80 border border-royal-border dark:border-codia-cyan/40 text-xs text-royal-indigo dark:text-codia-cyan uppercase tracking-wider mb-4 shadow-royal-sm dark:shadow-codia-cyan-sm font-semibold font-mono"
         >
-          <HelpCircle className="w-3.5 h-3.5 text-codia-cyan" />
+          <HelpCircle className="w-3.5 h-3.5 text-royal-indigo dark:text-codia-cyan" />
           <span>Candidate Questions Answered</span>
         </motion.div>
 
@@ -138,10 +138,10 @@ export function FaqAccordion() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-[1.15]"
+          className="text-3xl sm:text-5xl font-extrabold text-royal-text-primary dark:text-white tracking-tight leading-[1.15]"
         >
           Frequently Asked{' '}
-          <span className="text-gradient-cyan-blue">Technical Questions.</span>
+          <span className="text-gradient-royal dark:text-gradient-cyan-blue">Technical Questions.</span>
         </motion.h2>
 
         <motion.p
@@ -149,9 +149,9 @@ export function FaqAccordion() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="mt-4 text-base sm:text-lg text-slate-400 leading-relaxed"
+          className="mt-4 text-base sm:text-lg text-royal-text-secondary dark:text-slate-400 leading-relaxed"
         >
-          Everything you need to know about OS-level window protection, cursor lock, latency, and global hotkeys.
+          Everything you need to know about OS-level window protection, interaction modes, latency, and global hotkeys.
         </motion.p>
       </div>
 
@@ -171,8 +171,8 @@ export function FaqAccordion() {
               transition={{ delay: 0.05 * idx }}
               className={`rounded-2xl transition-all overflow-hidden ${
                 isOpen
-                  ? 'glass-card border-codia-cyan/50 shadow-lg'
-                  : 'glass-card border-codia-border hover:border-codia-border/80'
+                  ? 'bg-white dark:bg-codia-card border-2 border-royal-indigo/40 dark:border-codia-cyan/50 shadow-royal-md dark:shadow-lg'
+                  : 'bg-white dark:bg-codia-card border border-royal-border dark:border-codia-border hover:border-royal-indigo/30 dark:hover:border-codia-border/80 shadow-royal-sm dark:shadow-none'
               }`}
             >
               {/* Accordion Trigger Header */}
@@ -188,20 +188,20 @@ export function FaqAccordion() {
                       toggleItem(faq.id);
                     }
                   }}
-                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-codia-cyan/60 rounded-2xl"
+                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-royal-indigo/60 dark:focus-visible:ring-codia-cyan/60 rounded-2xl"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
-                    <span className="stealth-badge text-codia-cyan uppercase px-2 py-0.5 rounded bg-codia-cyan/10 border border-codia-cyan/30 self-start sm:self-auto">
+                    <span className="text-royal-indigo dark:text-codia-cyan uppercase px-2 py-0.5 rounded bg-royal-highlight dark:bg-codia-cyan/10 border border-royal-indigo/30 dark:border-codia-cyan/30 self-start sm:self-auto text-[10px] font-mono font-bold tracking-wider">
                       {faq.category}
                     </span>
-                    <span className="font-bold text-sm sm:text-base text-white">
+                    <span className="font-bold text-sm sm:text-base text-royal-text-primary dark:text-white">
                       {faq.question}
                     </span>
                   </div>
 
-                  <div className="w-8 h-8 rounded-xl bg-codia-surface/80 border border-codia-border/60 flex items-center justify-center shrink-0 text-slate-400">
+                  <div className="w-8 h-8 rounded-xl bg-royal-bg-secondary dark:bg-codia-surface/80 border border-royal-border dark:border-codia-border/60 flex items-center justify-center shrink-0 text-royal-indigo dark:text-slate-400">
                     <ChevronDown
-                      className={`w-4 h-4 text-codia-cyan transition-transform duration-300 ${
+                      className={`w-4 h-4 text-royal-indigo dark:text-codia-cyan transition-transform duration-300 ${
                         isOpen ? 'rotate-180' : ''
                       }`}
                     />
@@ -222,40 +222,40 @@ export function FaqAccordion() {
                     transition={{ duration: 0.25, ease: 'easeInOut' }}
                     className="overflow-hidden"
                   >
-                    <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-codia-border/40 space-y-4">
-                      <p className="codia-answer-area text-slate-300">{faq.answerText}</p>
+                    <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-royal-text-secondary dark:text-slate-300 leading-relaxed border-t border-royal-border/60 dark:border-codia-border/40 space-y-4">
+                      <p className="codia-answer-area text-royal-text-secondary dark:text-slate-300 leading-relaxed">{faq.answerText}</p>
 
                       {/* Technical Highlight Callout */}
                       {faq.technicalHighlight && (
-                        <div className="p-3.5 rounded-xl bg-codia-surface/90 border border-codia-cyan/30 flex items-center gap-2 text-xs text-emerald-300 font-medium">
-                          <ShieldCheck className="w-4 h-4 text-codia-cyan shrink-0" />
+                        <div className="p-3.5 rounded-xl bg-royal-highlight dark:bg-codia-surface/90 border border-royal-indigo/30 dark:border-codia-cyan/30 flex items-center gap-2 text-xs text-royal-indigo dark:text-emerald-300 font-medium font-mono">
+                          <ShieldCheck className="w-4 h-4 text-royal-indigo dark:text-codia-cyan shrink-0" />
                           <span>{faq.technicalHighlight}</span>
                         </div>
                       )}
 
                       {/* Official 8-Shortcut Table */}
                       {faq.hasShortcutTable && (
-                        <div className="mt-3 rounded-xl border border-codia-border overflow-hidden bg-codia-bg/95">
-                          <div className="grid grid-cols-12 bg-codia-surface/90 border-b border-codia-border p-2.5 text-[11px] tracking-[0.2px] font-bold text-slate-400">
+                        <div className="mt-3 rounded-xl border border-royal-border dark:border-codia-border overflow-hidden bg-royal-bg-secondary/40 dark:bg-codia-bg/95">
+                          <div className="grid grid-cols-12 bg-royal-highlight dark:bg-codia-surface/90 border-b border-royal-border dark:border-codia-border p-2.5 text-[11px] tracking-[0.2px] font-bold text-royal-text-secondary dark:text-slate-400">
                             <span className="col-span-5 sm:col-span-4">Keyboard Shortcut</span>
                             <span className="col-span-7 sm:col-span-4">Command Action</span>
                             <span className="col-span-12 sm:col-span-4 hidden sm:inline">Purpose / In-Game Function</span>
                           </div>
-                          <div className="divide-y divide-codia-border/40 text-xs font-mono">
+                          <div className="divide-y divide-royal-border/40 dark:divide-codia-border/40 text-xs font-mono">
                             {OFFICIAL_KEYBOARD_SHORTCUTS.map((row, sIdx) => (
                               <div
                                 key={sIdx}
-                                className="grid grid-cols-12 p-2.5 items-center hover:bg-white/[0.02] transition-colors"
+                                className="grid grid-cols-12 p-2.5 items-center hover:bg-royal-highlight/40 dark:hover:bg-white/[0.02] transition-colors"
                               >
                                 <div className="col-span-5 sm:col-span-4 pr-2">
-                                  <kbd className="kbd-badge bg-white/10 text-codia-cyan border border-codia-cyan/30 px-2 py-0.5 inline-block">
+                                  <kbd className="kbd-badge bg-white dark:bg-white/10 text-royal-indigo dark:text-codia-cyan border border-royal-indigo/30 dark:border-codia-cyan/30 px-2 py-0.5 inline-block shadow-sm">
                                     {row.key}
                                   </kbd>
                                 </div>
-                                <div className="col-span-7 sm:col-span-4 text-white font-semibold text-[11px] tracking-[0.2px]">
+                                <div className="col-span-7 sm:col-span-4 text-royal-text-primary dark:text-white font-semibold text-[11px] tracking-[0.2px]">
                                   {row.action}
                                 </div>
-                                <div className="col-span-12 sm:col-span-4 text-slate-400 text-[11px] tracking-[0.2px] hidden sm:inline mt-1 sm:mt-0">
+                                <div className="col-span-12 sm:col-span-4 text-royal-text-secondary dark:text-slate-400 text-[11px] tracking-[0.2px] hidden sm:inline mt-1 sm:mt-0 font-sans">
                                   {row.desc}
                                 </div>
                               </div>
