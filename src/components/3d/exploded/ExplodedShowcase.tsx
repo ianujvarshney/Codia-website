@@ -225,7 +225,7 @@ export function ExplodedShowcase({ onOpenDownload, className = '' }: ExplodedSho
       ref={containerRef}
       id="exploded-showcase"
       aria-label="Apple-Style Exploded View Product Experience"
-      className={`relative w-full h-[450vh] sm:h-[500vh] bg-[#040711] text-white select-none ${className}`}
+      className={`relative w-full h-[450vh] sm:h-[500vh] bg-[#0D0F1B] text-white select-none ${className}`}
     >
       {/* Sticky Viewport Stage (100vh pinned) */}
       <div
@@ -235,14 +235,14 @@ export function ExplodedShowcase({ onOpenDownload, className = '' }: ExplodedSho
         {/* Background Atmospheric Cinematic Lighting */}
         <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
           {/* Deep midnight navy mesh */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050814] via-[#040711] to-[#020409]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0D0F1B] via-[#0B0D17] to-[#080911]" />
 
           {/* Radial Ambient Center Glow */}
           <div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] sm:w-[1300px] h-[650px] sm:h-[850px] rounded-full blur-[140px] opacity-45 transition-opacity duration-700"
             style={{
               background:
-                'radial-gradient(circle, rgba(79,70,229,0.35) 0%, rgba(114,135,253,0.22) 40%, rgba(32,159,181,0.12) 70%, transparent 100%)',
+                'radial-gradient(circle, rgba(150,139,255,0.28) 0%, rgba(95,132,255,0.16) 40%, rgba(13,15,27,0.05) 70%, transparent 100%)',
             }}
           />
 
@@ -251,7 +251,7 @@ export function ExplodedShowcase({ onOpenDownload, className = '' }: ExplodedSho
             className="absolute bottom-0 left-0 right-0 h-64 sm:h-96 opacity-15 pointer-events-none"
             style={{
               backgroundImage:
-                'linear-gradient(to right, rgba(114, 135, 253, 0.15) 1px, transparent 1px), linear-gradient(to bottom, rgba(114, 135, 253, 0.15) 1px, transparent 1px)',
+                'linear-gradient(to right, rgba(150, 139, 255, 0.15) 1px, transparent 1px), linear-gradient(to bottom, rgba(150, 139, 255, 0.15) 1px, transparent 1px)',
               backgroundSize: '40px 40px',
               transform: 'perspective(600px) rotateX(65deg)',
               transformOrigin: 'bottom center',

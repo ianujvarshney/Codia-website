@@ -245,24 +245,24 @@ export function InteractiveTransforms() {
   };
 
   return (
-    <div className="w-full rounded-2xl glass-card border border-codia-border p-4 sm:p-6 shadow-2xl relative overflow-hidden">
+    <div className="w-full rounded-3xl bg-white dark:bg-slate-950/80 border border-royal-border dark:border-slate-800/90 p-5 sm:p-7 shadow-royal-lg dark:shadow-2xl relative overflow-hidden transition-all">
       {/* Top Header Row with Active Interview Question Intercept */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-codia-border/70">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-royal-border dark:border-slate-800">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-xl bg-codia-cyan/15 border border-codia-cyan/40 flex items-center justify-center text-codia-cyan shrink-0">
+          <div className="w-9 h-9 rounded-xl bg-royal-highlight dark:bg-slate-900 border border-royal-border dark:border-slate-800 flex items-center justify-center text-royal-indigo dark:text-codia-cyan shrink-0 shadow-sm">
             <Sparkles className="w-4 h-4" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="stealth-badge text-codia-cyan uppercase">
+              <span className="text-[10px] uppercase font-mono font-bold tracking-wider px-2 py-0.5 rounded bg-royal-highlight dark:bg-slate-800 text-royal-indigo dark:text-codia-cyan border border-royal-border dark:border-slate-700">
                 Live Intercept
               </span>
-              <span className="text-[10px] tracking-[0.2px] font-mono text-slate-500">
+              <span className="text-[10px] tracking-[0.2px] font-mono text-royal-text-secondary dark:text-slate-400">
                 Audio Stream • Whisper / Azure STT
               </span>
             </div>
             {/* User Question Bubble */}
-            <p className="bubble-text text-white font-medium mt-0.5">
+            <p className="text-royal-text-primary dark:text-white font-medium mt-1 text-sm sm:text-base leading-snug">
               &ldquo;How does React Fiber handle scheduling and prevent UI frame drops?&rdquo;
             </p>
           </div>
@@ -270,8 +270,8 @@ export function InteractiveTransforms() {
 
         {/* Status Pill */}
         <div className="flex items-center gap-2 self-start md:self-auto">
-          <span className="stealth-badge px-2.5 py-1 rounded-full bg-codia-green/10 text-codia-green border border-codia-green/30 flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-codia-green animate-pulse" />
+          <span className="px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/40 flex items-center gap-1.5 text-xs font-semibold font-mono">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             Screen-Share Protected
           </span>
         </div>
@@ -279,11 +279,11 @@ export function InteractiveTransforms() {
 
       {/* 8 One-Tap Transform Pills Bar */}
       <div className="py-4">
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-[11px] tracking-[0.2px] text-slate-400 font-medium">
+        <div className="flex items-center justify-between mb-2.5">
+          <span className="text-xs text-royal-text-secondary dark:text-slate-400 font-medium">
             1-Tap Adaptive Answer Formats ({TRANSFORM_PILLS.length} Modes):
           </span>
-          <span className="text-[10px] tracking-[0.2px] text-codia-cyan hidden sm:inline font-medium">
+          <span className="text-xs text-royal-indigo dark:text-codia-cyan hidden sm:inline font-semibold font-mono">
             Zero re-prompting required
           </span>
         </div>
@@ -298,11 +298,11 @@ export function InteractiveTransforms() {
                 onClick={() => setActiveTab(pill.id)}
                 className={`px-2.5 py-2 rounded-xl text-xs font-semibold transition-all flex items-center justify-center gap-1.5 cursor-pointer text-center ${
                   isActive
-                    ? 'bg-gradient-to-r from-codia-cyan to-codia-blue text-slate-950 font-bold shadow-codia-cyan-sm scale-[1.02]'
-                    : 'glass-card text-slate-300 hover:text-white hover:border-codia-cyan/40 hover:bg-white/[0.04]'
+                    ? 'btn-royal-primary text-white shadow-royal-indigo dark:bg-gradient-to-r dark:from-codia-cyan dark:to-codia-blue dark:text-slate-950 scale-[1.02]'
+                    : 'bg-white dark:bg-slate-900/60 border border-royal-border dark:border-slate-800 text-royal-text-secondary dark:text-slate-300 hover:text-royal-text-primary dark:hover:text-white hover:border-royal-lavender dark:hover:border-slate-700 shadow-sm'
                 }`}
               >
-                <Icon className={`w-3.5 h-3.5 shrink-0 ${isActive ? 'text-slate-950' : 'text-codia-cyan'}`} />
+                <Icon className={`w-3.5 h-3.5 shrink-0 ${isActive ? 'text-white dark:text-slate-950' : 'text-royal-indigo dark:text-codia-cyan'}`} />
                 <span className="truncate">{pill.label}</span>
               </button>
             );
@@ -311,33 +311,33 @@ export function InteractiveTransforms() {
       </div>
 
       {/* Dynamic Transform Display Card */}
-      <div className="rounded-xl bg-codia-surface/90 border border-codia-border p-4 sm:p-5 text-left relative min-h-[220px]">
+      <div className="rounded-2xl bg-royal-bg-secondary/60 dark:bg-slate-900/60 border border-royal-border dark:border-slate-800 p-4 sm:p-5 text-left relative min-h-[220px]">
         {/* Sub-Header: Transform Metadata & Copy Button */}
-        <div className="flex items-center justify-between pb-3 border-b border-codia-border/50 text-[11px] tracking-[0.2px]">
+        <div className="flex items-center justify-between pb-3 border-b border-royal-border dark:border-slate-800 text-xs">
           <div className="flex items-center gap-2">
-            <span className="px-2 py-0.5 rounded bg-codia-cyan/10 border border-codia-cyan/30 text-codia-cyan font-bold text-[10px] tracking-[0.2px] font-mono">
+            <span className="px-2 py-0.5 rounded bg-royal-highlight dark:bg-slate-800 border border-royal-border dark:border-slate-700 text-royal-indigo dark:text-codia-cyan font-bold text-[10px] font-mono">
               {activeData.tag}
             </span>
-            <span className="text-slate-400 font-semibold">{activeData.title}</span>
+            <span className="text-royal-text-primary dark:text-slate-200 font-semibold">{activeData.title}</span>
           </div>
 
           <div className="flex items-center gap-3">
-            <span className="text-[10px] tracking-[0.2px] text-slate-500 hidden sm:inline font-mono">
+            <span className="text-[10px] text-royal-text-secondary dark:text-slate-500 hidden sm:inline font-mono">
               Preset: {activeData.tag}
             </span>
             <button
               onClick={handleCopy}
-              className="glass-pill px-2.5 py-1 text-[11px] tracking-[0.2px] text-slate-300 hover:text-white hover:border-codia-cyan/40 transition-all flex items-center gap-1.5 cursor-pointer"
+              className="btn-royal-secondary text-xs px-3 py-1 text-royal-indigo dark:text-slate-200 dark:bg-slate-800 dark:border-slate-700 hover:bg-royal-highlight transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
               title="Copy Answer"
             >
               {isCopied ? (
                 <>
-                  <Check className="w-3 h-3 text-codia-green" />
-                  <span className="text-codia-green font-semibold">Copied!</span>
+                  <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
+                  <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Copied!</span>
                 </>
               ) : (
                 <>
-                  <Copy className="w-3 h-3 text-slate-400" />
+                  <Copy className="w-3 h-3 text-royal-text-secondary dark:text-slate-400" />
                   <span>Copy</span>
                 </>
               )}
@@ -361,9 +361,9 @@ export function InteractiveTransforms() {
                   {activeData.content.items?.map((item, idx) => (
                     <div
                       key={idx}
-                      className="flex items-start gap-2.5 codia-answer-area text-slate-200"
+                      className="flex items-start gap-2.5 text-royal-text-primary dark:text-slate-200 text-xs sm:text-sm leading-relaxed"
                     >
-                      <span className="text-codia-cyan font-mono font-bold mt-0.5">▸</span>
+                      <span className="text-royal-indigo dark:text-codia-cyan font-mono font-bold mt-0.5">▸</span>
                       <span>{item}</span>
                     </div>
                   ))}
@@ -373,12 +373,12 @@ export function InteractiveTransforms() {
               {/* Type 2: Exact Spoken Script */}
               {activeData.content.type === 'script' && (
                 <div className="space-y-3">
-                  <div className="p-4 rounded-xl bg-blue-950/20 border border-codia-blue/40 text-blue-100 codia-answer-area italic leading-relaxed relative">
-                    <span className="text-codia-cyan font-serif text-2xl absolute top-1 left-2 opacity-40">“</span>
+                  <div className="p-4 rounded-xl bg-royal-highlight/70 dark:bg-blue-950/20 border border-royal-border dark:border-codia-blue/40 text-royal-text-primary dark:text-blue-100 italic leading-relaxed relative">
+                    <span className="text-royal-indigo dark:text-codia-cyan font-serif text-2xl absolute top-1 left-2 opacity-30">“</span>
                     <p className="pl-3">{activeData.content.body}</p>
                   </div>
-                  <div className="flex items-center gap-2 text-[11px] tracking-[0.2px] font-mono text-slate-400">
-                    <span className="w-2 h-2 rounded-full bg-codia-cyan animate-pulse" />
+                  <div className="flex items-center gap-2 text-xs font-mono text-royal-text-secondary dark:text-slate-400">
+                    <span className="w-2 h-2 rounded-full bg-royal-indigo dark:bg-codia-cyan animate-pulse" />
                     <span>Display anchor: Top Island window positioned beneath webcam line</span>
                   </div>
                 </div>
@@ -387,11 +387,11 @@ export function InteractiveTransforms() {
               {/* Type 3: Code Solution */}
               {activeData.content.type === 'code' && (
                 <div className="space-y-2">
-                  <div className="flex items-center justify-between text-[11px] tracking-[0.2px] font-mono text-slate-400 pb-1">
+                  <div className="flex items-center justify-between text-xs font-mono text-royal-text-secondary dark:text-slate-400 pb-1">
                     <span>Language: {activeData.content.codeLang}</span>
-                    <span className="text-codia-green font-semibold">Zero Garbage Collection Overhead</span>
+                    <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Zero Garbage Collection Overhead</span>
                   </div>
-                  <pre className="font-mono text-xs text-emerald-400 overflow-x-auto leading-relaxed p-3.5 bg-codia-bg/95 rounded-xl border border-codia-border/70">
+                  <pre className="font-mono text-xs text-emerald-600 dark:text-emerald-400 overflow-x-auto leading-relaxed p-3.5 bg-white dark:bg-black/60 rounded-xl border border-royal-border dark:border-slate-800 shadow-sm">
                     <code>{activeData.content.codeSnippet}</code>
                   </pre>
                 </div>
@@ -403,15 +403,15 @@ export function InteractiveTransforms() {
                   {activeData.content.metrics?.map((metric, idx) => (
                     <div
                       key={idx}
-                      className="p-3.5 rounded-xl bg-codia-bg/80 border border-codia-border flex flex-col justify-between"
+                      className="p-3.5 rounded-xl bg-white dark:bg-slate-950 border border-royal-border dark:border-slate-800 shadow-sm flex flex-col justify-between"
                     >
-                      <span className="text-[10px] tracking-[0.2px] font-mono text-slate-400 font-bold uppercase">
+                      <span className="text-[10px] font-mono text-royal-text-secondary dark:text-slate-400 font-bold uppercase">
                         {metric.label}
                       </span>
-                      <div className="text-sm font-bold font-mono text-codia-cyan my-1">
+                      <div className="text-sm font-bold font-mono text-royal-indigo dark:text-codia-cyan my-1">
                         {metric.value}
                       </div>
-                      <p className="text-[11px] tracking-[0.2px] text-slate-400 leading-normal">
+                      <p className="text-xs text-royal-text-secondary dark:text-slate-400 leading-normal">
                         {metric.desc}
                       </p>
                     </div>
@@ -425,9 +425,9 @@ export function InteractiveTransforms() {
                   {activeData.content.items?.map((item, idx) => (
                     <div
                       key={idx}
-                      className="p-3 rounded-xl bg-codia-bg/70 border border-codia-border/80 text-xs sm:text-sm text-slate-200 flex items-start gap-2.5 leading-relaxed"
+                      className="p-3 rounded-xl bg-white dark:bg-slate-950/70 border border-royal-border dark:border-slate-800/80 text-xs sm:text-sm text-royal-text-primary dark:text-slate-200 flex items-start gap-2.5 leading-relaxed shadow-sm"
                     >
-                      <span className="text-codia-cyan font-mono font-bold mt-0.5">§{idx + 1}</span>
+                      <span className="text-royal-indigo dark:text-codia-cyan font-mono font-bold mt-0.5">§{idx + 1}</span>
                       <span>{item}</span>
                     </div>
                   ))}
@@ -437,15 +437,15 @@ export function InteractiveTransforms() {
               {/* Type 6: Simpler (ELI5) */}
               {activeData.content.type === 'analogy' && activeData.content.analogy && (
                 <div className="space-y-3">
-                  <div className="p-4 rounded-xl bg-purple-950/20 border border-purple-500/30">
-                    <span className="text-xs font-mono font-bold text-purple-300 block mb-1">
+                  <div className="p-4 rounded-xl bg-purple-50 dark:bg-purple-950/20 border border-purple-200 dark:border-purple-500/30">
+                    <span className="text-xs font-mono font-bold text-purple-700 dark:text-purple-300 block mb-1">
                       💡 Mental Model: {activeData.content.analogy.headline}
                     </span>
-                    <p className="codia-answer-area text-slate-300 leading-relaxed">
+                    <p className="text-royal-text-primary dark:text-slate-300 leading-relaxed text-xs sm:text-sm">
                       {activeData.content.analogy.comparison}
                     </p>
                   </div>
-                  <div className="p-2.5 rounded-lg bg-codia-bg/80 border border-codia-border text-xs text-codia-cyan font-mono flex items-center gap-2">
+                  <div className="p-2.5 rounded-lg bg-white dark:bg-slate-950 border border-royal-border dark:border-slate-800 text-xs text-royal-indigo dark:text-codia-cyan font-mono flex items-center gap-2 shadow-sm">
                     <span className="font-bold">Core Takeaway:</span>
                     <span>{activeData.content.analogy.keyTakeaway}</span>
                   </div>
@@ -455,15 +455,15 @@ export function InteractiveTransforms() {
               {/* Type 7: Recap */}
               {activeData.content.type === 'recap' && (
                 <div className="space-y-2.5">
-                  <span className="text-[11px] tracking-[0.2px] font-mono text-slate-400 block">
+                  <span className="text-xs font-mono text-royal-text-secondary dark:text-slate-400 block font-semibold">
                     Structured 3-Point Closing Summary:
                   </span>
                   {activeData.content.recapPoints?.map((point, idx) => (
                     <div
                       key={idx}
-                      className="p-3 rounded-xl bg-codia-bg/70 border border-codia-border text-xs sm:text-sm text-slate-200 flex items-start gap-2.5"
+                      className="p-3 rounded-xl bg-white dark:bg-slate-950/70 border border-royal-border dark:border-slate-800 text-xs sm:text-sm text-royal-text-primary dark:text-slate-200 flex items-start gap-2.5 shadow-sm"
                     >
-                      <span className="text-codia-green font-mono font-bold mt-0.5">✔</span>
+                      <span className="text-emerald-600 dark:text-emerald-400 font-mono font-bold mt-0.5">✔</span>
                       <span>{point}</span>
                     </div>
                   ))}
@@ -473,15 +473,15 @@ export function InteractiveTransforms() {
               {/* Type 8: Assist */}
               {activeData.content.type === 'assist' && (
                 <div className="space-y-2.5">
-                  <span className="text-[11px] tracking-[0.2px] font-mono text-slate-400 block">
+                  <span className="text-xs font-mono text-royal-text-secondary dark:text-slate-400 block font-semibold">
                     Counter-Questions to Drive the Interview Conversation:
                   </span>
                   {activeData.content.counterQuestions?.map((q, idx) => (
                     <div
                       key={idx}
-                      className="p-3 rounded-xl bg-codia-bg/80 border border-codia-cyan/30 text-xs sm:text-sm text-slate-200 flex items-start gap-2.5 hover:border-codia-cyan/60 transition-colors"
+                      className="p-3 rounded-xl bg-white dark:bg-slate-950/80 border border-royal-border dark:border-slate-800 hover:border-royal-lavender dark:hover:border-codia-cyan/60 text-xs sm:text-sm text-royal-text-primary dark:text-slate-200 flex items-start gap-2.5 transition-colors shadow-sm"
                     >
-                      <span className="text-codia-cyan font-mono font-bold mt-0.5">💬</span>
+                      <span className="text-royal-indigo dark:text-codia-cyan font-mono font-bold mt-0.5">💬</span>
                       <span className="italic">{q}</span>
                     </div>
                   ))}
@@ -492,15 +492,15 @@ export function InteractiveTransforms() {
         </div>
 
         {/* Footer Bar: Global Hotkey & Mode Telemetry */}
-        <div className="mt-4 pt-3 border-t border-codia-border/50 flex flex-wrap items-center justify-between gap-2 text-[10px] tracking-[0.2px] font-mono text-slate-400">
+        <div className="mt-4 pt-3 border-t border-royal-border dark:border-slate-800 flex flex-wrap items-center justify-between gap-2 text-[10px] font-mono text-royal-text-secondary dark:text-slate-400">
           <div className="flex items-center gap-2">
-            <span className="text-codia-cyan">Mode: Live AST Generation</span>
+            <span className="text-royal-indigo dark:text-codia-cyan font-semibold">Mode: Live AST Generation</span>
             <span>•</span>
             <span>Hotkeys: Numbers 1-8 switch pills instantly</span>
           </div>
           <div className="flex items-center gap-1.5">
             <span>Press</span>
-            <kbd className="kbd-badge bg-white/10 text-white">Alt + A</kbd>
+            <kbd className="px-1.5 py-0.5 rounded bg-royal-highlight dark:bg-white/10 text-royal-indigo dark:text-white border border-royal-border dark:border-transparent">Alt + A</kbd>
             <span>to toggle pass-through click mode</span>
           </div>
         </div>

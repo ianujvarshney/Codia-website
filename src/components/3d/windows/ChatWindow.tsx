@@ -27,15 +27,15 @@ export function ChatWindow({
   return (
     <WindowChassis
       id="chat"
-      width={3.3}
-      height={3.8}
+      width={3.65}
+      height={3.10}
       depth={0.14}
       radius={0.18}
       bevelSize={0.022}
       position={position}
       rotation={rotation}
       texture={chatTexture}
-      borderColor="#1068e2"
+      borderColor="#968BFF"
       glowIntensity={0.4}
       floatOffset={2.4}
       enableHoverTilt={true}
@@ -43,10 +43,10 @@ export function ChatWindow({
       renderOrderBase={renderOrderBase}
     >
       {/* Top Header Pin Indicator - Placed cleanly in front of screenshot face */}
-      <group position={[0, 1.7, 0.104]}>
+      <group position={[0, 1.38, 0.104]}>
         <mesh position={[0, 0, 0]} renderOrder={renderOrderBase + 4}>
           <circleGeometry args={[0.04, 16]} />
-          <meshBasicMaterial color="#1068e2" transparent opacity={0.85} />
+          <meshBasicMaterial color="#968BFF" transparent opacity={0.85} />
         </mesh>
       </group>
     </WindowChassis>

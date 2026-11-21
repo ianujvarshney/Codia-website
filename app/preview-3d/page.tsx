@@ -9,29 +9,29 @@ export default function Preview3DPage() {
   const [isListening, setIsListening] = useState(false);
 
   return (
-    <main className="relative w-screen h-screen bg-[#04070e] text-white overflow-hidden flex flex-col">
+    <main className="relative w-screen h-screen bg-royal-bg-primary dark:bg-[#04070e] text-royal-text-primary dark:text-white overflow-hidden flex flex-col transition-colors duration-300">
       {/* HUD Info Header */}
       <div className="absolute top-4 left-4 z-30 pointer-events-none flex flex-col gap-1">
         <div className="flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-          <h1 className="text-sm font-mono font-semibold tracking-wider text-slate-200 uppercase">
+          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+          <h1 className="text-sm font-mono font-semibold tracking-wider text-royal-text-primary dark:text-slate-200 uppercase">
             Codia 3D Four-Window Verification Viewport
           </h1>
         </div>
-        <p className="text-xs font-mono text-slate-500">
+        <p className="text-xs font-mono text-royal-text-secondary dark:text-slate-500">
           Route: /preview-3d · Active: {activeWindow || 'none (default spatial rig)'}
         </p>
       </div>
 
       {/* Floating Control Toolbar */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 p-1.5 rounded-2xl bg-slate-900/80 border border-slate-800/80 backdrop-blur-md shadow-2xl">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 p-1.5 rounded-2xl bg-white/90 dark:bg-slate-900/80 border border-royal-border dark:border-slate-800/80 backdrop-blur-md shadow-royal-lg dark:shadow-2xl">
         <button
           type="button"
           onClick={() => setActiveWindow(null)}
           className={`px-3 py-1.5 rounded-xl text-xs font-mono transition-all ${
             activeWindow === null
-              ? 'bg-codia-cyan/20 text-codia-cyan border border-codia-cyan/40 shadow-sm'
-              : 'text-slate-400 hover:text-slate-200'
+              ? 'btn-royal-primary text-white shadow-sm dark:bg-codia-cyan/20 dark:text-codia-cyan dark:border dark:border-codia-cyan/40'
+              : 'text-royal-text-secondary dark:text-slate-400 hover:text-royal-text-primary dark:hover:text-slate-200'
           }`}
         >
           All (Overview)
@@ -41,8 +41,8 @@ export default function Preview3DPage() {
           onClick={() => setActiveWindow('island')}
           className={`px-3 py-1.5 rounded-xl text-xs font-mono transition-all ${
             activeWindow === 'island'
-              ? 'bg-codia-cyan/20 text-codia-cyan border border-codia-cyan/40 shadow-sm'
-              : 'text-slate-400 hover:text-slate-200'
+              ? 'btn-royal-primary text-white shadow-sm dark:bg-codia-cyan/20 dark:text-codia-cyan dark:border dark:border-codia-cyan/40'
+              : 'text-royal-text-secondary dark:text-slate-400 hover:text-royal-text-primary dark:hover:text-slate-200'
           }`}
         >
           1. Island Dock
@@ -52,8 +52,8 @@ export default function Preview3DPage() {
           onClick={() => setActiveWindow('hud')}
           className={`px-3 py-1.5 rounded-xl text-xs font-mono transition-all ${
             activeWindow === 'hud'
-              ? 'bg-codia-cyan/20 text-codia-cyan border border-codia-cyan/40 shadow-sm'
-              : 'text-slate-400 hover:text-slate-200'
+              ? 'btn-royal-primary text-white shadow-sm dark:bg-codia-cyan/20 dark:text-codia-cyan dark:border dark:border-codia-cyan/40'
+              : 'text-royal-text-secondary dark:text-slate-400 hover:text-royal-text-primary dark:hover:text-slate-200'
           }`}
         >
           2. AI Solution HUD
@@ -63,8 +63,8 @@ export default function Preview3DPage() {
           onClick={() => setActiveWindow('chat')}
           className={`px-3 py-1.5 rounded-xl text-xs font-mono transition-all ${
             activeWindow === 'chat'
-              ? 'bg-codia-cyan/20 text-codia-cyan border border-codia-cyan/40 shadow-sm'
-              : 'text-slate-400 hover:text-slate-200'
+              ? 'btn-royal-primary text-white shadow-sm dark:bg-codia-cyan/20 dark:text-codia-cyan dark:border dark:border-codia-cyan/40'
+              : 'text-royal-text-secondary dark:text-slate-400 hover:text-royal-text-primary dark:hover:text-slate-200'
           }`}
         >
           3. Chat Window
@@ -74,20 +74,20 @@ export default function Preview3DPage() {
           onClick={() => setActiveWindow('settings')}
           className={`px-3 py-1.5 rounded-xl text-xs font-mono transition-all ${
             activeWindow === 'settings'
-              ? 'bg-codia-cyan/20 text-codia-cyan border border-codia-cyan/40 shadow-sm'
-              : 'text-slate-400 hover:text-slate-200'
+              ? 'btn-royal-primary text-white shadow-sm dark:bg-codia-cyan/20 dark:text-codia-cyan dark:border dark:border-codia-cyan/40'
+              : 'text-royal-text-secondary dark:text-slate-400 hover:text-royal-text-primary dark:hover:text-slate-200'
           }`}
         >
           4. Settings Panel
         </button>
-        <div className="w-px h-4 bg-slate-700 mx-1" />
+        <div className="w-px h-4 bg-royal-border dark:bg-slate-700 mx-1" />
         <button
           type="button"
           onClick={() => setIsListening((prev) => !prev)}
           className={`px-3 py-1.5 rounded-xl text-xs font-mono transition-all ${
             isListening
-              ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
-              : 'bg-slate-800/60 text-slate-400 hover:text-slate-200'
+              ? 'bg-emerald-50 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-500/40'
+              : 'bg-royal-bg-secondary dark:bg-slate-800/60 text-royal-text-secondary dark:text-slate-400 hover:text-royal-text-primary dark:hover:text-slate-200'
           }`}
         >
           Toggle Mic: {isListening ? 'Listening' : 'Ready'}

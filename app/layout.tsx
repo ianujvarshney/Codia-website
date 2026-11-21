@@ -106,13 +106,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth font-sans" suppressHydrationWarning>
+    <html lang="en" className="dark scroll-smooth font-sans" style={{ colorScheme: 'dark' }} suppressHydrationWarning>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('codia-theme')||'light';if(t==='dark'){document.documentElement.classList.add('dark');document.documentElement.classList.remove('light');document.documentElement.style.colorScheme='dark';}else{document.documentElement.classList.remove('dark');document.documentElement.classList.add('light');document.documentElement.style.colorScheme='light';}}catch(e){}})();`,
-          }}
-        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
@@ -124,13 +119,13 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className="min-h-screen bg-royal-bg-primary dark:bg-codia-bg text-royal-text-primary dark:text-slate-100 font-sans antialiased transition-colors duration-300">
+      <body className="min-h-screen bg-[#0D0F1B] text-[#FEFEFF] font-sans antialiased selection:bg-[#968BFF]/30 selection:text-[#FEFEFF]">
         <ThemeProvider>
-          <div className="relative min-h-screen flex flex-col bg-royal-bg-primary dark:bg-codia-bg transition-colors duration-300">
-            {/* Global Ambient Glow Gradient */}
+          <div className="relative min-h-screen flex flex-col bg-[#0D0F1B]">
+            {/* Codia Logo Atmospheric Ambient Glow Mesh */}
             <div
               aria-hidden="true"
-              className="pointer-events-none fixed inset-0 -z-10 bg-royal-glow dark:bg-glass-glow opacity-80 transition-opacity duration-500"
+              className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_50%_0%,rgba(150,139,255,0.22)_0%,rgba(95,132,255,0.10)_50%,transparent_70%)]"
             />
             {children}
           </div>

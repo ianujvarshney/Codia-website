@@ -51,15 +51,15 @@ export function IslandWindow({
   return (
     <WindowChassis
       id="island"
-      width={3.8}
-      height={0.72}
+      width={3.6}
+      height={0.97}
       depth={0.14}
-      radius={0.36}
+      radius={0.48}
       bevelSize={0.025}
       position={position}
       rotation={rotation}
       texture={pillTexture}
-      borderColor="#00d2ff"
+      borderColor="#968BFF"
       glowIntensity={0.65}
       floatOffset={0}
       enableHoverTilt={true}

@@ -90,18 +90,18 @@ export function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
           onClose();
         }
       }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 dark:bg-black/85 backdrop-blur-md animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#050711]/85 backdrop-blur-md animate-in fade-in duration-200"
     >
       <div
         ref={modalRef}
-        className="relative w-full max-w-lg rounded-3xl bg-white dark:bg-slate-950 border border-royal-border dark:border-slate-800 p-6 sm:p-8 shadow-royal-lg dark:shadow-2xl text-royal-text-primary dark:text-white transition-colors duration-300"
+        className="relative w-full max-w-lg rounded-3xl bg-[#141727] border border-[#968BFF]/25 p-6 sm:p-8 shadow-2xl text-[#FEFEFF] transition-colors duration-300"
       >
         {/* Close Button */}
         <button
           ref={closeButtonRef}
           type="button"
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-xl text-royal-text-secondary hover:text-royal-text-primary dark:text-slate-400 dark:hover:text-white bg-royal-highlight dark:bg-slate-900 border border-royal-border dark:border-slate-800 hover:bg-royal-border/40 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-royal-indigo dark:focus:ring-codia-cyan shadow-sm"
+          className="absolute top-5 right-5 p-2 rounded-xl text-[#A5A9C5] hover:text-[#FEFEFF] bg-[#0D0F1B] border border-[#968BFF]/20 hover:border-[#968BFF]/50 transition-colors focus:outline-none focus:ring-2 focus:ring-[#968BFF] shadow-sm cursor-pointer"
           aria-label="Close modal"
         >
           <X className="w-4 h-4" />
@@ -109,14 +109,14 @@ export function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
 
         {/* Modal Header */}
         <div className="mb-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-royal-highlight dark:bg-slate-900 border border-royal-border dark:border-slate-800 text-royal-indigo dark:text-codia-cyan text-xs font-mono uppercase tracking-wider mb-3 shadow-royal-sm">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0D0F1B] border border-[#968BFF]/25 text-[#968BFF] text-xs font-mono uppercase tracking-wider mb-3 shadow-sm">
             <Download className="w-3.5 h-3.5" />
             Download Codia Desktop
           </div>
-          <h3 id="download-modal-title" className="text-xl sm:text-2xl font-bold text-royal-text-primary dark:text-slate-100">
+          <h3 id="download-modal-title" className="text-xl sm:text-2xl font-bold text-[#FEFEFF]">
             Select Your Operating System
           </h3>
-          <p id="download-modal-description" className="mt-1.5 text-xs sm:text-sm text-royal-text-secondary dark:text-slate-400">
+          <p id="download-modal-description" className="mt-1.5 text-xs sm:text-sm text-[#A5A9C5]">
             Native 64-bit Electron client with local speech recognition and floating HUD windows.
           </p>
         </div>
@@ -124,70 +124,70 @@ export function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
         {/* Download Targets */}
         <div className="space-y-3">
           {/* Windows Installer */}
-          <div className="p-4 rounded-2xl bg-royal-bg-secondary dark:bg-slate-900/60 border border-royal-border dark:border-slate-800 flex items-center justify-between">
+          <div className="p-4 rounded-2xl bg-[#0D0F1B]/80 border border-[#968BFF]/15 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-royal-highlight border border-royal-border flex items-center justify-center text-royal-indigo dark:bg-blue-950/60 dark:border-blue-800/60 dark:text-blue-400 shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-[#141727] border border-[#968BFF]/25 flex items-center justify-center text-[#968BFF] shadow-sm">
                 <Monitor className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-royal-text-primary dark:text-slate-100">Windows (x64 Installer)</h4>
-                <p className="text-xs text-royal-text-secondary dark:text-slate-400">Windows 10 / 11 · 64-bit Setup</p>
+                <h4 className="text-sm font-semibold text-[#FEFEFF]">Windows (x64 Installer)</h4>
+                <p className="text-xs text-[#A5A9C5]">Windows 10 / 11 · 64-bit Setup</p>
               </div>
             </div>
             <span
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-royal-border dark:border-slate-800 text-royal-text-secondary dark:text-slate-500 text-xs font-mono select-none cursor-not-allowed shadow-sm"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#141727] border border-[#968BFF]/20 text-[#A5A9C5] text-xs font-mono select-none cursor-not-allowed shadow-sm"
               aria-disabled="true"
             >
-              <Clock className="w-3 h-3 text-royal-text-secondary dark:text-slate-500" />
+              <Clock className="w-3 h-3 text-[#A5A9C5]" />
               Coming Soon
             </span>
           </div>
 
           {/* Windows Portable */}
-          <div className="p-4 rounded-2xl bg-royal-bg-secondary dark:bg-slate-900/60 border border-royal-border dark:border-slate-800 flex items-center justify-between">
+          <div className="p-4 rounded-2xl bg-[#0D0F1B]/80 border border-[#968BFF]/15 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-royal-highlight border border-royal-border flex items-center justify-center text-royal-sapphire dark:bg-cyan-950/60 dark:border-cyan-800/60 dark:text-codia-cyan shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-[#141727] border border-[#5F84FF]/25 flex items-center justify-center text-[#5F84FF] shadow-sm">
                 <Terminal className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-royal-text-primary dark:text-slate-100">Windows Portable</h4>
-                <p className="text-xs text-royal-text-secondary dark:text-slate-400">Standalone single-executable</p>
+                <h4 className="text-sm font-semibold text-[#FEFEFF]">Windows Portable</h4>
+                <p className="text-xs text-[#A5A9C5]">Standalone single-executable</p>
               </div>
             </div>
             <span
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-royal-border dark:border-slate-800 text-royal-text-secondary dark:text-slate-500 text-xs font-mono select-none cursor-not-allowed shadow-sm"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#141727] border border-[#968BFF]/20 text-[#A5A9C5] text-xs font-mono select-none cursor-not-allowed shadow-sm"
               aria-disabled="true"
             >
-              <Clock className="w-3 h-3 text-royal-text-secondary dark:text-slate-500" />
+              <Clock className="w-3 h-3 text-[#A5A9C5]" />
               Coming Soon
             </span>
           </div>
 
           {/* macOS Universal */}
-          <div className="p-4 rounded-2xl bg-royal-bg-secondary dark:bg-slate-900/60 border border-royal-border dark:border-slate-800 flex items-center justify-between">
+          <div className="p-4 rounded-2xl bg-[#0D0F1B]/80 border border-[#968BFF]/15 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-royal-highlight border border-royal-border flex items-center justify-center text-royal-lavender dark:bg-slate-800 dark:border-slate-700 dark:text-slate-200 shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-[#141727] border border-[#968BFF]/25 flex items-center justify-center text-[#DFD9FF] shadow-sm">
                 <Apple className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-royal-text-primary dark:text-slate-100">macOS (Apple Silicon & Intel)</h4>
-                <p className="text-xs text-royal-text-secondary dark:text-slate-400">macOS 12.0+ Monterey or later (.dmg)</p>
+                <h4 className="text-sm font-semibold text-[#FEFEFF]">macOS (Apple Silicon & Intel)</h4>
+                <p className="text-xs text-[#A5A9C5]">macOS 12.0+ Monterey or later (.dmg)</p>
               </div>
             </div>
             <span
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-royal-border dark:border-slate-800 text-royal-text-secondary dark:text-slate-500 text-xs font-mono select-none cursor-not-allowed shadow-sm"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#141727] border border-[#968BFF]/20 text-[#A5A9C5] text-xs font-mono select-none cursor-not-allowed shadow-sm"
               aria-disabled="true"
             >
-              <Clock className="w-3 h-3 text-royal-text-secondary dark:text-slate-500" />
+              <Clock className="w-3 h-3 text-[#A5A9C5]" />
               Coming Soon
             </span>
           </div>
         </div>
 
         {/* Modal Footnote */}
-        <div className="mt-6 pt-4 border-t border-royal-border dark:border-slate-900 flex items-center justify-between text-[11px] font-mono text-royal-text-secondary dark:text-slate-500">
+        <div className="mt-6 pt-4 border-t border-[#968BFF]/15 flex items-center justify-between text-[11px] font-mono text-[#A5A9C5]">
           <span className="flex items-center gap-1">
-            <ShieldCheck className="w-3 h-3 text-emerald-500 dark:text-emerald-400" />
+            <ShieldCheck className="w-3 h-3 text-emerald-400" />
             Verified Clean Binary
           </span>
           <span>Official Release Pending</span>

@@ -145,46 +145,46 @@ export function Pricing() {
               transition={{ delay: 0.1 * idx }}
               className={`rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all relative ${
                 tier.isPopular
-                  ? 'bg-white dark:bg-gradient-to-b dark:from-codia-card dark:to-[#0d131f] border-2 border-royal-indigo dark:border-codia-cyan shadow-royal-indigo dark:shadow-codia-cyan lg:-translate-y-2'
-                  : 'bg-white dark:bg-codia-card border border-royal-border dark:border-slate-800 shadow-royal-sm dark:shadow-none hover:shadow-royal-md dark:hover:border-slate-700'
+                  ? 'bg-[#141727] border-2 border-[#968BFF] shadow-[0_0_35px_-5px_rgba(150,139,255,0.35)] lg:-translate-y-2'
+                  : 'bg-[#141727]/80 border border-[#968BFF]/20 shadow-xl hover:border-[#968BFF]/50'
               }`}
             >
               {/* Highlight Badge */}
               {tier.badge && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-royal-highlight dark:bg-slate-900 border border-royal-indigo/30 dark:border-slate-700 text-[11px] font-mono font-bold text-royal-indigo dark:text-codia-cyan uppercase tracking-wider shadow-sm flex items-center gap-1.5 whitespace-nowrap">
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-[#0D0F1B] border border-[#968BFF]/40 text-[11px] font-mono font-bold text-[#968BFF] uppercase tracking-wider shadow-sm flex items-center gap-1.5 whitespace-nowrap">
                   <span>{tier.badge}</span>
                 </div>
               )}
 
               <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-royal-text-primary dark:text-white">{tier.name}</h3>
-                <p className="text-xs text-royal-text-secondary dark:text-slate-400 mt-1 min-h-[20px]">{tier.tagline}</p>
+                <h3 className="text-xl sm:text-2xl font-bold text-[#FEFEFF]">{tier.name}</h3>
+                <p className="text-xs text-[#A5A9C5] mt-1 min-h-[20px]">{tier.tagline}</p>
 
                 {/* Price Display */}
-                <div className="mt-6 pb-6 border-b border-royal-border dark:border-slate-800">
+                <div className="mt-6 pb-6 border-b border-[#968BFF]/15">
                   <div className="flex items-baseline gap-1.5">
-                    <span className="text-3xl sm:text-4xl font-extrabold text-royal-text-primary dark:text-white tracking-tight">
+                    <span className="text-3xl sm:text-4xl font-extrabold text-[#FEFEFF] tracking-tight">
                       {tier.costLabel}
                     </span>
                   </div>
-                  <span className="text-[11px] text-royal-text-secondary dark:text-slate-400 block mt-1 font-mono">
+                  <span className="text-[11px] text-[#A5A9C5] block mt-1 font-mono">
                     {tier.costSublabel}
                   </span>
                 </div>
 
                 {/* Features List */}
                 <div className="mt-6 space-y-3">
-                  <span className="text-[11px] uppercase tracking-wider text-royal-text-secondary dark:text-slate-400 block font-semibold font-mono">
+                  <span className="text-[11px] uppercase tracking-wider text-[#968BFF] block font-semibold font-mono">
                     Architecture Specifications:
                   </span>
                   {tier.features.map((feature, fIdx) => (
-                    <div key={fIdx} className="flex items-start gap-2.5 text-xs text-royal-text-secondary dark:text-slate-300">
+                    <div key={fIdx} className="flex items-start gap-2.5 text-xs text-[#A5A9C5]">
                       <CheckCircle2
                         className={`w-4 h-4 shrink-0 mt-0.5 ${
-                          feature.highlight ? 'text-royal-indigo dark:text-codia-cyan' : 'text-emerald-500 dark:text-emerald-400'
+                          feature.highlight ? 'text-[#968BFF]' : 'text-emerald-400'
                         }`}
                       />
-                      <span className={feature.highlight ? 'text-royal-text-primary dark:text-white font-semibold' : ''}>
+                      <span className={feature.highlight ? 'text-[#FEFEFF] font-semibold' : ''}>
                         {feature.text}
                       </span>
                     </div>
@@ -193,25 +193,25 @@ export function Pricing() {
               </div>
 
               {/* Call to Action Button */}
-              <div className="mt-8 pt-6 border-t border-royal-border dark:border-slate-800">
+              <div className="mt-8 pt-6 border-t border-[#968BFF]/15">
                 {tier.isExternal ? (
                   <a
                     href={tier.ctaHref}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-3.5 rounded-xl text-xs sm:text-sm font-bold text-center transition-all flex items-center justify-center gap-2 bg-royal-bg-secondary dark:bg-slate-900 border border-royal-border dark:border-slate-700 hover:border-royal-indigo/40 dark:hover:border-codia-cyan/50 text-royal-text-primary dark:text-white shadow-royal-sm dark:shadow-none hover:bg-royal-highlight dark:hover:bg-slate-800 cursor-pointer"
+                    className="w-full py-3.5 rounded-xl text-xs sm:text-sm font-bold text-center transition-all flex items-center justify-center gap-2 bg-[#0D0F1B] border border-[#968BFF]/25 hover:border-[#968BFF] text-[#DFD9FF] hover:text-[#FEFEFF] shadow-sm cursor-pointer"
                   >
-                    <Github className="w-4 h-4" />
+                    <Github className="w-4 h-4 text-[#968BFF]" />
                     <span>{tier.ctaText}</span>
-                    <ExternalLink className="w-3.5 h-3.5 text-royal-text-secondary dark:text-slate-400" />
+                    <ExternalLink className="w-3.5 h-3.5 text-[#A5A9C5]" />
                   </a>
                 ) : (
                   <Link
                     href={tier.ctaHref}
                     className={`w-full py-3.5 rounded-xl text-xs sm:text-sm font-bold text-center block transition-all cursor-pointer ${
                       tier.isPopular
-                        ? 'btn-royal-primary dark:bg-gradient-to-r dark:from-codia-cyan dark:via-cyan-400 dark:to-codia-blue dark:text-slate-950 dark:shadow-codia-cyan dark:hover:brightness-110'
-                        : 'btn-royal-secondary dark:glass-card dark:border-slate-700 dark:text-white dark:hover:border-codia-cyan/50 dark:hover:bg-white/5'
+                        ? 'bg-gradient-to-r from-[#968BFF] to-[#5F84FF] text-white shadow-[0_4px_20px_-2px_rgba(150,139,255,0.45)] hover:shadow-[0_6px_25px_-2px_rgba(150,139,255,0.65)] hover:brightness-110 active:scale-98'
+                        : 'bg-[#0D0F1B] border border-[#968BFF]/25 hover:border-[#968BFF] text-[#DFD9FF] hover:text-[#FEFEFF]'
                     }`}
                   >
                     {tier.ctaText}

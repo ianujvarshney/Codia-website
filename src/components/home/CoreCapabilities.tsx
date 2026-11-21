@@ -51,7 +51,7 @@ const CAPABILITIES = [
 
 export function CoreCapabilities() {
   return (
-    <section id="capabilities" className="relative py-24 sm:py-32 bg-royal-bg-primary dark:bg-[#04070e] text-royal-text-primary dark:text-white overflow-hidden border-t border-royal-border dark:border-slate-900/80 transition-colors duration-300">
+    <section id="capabilities" className="relative py-24 sm:py-32 bg-[#0D0F1B] text-[#FEFEFF] overflow-hidden border-t border-[#968BFF]/15 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header with Staggered Entrance */}
         <div className="max-w-3xl mx-auto text-center mb-16 sm:mb-20">
@@ -60,7 +60,7 @@ export function CoreCapabilities() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white dark:bg-slate-900/90 border border-royal-border dark:border-slate-800 text-royal-indigo dark:text-codia-cyan text-xs font-mono uppercase tracking-wider mb-4 shadow-royal-sm"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#141727] border border-[#968BFF]/25 text-[#968BFF] text-xs font-mono uppercase tracking-wider mb-4 shadow-sm"
           >
             <Sparkles className="w-3.5 h-3.5" />
             Core Capabilities
@@ -71,10 +71,10 @@ export function CoreCapabilities() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.25 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-royal-text-primary dark:text-slate-100"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#FEFEFF]"
           >
             Engineered for Precision.{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-royal-indigo to-royal-lavender dark:from-codia-cyan dark:to-blue-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FEFEFF] via-[#968BFF] to-[#5F84FF]">
               Verified in Code.
             </span>
           </motion.h2>
@@ -84,7 +84,7 @@ export function CoreCapabilities() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            className="mt-4 text-base sm:text-lg text-royal-text-secondary dark:text-slate-400 leading-relaxed"
+            className="mt-4 text-base sm:text-lg text-[#A5A9C5] leading-relaxed"
           >
             Every feature is implemented natively inside Codia&apos;s Electron codebase. No simulated mockups, no unverified promises.
           </motion.p>
@@ -101,20 +101,20 @@ export function CoreCapabilities() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.55, delay: 0.1 * idx }}
-                className="p-7 rounded-2xl bg-white dark:bg-slate-950/70 border border-royal-border dark:border-slate-800/80 shadow-royal-md dark:shadow-none backdrop-blur-sm flex flex-col justify-between hover:border-royal-lavender dark:hover:border-slate-700 transition-all hover:-translate-y-1"
+                className="p-7 rounded-2xl bg-[#141727]/80 border border-[#968BFF]/15 shadow-xl backdrop-blur-sm flex flex-col justify-between hover:border-[#968BFF]/40 transition-all hover:-translate-y-1"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-royal-highlight dark:bg-slate-900 border border-royal-border dark:border-slate-800 flex items-center justify-center text-royal-indigo dark:text-codia-cyan shadow-sm">
+                    <div className="w-10 h-10 rounded-xl bg-[#0D0F1B] border border-[#968BFF]/25 flex items-center justify-center text-[#968BFF] shadow-sm">
                       <Icon className="w-5 h-5" />
                     </div>
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-royal-text-secondary dark:text-slate-400 px-2.5 py-0.5 rounded-full bg-royal-highlight dark:bg-slate-900/80 border border-royal-border dark:border-slate-800">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-[#A5A9C5] px-2.5 py-0.5 rounded-full bg-[#0D0F1B] border border-[#968BFF]/20">
                       {cap.badge}
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-semibold text-royal-text-primary dark:text-slate-100 mb-2">{cap.title}</h3>
-                  <p className="text-xs sm:text-sm text-royal-text-secondary dark:text-slate-400 leading-relaxed">{cap.description}</p>
+                  <h3 className="text-lg font-semibold text-[#FEFEFF] mb-2">{cap.title}</h3>
+                  <p className="text-xs sm:text-sm text-[#A5A9C5] leading-relaxed">{cap.description}</p>
                 </div>
               </motion.div>
             );
