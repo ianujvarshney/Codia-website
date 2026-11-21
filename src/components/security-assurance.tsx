@@ -63,9 +63,9 @@ const SECURITY_PILLARS: SecurityPillar[] = [
 
 export function SecurityAssurance() {
   return (
-    <section id="security" className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 border-t border-royal-border dark:border-codia-border">
+    <section id="security" className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 border-t border-[#968BFF]/15">
       {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[450px] bg-royal-glow dark:bg-gradient-to-tr dark:from-codia-blue/15 dark:via-codia-cyan/10 to-transparent blur-[140px] pointer-events-none -z-10" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[450px] bg-gradient-to-tr from-[#968BFF]/15 via-[#5F84FF]/10 to-transparent blur-[140px] pointer-events-none -z-10" />
 
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-16">
@@ -73,9 +73,9 @@ export function SecurityAssurance() {
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-slate-900/80 border border-royal-border dark:border-slate-700 text-xs font-mono text-royal-indigo dark:text-slate-300 uppercase tracking-wider mb-4 shadow-royal-sm dark:shadow-sm"
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141727] border border-[#968BFF]/25 text-xs font-mono text-[#968BFF] uppercase tracking-wider mb-4 shadow-sm"
         >
-          <Lock className="w-3.5 h-3.5 text-royal-indigo dark:text-codia-cyan" />
+          <Lock className="w-3.5 h-3.5 text-[#968BFF]" />
           <span>Architecture & Data Flow Transparency</span>
         </motion.div>
 
@@ -84,10 +84,10 @@ export function SecurityAssurance() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-3xl sm:text-5xl font-extrabold text-royal-text-primary dark:text-white tracking-tight leading-[1.15]"
+          className="text-3xl sm:text-5xl font-extrabold text-[#FEFEFF] tracking-tight leading-[1.15]"
         >
           Clear Boundaries Between{' '}
-          <span className="text-gradient-royal dark:text-gradient-cyan-blue">Local & Cloud Execution.</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FEFEFF] via-[#968BFF] to-[#5F84FF]">Local & Cloud Execution.</span>
         </motion.h2>
 
         <motion.p
@@ -95,7 +95,7 @@ export function SecurityAssurance() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="mt-4 text-base sm:text-lg text-royal-text-secondary dark:text-slate-400 leading-relaxed"
+          className="mt-4 text-base sm:text-lg text-[#A5A9C5] leading-relaxed"
         >
           We believe in complete architectural transparency. Codia is engineered with local in-memory buffers and user-owned API key routing so you always know where your data travels.
         </motion.p>
@@ -112,27 +112,27 @@ export function SecurityAssurance() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 * idx }}
-              className="rounded-3xl bg-white dark:bg-codia-card p-6 sm:p-8 border border-royal-border dark:border-slate-800 shadow-royal-sm dark:shadow-none hover:shadow-royal-md dark:hover:border-slate-700 flex flex-col justify-between relative group transition-all"
+              className="rounded-3xl bg-[#141727]/90 p-6 sm:p-8 border border-[#968BFF]/20 shadow-xl hover:border-[#968BFF]/50 flex flex-col justify-between relative group transition-all"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-royal-highlight dark:bg-slate-900 border border-royal-indigo/30 dark:border-slate-700 flex items-center justify-center text-royal-indigo dark:text-codia-cyan shadow-sm">
+                  <div className="w-12 h-12 rounded-xl bg-[#0D0F1B] border border-[#968BFF]/25 flex items-center justify-center text-[#968BFF] shadow-sm">
                     <IconComp className="w-6 h-6" />
                   </div>
-                  <span className="px-2.5 py-1 rounded-full text-[10px] bg-royal-bg-secondary dark:bg-slate-800 text-royal-indigo dark:text-slate-300 border border-royal-border dark:border-slate-700 font-mono font-bold">
+                  <span className="px-2.5 py-1 rounded-full text-[10px] bg-[#0D0F1B] text-[#968BFF] border border-[#968BFF]/20 font-mono font-bold">
                     {pillar.badge}
                   </span>
                 </div>
 
-                <h3 className="text-lg sm:text-xl font-bold text-royal-text-primary dark:text-white">{pillar.title}</h3>
-                <p className="text-xs sm:text-sm text-royal-text-secondary dark:text-slate-400 mt-2.5 leading-relaxed">
+                <h3 className="text-lg sm:text-xl font-bold text-[#FEFEFF]">{pillar.title}</h3>
+                <p className="text-xs sm:text-sm text-[#A5A9C5] mt-2.5 leading-relaxed">
                   {pillar.description}
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-royal-border dark:border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px] text-royal-text-secondary dark:text-slate-400 font-mono">
-                <span className="text-royal-text-secondary/80 dark:text-slate-500">Specification:</span>
-                <span className="text-royal-indigo dark:text-codia-cyan font-semibold">{pillar.spec}</span>
+              <div className="mt-6 pt-4 border-t border-[#968BFF]/15 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px] text-[#A5A9C5] font-mono">
+                <span>Specification:</span>
+                <span className="text-[#968BFF] font-semibold">{pillar.spec}</span>
               </div>
             </motion.div>
           );
@@ -140,16 +140,16 @@ export function SecurityAssurance() {
       </div>
 
       {/* REPOSITORY SOURCE TRANSPARENCY CARD */}
-      <div className="mt-14 max-w-5xl mx-auto rounded-2xl bg-white dark:bg-codia-card border border-royal-border dark:border-slate-800 p-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-royal-sm dark:shadow-none">
+      <div className="mt-14 max-w-5xl mx-auto rounded-3xl bg-[#141727]/90 border border-[#968BFF]/20 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-2xl">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-royal-highlight dark:bg-slate-900 border border-royal-indigo/30 dark:border-slate-700 flex items-center justify-center text-royal-indigo dark:text-codia-cyan shrink-0">
-            <ShieldCheck className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
+          <div className="w-10 h-10 rounded-xl bg-[#0D0F1B] border border-[#968BFF]/25 flex items-center justify-center text-[#968BFF] shrink-0">
+            <ShieldCheck className="w-6 h-6 text-emerald-400" />
           </div>
           <div>
-            <h4 className="text-sm font-bold text-royal-text-primary dark:text-white">
+            <h4 className="text-sm font-bold text-[#FEFEFF]">
               Open Verification of IPC & Process Handlers
             </h4>
-            <p className="text-xs text-royal-text-secondary dark:text-slate-400 mt-0.5">
+            <p className="text-xs text-[#A5A9C5] mt-0.5">
               Review desktopCapturer buffer lifecycles, speech service sockets, and window affinity logic directly in the codebase.
             </p>
           </div>
@@ -159,10 +159,10 @@ export function SecurityAssurance() {
           href="https://github.com/TechyCSR/Codia"
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-royal-secondary dark:bg-slate-900 dark:border-slate-700 dark:hover:border-codia-cyan/40 dark:text-slate-200 dark:hover:text-white px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 cursor-pointer"
+          className="bg-[#0D0F1B] border border-[#968BFF]/25 hover:border-[#968BFF] text-[#DFD9FF] hover:text-[#FEFEFF] px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 cursor-pointer shadow-sm"
         >
           <span>Inspect Source Code</span>
-          <ExternalLink className="w-3.5 h-3.5 text-royal-text-secondary dark:text-slate-400" />
+          <ExternalLink className="w-3.5 h-3.5 text-[#A5A9C5]" />
         </a>
       </div>
     </section>

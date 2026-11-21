@@ -320,35 +320,35 @@ export function StealthComparison() {
               transition={{ delay: 0.1 * idx }}
               onMouseEnter={() => setActiveTooltip(feat.id)}
               onMouseLeave={() => setActiveTooltip(null)}
-              className="rounded-2xl p-6 bg-white dark:bg-codia-card border border-royal-border dark:border-slate-800 shadow-royal-sm dark:shadow-none hover:shadow-royal-md dark:hover:border-slate-700 flex flex-col justify-between relative group transition-all"
+              className="rounded-2xl p-6 bg-[#141727]/90 border border-[#968BFF]/20 shadow-xl hover:border-[#968BFF]/50 flex flex-col justify-between relative group transition-all"
             >
               <div>
                 {/* Top Badge Icon */}
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-11 h-11 rounded-xl bg-royal-highlight dark:bg-slate-900 border border-royal-indigo/30 dark:border-slate-700 flex items-center justify-center text-royal-indigo dark:text-codia-cyan shadow-sm">
+                  <div className="w-11 h-11 rounded-xl bg-[#0D0F1B] border border-[#968BFF]/25 flex items-center justify-center text-[#968BFF] shadow-sm">
                     <IconComp className="w-5 h-5" />
                   </div>
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-50 dark:bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30">
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
                     Verified
                   </span>
                 </div>
 
                 {/* Title & Headline */}
-                <h3 className="text-base font-bold text-royal-text-primary dark:text-white">{feat.title}</h3>
-                <p className="text-xs font-semibold text-royal-indigo dark:text-codia-cyan font-mono mt-1">
+                <h3 className="text-base font-bold text-[#FEFEFF]">{feat.title}</h3>
+                <p className="text-xs font-semibold text-[#968BFF] font-mono mt-1">
                   {feat.headline}
                 </p>
 
                 {/* Description */}
-                <p className="text-xs text-royal-text-secondary dark:text-slate-400 mt-3 leading-relaxed">
+                <p className="text-xs text-[#A5A9C5] mt-3 leading-relaxed">
                   {feat.description}
                 </p>
               </div>
 
               {/* Technical Spec Tag */}
-              <div className="mt-5 pt-3.5 border-t border-royal-border dark:border-slate-800/80 flex items-center justify-between text-[10px] font-mono text-royal-text-secondary dark:text-slate-400">
-                <span className="text-royal-text-secondary/80 dark:text-slate-500">Tech Spec:</span>
-                <span className="text-royal-indigo dark:text-codia-cyan font-semibold">{feat.techSpec}</span>
+              <div className="mt-5 pt-3.5 border-t border-[#968BFF]/15 flex items-center justify-between text-[10px] font-mono text-[#A5A9C5]">
+                <span>Tech Spec:</span>
+                <span className="text-[#968BFF] font-semibold">{feat.techSpec}</span>
               </div>
             </motion.div>
           );
@@ -356,16 +356,16 @@ export function StealthComparison() {
       </div>
 
       {/* 4. OS EXCLUSION TRANSPARENCY BANNER */}
-      <div className="mt-12 p-6 rounded-2xl bg-white dark:bg-codia-card border border-royal-border dark:border-slate-800 shadow-royal-sm dark:shadow-none max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="mt-12 p-6 rounded-2xl bg-[#141727]/90 border border-[#968BFF]/20 shadow-2xl max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-royal-highlight dark:bg-slate-900 border border-royal-indigo/30 dark:border-slate-700 flex items-center justify-center text-royal-indigo dark:text-codia-cyan shrink-0">
-            <ShieldCheck className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+          <div className="w-9 h-9 rounded-xl bg-[#0D0F1B] border border-[#968BFF]/25 flex items-center justify-center text-[#968BFF] shrink-0">
+            <ShieldCheck className="w-5 h-5 text-emerald-400" />
           </div>
           <div>
-            <h4 className="text-sm font-bold text-royal-text-primary dark:text-white">
+            <h4 className="text-sm font-bold text-[#FEFEFF]">
               Operating System Window Affinity Mechanism
             </h4>
-            <p className="text-xs text-royal-text-secondary dark:text-slate-400 mt-0.5">
+            <p className="text-xs text-[#A5A9C5] mt-0.5">
               Effective for desktop video conferencing clients using standard OS window sharing APIs. Capture resistance is platform-dependent and does not apply to external HDMI splitters, capture cards, or physical cameras.
             </p>
           </div>
@@ -373,7 +373,7 @@ export function StealthComparison() {
 
         <Link
           href="/download"
-          className="btn-royal-primary dark:bg-gradient-to-r dark:from-codia-cyan dark:to-codia-blue dark:text-slate-950 dark:shadow-codia-cyan-sm px-4 py-2 rounded-lg text-xs font-bold transition-all whitespace-nowrap flex items-center gap-1.5"
+          className="bg-gradient-to-r from-[#968BFF] to-[#5F84FF] text-white shadow-[0_4px_20px_-2px_rgba(150,139,255,0.45)] hover:shadow-[0_6px_25px_-2px_rgba(150,139,255,0.65)] hover:brightness-110 px-4 py-2 rounded-lg text-xs font-bold transition-all whitespace-nowrap flex items-center gap-1.5 cursor-pointer active:scale-95"
         >
           <span>View Release Status</span>
           <ChevronRight className="w-3.5 h-3.5" />

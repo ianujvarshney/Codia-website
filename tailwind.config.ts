@@ -18,75 +18,88 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // Codia Exact Design Tokens
-        'codia-bg': '#0a0c12',
-        'codia-surface': '#0e1018',
-        'codia-card': 'rgba(18, 24, 34, 0.94)',
-        'codia-cyan': '#00d2ff',
-        'codia-blue': '#1068e2',
+        // Codia Official Logo Color Tokens (Sampled directly from official brand mark)
+        'codia-bg': '#0D0F1B',
+        'codia-surface': '#141727',
+        'codia-card': '#171A2E',
+        'codia-cyan': '#968BFF',
+        'codia-blue': '#5F84FF',
         'codia-green': '#10b981',
-        'codia-border': 'rgba(255, 255, 255, 0.12)',
+        'codia-border': 'rgba(150, 139, 255, 0.16)',
 
         // Nested helper structure for design flexibility
         codia: {
-          bg: '#0a0c12',
-          surface: '#0e1018',
-          card: 'rgba(18, 24, 34, 0.94)',
+          bg: '#0D0F1B',
+          surface: '#141727',
+          card: '#171A2E',
           cyan: {
-            DEFAULT: '#00d2ff',
-            50: '#ecfeff',
-            100: '#cffafe',
-            200: '#a5f3fc',
-            300: '#67e8f9',
-            400: '#22d3ee',
-            500: '#00d2ff',
-            600: '#00a3cc',
-            glow: 'rgba(0, 210, 255, 0.35)',
-            subtle: 'rgba(0, 210, 255, 0.08)',
+            DEFAULT: '#968BFF',
+            50: '#F5F4FF',
+            100: '#EBE8FF',
+            200: '#D7D2FF',
+            300: '#BFB5FF',
+            400: '#A99DFF',
+            500: '#968BFF',
+            600: '#7B6CFF',
+            glow: 'rgba(150, 139, 255, 0.35)',
+            subtle: 'rgba(150, 139, 255, 0.10)',
           },
           blue: {
-            DEFAULT: '#1068e2',
-            500: '#1068e2',
-            600: '#0d54b8',
-            glow: 'rgba(16, 104, 226, 0.35)',
+            DEFAULT: '#5F84FF',
+            500: '#5F84FF',
+            600: '#4A6CFF',
+            glow: 'rgba(95, 132, 255, 0.35)',
           },
           green: {
             DEFAULT: '#10b981',
             500: '#10b981',
             glow: 'rgba(16, 185, 129, 0.35)',
           },
-          border: 'rgba(255, 255, 255, 0.12)',
+          border: 'rgba(150, 139, 255, 0.16)',
         },
 
-        // Royal Luxury Light Theme Tokens
+        // Royal Luxury Logo Theme Tokens (Directly derived from Codia Logo)
         royal: {
           bg: {
-            primary: '#F7F8FC',
-            secondary: '#EFF1F5',
+            primary: '#0D0F1B',
+            secondary: '#141727',
           },
-          surface: '#FFFFFF',
+          surface: '#171A2E',
           text: {
-            primary: '#171B35',
-            secondary: '#68708A',
+            primary: '#FEFEFF',
+            secondary: '#A5A9C5',
           },
           indigo: {
-            DEFAULT: '#4F46E5',
-            hover: '#4338CA',
-            light: '#EEF0FF',
-            glow: 'rgba(79, 70, 229, 0.25)',
+            DEFAULT: '#968BFF',
+            hover: '#8679FF',
+            light: 'rgba(150, 139, 255, 0.12)',
+            glow: 'rgba(150, 139, 255, 0.35)',
           },
           lavender: {
-            DEFAULT: '#7287FD',
-            light: 'rgba(114, 135, 253, 0.12)',
-            glow: 'rgba(114, 135, 253, 0.35)',
+            DEFAULT: '#5F84FF',
+            light: 'rgba(95, 132, 255, 0.12)',
+            glow: 'rgba(95, 132, 255, 0.35)',
           },
           sapphire: {
-            DEFAULT: '#209FB5',
-            light: 'rgba(32, 159, 181, 0.10)',
-            glow: 'rgba(32, 159, 181, 0.35)',
+            DEFAULT: '#4A6CFF',
+            light: 'rgba(74, 108, 255, 0.10)',
+            glow: 'rgba(74, 108, 255, 0.35)',
           },
-          border: '#E2E6F0',
-          highlight: '#EEF0FF',
+          border: 'rgba(150, 139, 255, 0.16)',
+          highlight: 'rgba(150, 139, 255, 0.10)',
+        },
+
+        // Dedicated Logo Color Namespace
+        logo: {
+          canvas: '#0D0F1B',
+          surface: '#141727',
+          card: '#171A2E',
+          border: 'rgba(150, 139, 255, 0.16)',
+          violet: '#968BFF',
+          blue: '#5F84FF',
+          'text-primary': '#FEFEFF',
+          'text-secondary': '#A5A9C5',
+          highlight: 'rgba(150, 139, 255, 0.10)',
         },
       },
       fontFamily: {
@@ -95,32 +108,33 @@ const config: Config = {
       },
       backgroundImage: {
         // Codia Exact Gradient Tokens
-        'cyan-blue': 'linear-gradient(135deg, #00d2ff 0%, #0077ff 100%)',
-        'glass-glow': 'radial-gradient(circle at 50% 0%, rgba(0, 210, 255, 0.15) 0%, transparent 70%)',
+        'cyan-blue': 'linear-gradient(135deg, #968BFF 0%, #5F84FF 100%)',
+        'glass-glow': 'radial-gradient(circle at 50% 0%, rgba(150, 139, 255, 0.22) 0%, rgba(95, 132, 255, 0.10) 50%, transparent 70%)',
 
-        // Royal Luxury Light Theme Gradients
-        'royal-gradient': 'linear-gradient(135deg, #4F46E5 0%, #7287FD 100%)',
-        'royal-glow': 'radial-gradient(circle at 50% 0%, rgba(114, 135, 253, 0.14) 0%, transparent 70%)',
-        'royal-sapphire-glow': 'radial-gradient(ellipse 60% 40% at 80% 20%, rgba(32, 159, 181, 0.12) 0%, transparent 70%)',
-        'royal-card': 'linear-gradient(180deg, #FFFFFF 0%, #F7F8FC 100%)',
+        // Royal Luxury Logo Theme Gradients
+        'royal-gradient': 'linear-gradient(135deg, #968BFF 0%, #5F84FF 100%)',
+        'royal-glow': 'radial-gradient(circle at 50% 0%, rgba(150, 139, 255, 0.22) 0%, rgba(95, 132, 255, 0.10) 50%, transparent 70%)',
+        'royal-sapphire-glow': 'radial-gradient(ellipse 60% 40% at 80% 20%, rgba(95, 132, 255, 0.18) 0%, transparent 70%)',
+        'royal-card': 'linear-gradient(180deg, #171A2E 0%, #121424 100%)',
+        'logo-gradient': 'linear-gradient(135deg, #968BFF 0%, #5F84FF 100%)',
 
         // Supplemental atmospheric gradients
-        'stealth-conic': 'conic-gradient(from 180deg at 50% 50%, #00d2ff 0deg, #1068e2 180deg, #00d2ff 360deg)',
-        'radial-radial-overlay': 'radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 210, 255, 0.12), transparent 70%)',
-        'notch-gradient': 'linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
+        'stealth-conic': 'conic-gradient(from 180deg at 50% 50%, #968BFF 0deg, #5F84FF 180deg, #968BFF 360deg)',
+        'radial-radial-overlay': 'radial-gradient(ellipse 80% 50% at 50% -20%, rgba(150, 139, 255, 0.18), transparent 70%)',
+        'notch-gradient': 'linear-gradient(180deg, rgba(150, 139, 255, 0.12) 0%, rgba(150, 139, 255, 0.02) 100%)',
       },
       boxShadow: {
-        'codia-cyan': '0 0 25px -4px rgba(0, 210, 255, 0.35)',
-        'codia-cyan-sm': '0 0 12px -2px rgba(0, 210, 255, 0.25)',
-        'codia-card': '0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.08)',
-        'notch-glow': '0 10px 30px -5px rgba(0, 210, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+        'codia-cyan': '0 0 25px -4px rgba(150, 139, 255, 0.45)',
+        'codia-cyan-sm': '0 0 12px -2px rgba(150, 139, 255, 0.30)',
+        'codia-card': '0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(150, 139, 255, 0.16)',
+        'notch-glow': '0 10px 30px -5px rgba(150, 139, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
 
-        // Royal Luxury Light Shadows
-        'royal-sm': '0 2px 8px -2px rgba(23, 27, 53, 0.05), 0 1px 2px rgba(23, 27, 53, 0.03)',
-        'royal-md': '0 10px 25px -5px rgba(23, 27, 53, 0.05), 0 4px 10px -2px rgba(23, 27, 53, 0.02), 0 0 0 1px #E2E6F0',
-        'royal-lg': '0 20px 40px -12px rgba(79, 70, 229, 0.08), 0 8px 16px -4px rgba(23, 27, 53, 0.03), 0 0 0 1px #E2E6F0',
-        'royal-indigo': '0 8px 24px -4px rgba(79, 70, 229, 0.35)',
-        'royal-lavender': '0 8px 24px -4px rgba(114, 135, 253, 0.35)',
+        // Royal Luxury Logo Shadows
+        'royal-sm': '0 2px 8px -2px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(150, 139, 255, 0.12)',
+        'royal-md': '0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(150, 139, 255, 0.16)',
+        'royal-lg': '0 20px 40px -12px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(150, 139, 255, 0.20)',
+        'royal-indigo': '0 8px 24px -4px rgba(150, 139, 255, 0.45)',
+        'royal-lavender': '0 8px 24px -4px rgba(95, 132, 255, 0.40)',
       },
       keyframes: {
         // Glow Pulsing

@@ -25,33 +25,33 @@ function HeroLoadingPlaceholder({ onOpenDownload }: { onOpenDownload?: () => voi
   return (
     <section
       aria-label="Codia AI Copilot Hero"
-      className="relative min-h-[820px] lg:min-h-screen w-full bg-royal-bg-primary dark:bg-[#04070e] text-royal-text-primary dark:text-white overflow-hidden flex flex-col justify-between transition-colors duration-300"
+      className="relative min-h-[820px] lg:min-h-screen w-full bg-[#0D0F1B] text-[#FEFEFF] overflow-hidden flex flex-col justify-between transition-colors duration-300"
     >
       {/* Deep Atmospheric Backdrop Glow Mesh */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[1100px] h-[500px] sm:h-[650px] pointer-events-none -z-10">
-        <div className="w-full h-full bg-gradient-to-tr from-royal-lavender/20 via-royal-indigo/15 to-transparent dark:from-codia-blue/15 dark:via-codia-cyan/12 blur-[140px] rounded-full" />
+        <div className="w-full h-full bg-gradient-to-tr from-[#968BFF]/20 via-[#5F84FF]/15 to-transparent blur-[140px] rounded-full" />
       </div>
 
       {/* Top Foreground Typography & Value Proposition */}
       <div className="relative z-20 pt-10 sm:pt-14 pb-2 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full text-center flex flex-col items-center">
         {/* Eyebrow Pill Badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 dark:bg-slate-900/80 border border-royal-border dark:border-slate-700/60 backdrop-blur-md mb-3 sm:mb-4 shadow-royal-sm dark:shadow-lg dark:shadow-black/40">
-          <span className={`w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 ${reducedMotion ? '' : 'animate-pulse'}`} />
-          <span className="text-xs font-mono font-medium tracking-wider text-royal-indigo dark:text-slate-300 uppercase">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141727]/90 border border-[#968BFF]/25 backdrop-blur-md mb-3 sm:mb-4 shadow-xl">
+          <span className={`w-2 h-2 rounded-full bg-emerald-400 ${reducedMotion ? '' : 'animate-pulse'}`} />
+          <span className="text-xs font-mono font-medium tracking-wider text-[#968BFF] uppercase">
             Platform Stealth Protection · Native Electron Desktop
           </span>
         </div>
 
         {/* Hero Title */}
-        <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-royal-text-primary dark:text-slate-100 max-w-4xl leading-[1.14]">
+        <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#FEFEFF] max-w-4xl leading-[1.14]">
           The Private AI Desktop Assistant{' '}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-royal-indigo via-royal-lavender to-royal-sapphire dark:from-codia-cyan dark:via-blue-400 dark:to-indigo-300">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FEFEFF] via-[#968BFF] to-[#5F84FF]">
             Engineered for High-Stakes Focus.
           </span>
         </h1>
 
         {/* Subtitle */}
-        <p className="mt-2.5 sm:mt-3 text-xs sm:text-sm lg:text-base text-royal-text-secondary dark:text-slate-400 max-w-2xl leading-relaxed">
+        <p className="mt-2.5 sm:mt-3 text-xs sm:text-sm lg:text-base text-[#A5A9C5] max-w-2xl leading-relaxed">
           Four native floating interfaces seamlessly synchronized across your desktop workflow. Powered by local audio processing, private cloud API routing, and platform-level content protection.
         </p>
 
@@ -60,17 +60,17 @@ function HeroLoadingPlaceholder({ onOpenDownload }: { onOpenDownload?: () => voi
           <button
             type="button"
             onClick={onOpenDownload}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-royal-indigo hover:bg-royal-indigo-hover text-white shadow-royal-indigo dark:bg-gradient-to-r dark:from-codia-cyan dark:to-blue-600 dark:text-slate-950 font-semibold text-xs sm:text-sm transition-all active:scale-95"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#968BFF] to-[#5F84FF] text-white shadow-[0_4px_20px_-2px_rgba(150,139,255,0.45)] hover:shadow-[0_6px_25px_-2px_rgba(150,139,255,0.65)] hover:brightness-110 font-semibold text-xs sm:text-sm transition-all active:scale-95 cursor-pointer"
           >
-            <Download className="w-4 h-4 text-white dark:text-slate-950" />
+            <Download className="w-4 h-4 text-white" />
             Download Desktop Client
           </button>
 
           <a
             href="#windows"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white hover:bg-royal-highlight text-royal-indigo border border-royal-border hover:border-royal-lavender dark:bg-slate-900/80 dark:hover:bg-slate-800 dark:text-slate-300 dark:hover:text-white dark:border-slate-800 transition-all text-xs sm:text-sm font-medium backdrop-blur-sm shadow-sm"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#141727] hover:bg-[#968BFF]/15 text-[#DFD9FF] hover:text-[#FEFEFF] border border-[#968BFF]/25 hover:border-[#968BFF] transition-all text-xs sm:text-sm font-medium backdrop-blur-sm shadow-sm"
           >
-            <Layers className="w-4 h-4 text-royal-indigo dark:text-codia-cyan" />
+            <Layers className="w-4 h-4 text-[#968BFF]" />
             Explore 4-Window System
           </a>
         </div>
@@ -82,19 +82,19 @@ function HeroLoadingPlaceholder({ onOpenDownload }: { onOpenDownload?: () => voi
         aria-busy="true"
         aria-live="polite"
       >
-        <div className="flex flex-col items-center gap-2.5 text-royal-text-secondary dark:text-slate-500">
+        <div className="flex flex-col items-center gap-2.5 text-[#A5A9C5]">
           <div
-            className={`w-6 h-6 border-2 border-royal-indigo dark:border-codia-cyan border-t-transparent rounded-full ${
+            className={`w-6 h-6 border-2 border-[#968BFF] border-t-transparent rounded-full ${
               reducedMotion ? '' : 'animate-spin'
             }`}
           />
-          <span className="text-xs font-mono text-royal-text-secondary dark:text-slate-400">Loading 3D Workspace...</span>
+          <span className="text-xs font-mono text-[#A5A9C5]">Loading 3D Workspace...</span>
         </div>
       </div>
 
       {/* Bottom Skeleton Dock with matching height */}
       <div className="relative z-20 pb-4 pt-1 sm:pb-6 px-4 sm:px-6 max-w-5xl mx-auto w-full flex flex-col items-center gap-2">
-        <div className="h-10 w-80 max-w-full rounded-2xl bg-white/70 dark:bg-slate-950/70 border border-royal-border dark:border-slate-800/80 shadow-royal-sm" />
+        <div className="h-10 w-80 max-w-full rounded-2xl bg-[#141727]/80 border border-[#968BFF]/20 shadow-xl" />
       </div>
     </section>
   );

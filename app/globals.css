@@ -4,63 +4,52 @@
 
 @layer base {
   :root {
-    --background: 226 28% 5%;
-    --foreground: 210 40% 98%;
+    --background: 231 35% 8%;
+    --foreground: 240 100% 99%;
 
-    --card: 225 31% 10%;
-    --card-foreground: 210 40% 98%;
+    --card: 231 32% 13%;
+    --card-foreground: 240 100% 99%;
 
-    --popover: 225 31% 10%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 231 32% 13%;
+    --popover-foreground: 240 100% 99%;
 
-    --primary: 191 100% 50%;
-    --primary-foreground: 226 28% 5%;
+    --primary: 245 100% 77%;
+    --primary-foreground: 240 100% 99%;
 
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 226 100% 68%;
+    --secondary-foreground: 240 100% 99%;
 
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 231 20% 20%;
+    --muted-foreground: 232 20% 71%;
 
-    --accent: 215 84% 47%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 245 100% 77%;
+    --accent-foreground: 240 100% 99%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 0 0% 100% / 0.12;
-    --input: 0 0% 100% / 0.12;
-    --ring: 191 100% 50%;
+    --border: 245 100% 77% / 0.16;
+    --input: 245 100% 77% / 0.16;
+    --ring: 245 100% 77%;
 
     --radius: 0.75rem;
   }
 
   html {
     scroll-behavior: smooth;
-    color-scheme: light dark;
-    background-color: #F7F8FC;
+    color-scheme: dark;
+    background-color: #0D0F1B;
     font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-
-  html.dark {
-    background-color: #0a0c12;
   }
 
   body {
-    background-color: #F7F8FC;
-    color: #171B35;
+    background-color: #0D0F1B;
+    color: #FEFEFF;
     font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-
-  .dark body {
-    background-color: #0a0c12;
-    color: #f1f5f9;
   }
 
   button, input, textarea, select, optgroup {
@@ -71,25 +60,16 @@
     font-family: 'JetBrains Mono', monospace;
   }
 
-  /* Text Selection */
+  /* Codia Logo Selection Tint */
   ::selection {
-    background-color: rgba(79, 70, 229, 0.18);
-    color: #4F46E5;
+    background-color: rgba(150, 139, 255, 0.35);
+    color: #FEFEFF;
   }
 
-  .dark ::selection {
-    background-color: rgba(0, 210, 255, 0.28);
-    color: #00d2ff;
-  }
-
-  /* Custom Thin Glass Scrollbars */
+  /* Custom Logo-Tuned Glass Scrollbars */
   * {
     scrollbar-width: thin;
-    scrollbar-color: rgba(23, 27, 53, 0.15) transparent;
-  }
-
-  .dark * {
-    scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+    scrollbar-color: rgba(150, 139, 255, 0.25) transparent;
   }
 
   ::-webkit-scrollbar {
@@ -102,59 +82,50 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(23, 27, 53, 0.14);
+    background: rgba(150, 139, 255, 0.25);
     border-radius: 9999px;
     backdrop-filter: blur(10px);
     transition: background-color 0.2s ease;
   }
 
-  .dark ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.14);
-  }
-
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(79, 70, 229, 0.45);
-    box-shadow: 0 0 10px rgba(114, 135, 253, 0.3);
-  }
-
-  .dark ::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 210, 255, 0.45);
-    box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+    background: rgba(150, 139, 255, 0.55);
+    box-shadow: 0 0 10px rgba(150, 139, 255, 0.5);
   }
 }
 
 @layer components {
-  /* Glassmorphic Helper Classes - Adaptive Royal Light / Obsidian Dark */
+  /* Glassmorphic Helper Classes - Unified Codia Logo Theme */
   .glass-card {
-    background: #FFFFFF;
+    background: rgba(20, 23, 39, 0.88);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid #E2E6F0;
-    box-shadow: 0 10px 25px -5px rgba(23, 27, 53, 0.05), 
-                0 4px 10px -2px rgba(23, 27, 53, 0.02);
+    border: 1px solid rgba(150, 139, 255, 0.16);
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.55), 
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
     transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   }
 
   .dark .glass-card {
-    background: rgba(18, 24, 34, 0.82);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(20, 23, 39, 0.88);
+    border: 1px solid rgba(150, 139, 255, 0.16);
     box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.65), 
-                inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
   }
 
   .glass-card-hover {
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .glass-card-hover:hover {
-    border-color: #7287FD;
-    box-shadow: 0 18px 36px -10px rgba(114, 135, 253, 0.18),
-                0 0 0 1px #7287FD;
+    border-color: rgba(150, 139, 255, 0.45);
+    box-shadow: 0 18px 40px -10px rgba(150, 139, 255, 0.25),
+                inset 0 1px 0 0 rgba(150, 139, 255, 0.2);
     transform: translateY(-2px);
   }
   .dark .glass-card-hover:hover {
-    border-color: rgba(0, 210, 255, 0.35);
-    box-shadow: 0 25px 50px -12px rgba(0, 210, 255, 0.12),
-                inset 0 1px 0 0 rgba(0, 210, 255, 0.2);
+    border-color: rgba(150, 139, 255, 0.45);
+    box-shadow: 0 18px 40px -10px rgba(150, 139, 255, 0.25),
+                inset 0 1px 0 0 rgba(150, 139, 255, 0.2);
   }
 
   .glass-pill {
@@ -163,166 +134,133 @@
     gap: 0.5rem;
     padding: 0.35rem 0.85rem;
     border-radius: 9999px;
-    background: #EEF0FF;
+    background: rgba(22, 25, 46, 0.85);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    border: 1px solid #E2E6F0;
-    box-shadow: 0 2px 6px rgba(23, 27, 53, 0.04);
+    border: 1px solid rgba(150, 139, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
     font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0.025em;
-    color: #171B35;
+    color: #DFD9FF;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .dark .glass-pill {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25), 
-                inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
-    color: #e2e8f0;
+    background: rgba(22, 25, 46, 0.85);
+    border: 1px solid rgba(150, 139, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+    color: #DFD9FF;
   }
 
-  .glass-pill:hover {
-    background: #E0E4FF;
-    border-color: #7287FD;
-    color: #4F46E5;
-  }
-
+  .glass-pill:hover,
   .dark .glass-pill:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(0, 210, 255, 0.4);
-    color: #00d2ff;
-    box-shadow: 0 0 15px rgba(0, 210, 255, 0.2), 
-                inset 0 1px 0 0 rgba(0, 210, 255, 0.3);
+    background: rgba(150, 139, 255, 0.18);
+    border-color: rgba(150, 139, 255, 0.45);
+    color: #FEFEFF;
+    box-shadow: 0 0 15px rgba(150, 139, 255, 0.25);
   }
 
   .glass-border {
-    border: 1px solid #E2E6F0;
+    border: 1px solid rgba(150, 139, 255, 0.16);
     transition: border-color 0.3s ease;
   }
   .dark .glass-border {
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(150, 139, 255, 0.16);
   }
 
-  .glass-glow-subtle {
-    background: radial-gradient(circle at 50% 0%, rgba(114, 135, 253, 0.14) 0%, transparent 70%);
-  }
+  .glass-glow-subtle,
   .dark .glass-glow-subtle {
-    background: radial-gradient(circle at 50% 0%, rgba(0, 210, 255, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle at 50% 0%, rgba(150, 139, 255, 0.20) 0%, transparent 70%);
   }
 
-  /* Royal Luxury Buttons */
+  /* Codia Logo Radiant Buttons */
   .btn-royal-primary {
-    background-color: #4F46E5;
-    color: #FFFFFF;
+    background: linear-gradient(135deg, #968BFF 0%, #5F84FF 100%);
+    color: #FEFEFF;
     border-radius: 9999px;
     font-weight: 600;
     padding: 0.75rem 1.75rem;
     transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 4px 14px -2px rgba(79, 70, 229, 0.35);
+    box-shadow: 0 4px 20px -2px rgba(150, 139, 255, 0.45);
   }
   .btn-royal-primary:hover {
-    background-color: #4338CA;
     transform: translateY(-1px);
-    box-shadow: 0 8px 24px -4px rgba(114, 135, 253, 0.5);
+    box-shadow: 0 8px 28px -4px rgba(150, 139, 255, 0.65);
+    filter: brightness(1.08);
   }
 
   .btn-royal-secondary {
-    background-color: #FFFFFF;
-    color: #4F46E5;
-    border: 1px solid #E2E6F0;
+    background-color: rgba(20, 23, 39, 0.9);
+    color: #DFD9FF;
+    border: 1px solid rgba(150, 139, 255, 0.25);
     border-radius: 9999px;
     font-weight: 600;
     padding: 0.75rem 1.75rem;
     transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
   }
   .btn-royal-secondary:hover {
-    background-color: #EEF0FF;
-    border-color: #7287FD;
-    color: #3730A3;
+    background-color: rgba(150, 139, 255, 0.12);
+    border-color: #968BFF;
+    color: #FEFEFF;
     transform: translateY(-1px);
   }
 
-  /* Text & Border Gradients */
-  .text-gradient-royal {
-    background: linear-gradient(135deg, #171B35 20%, #4F46E5 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+  /* Text & Border Gradients (Derived from Codia Logo) */
+  .text-gradient-royal,
   .dark .text-gradient-royal {
-    background: linear-gradient(135deg, #ffffff 30%, #00d2ff 100%);
+    background: linear-gradient(135deg, #FEFEFF 20%, #968BFF 60%, #5F84FF 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  .text-gradient-cyan-blue {
-    background: linear-gradient(135deg, #4F46E5 0%, #209FB5 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+  .text-gradient-cyan-blue,
   .dark .text-gradient-cyan-blue {
-    background: linear-gradient(135deg, #00d2ff 0%, #1068e2 100%);
+    background: linear-gradient(135deg, #968BFF 0%, #5F84FF 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  .text-gradient-glow {
-    background: linear-gradient(135deg, #171B35 30%, #4F46E5 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+  .text-gradient-glow,
   .dark .text-gradient-glow {
-    background: linear-gradient(135deg, #ffffff 30%, #00d2ff 100%);
+    background: linear-gradient(135deg, #FEFEFF 30%, #968BFF 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  /* Stealth Glow Effects */
-  .glow-cyan {
-    box-shadow: 0 0 25px -4px rgba(79, 70, 229, 0.25);
-  }
+  /* Codia Logo Glow Effects */
+  .glow-cyan,
   .dark .glow-cyan {
-    box-shadow: 0 0 30px -5px rgba(0, 210, 255, 0.35);
+    box-shadow: 0 0 30px -4px rgba(150, 139, 255, 0.45);
   }
 
-  .glow-cyan-sm {
-    box-shadow: 0 0 12px -2px rgba(114, 135, 253, 0.25);
-  }
+  .glow-cyan-sm,
   .dark .glow-cyan-sm {
-    box-shadow: 0 0 15px -2px rgba(0, 210, 255, 0.25);
+    box-shadow: 0 0 15px -2px rgba(150, 139, 255, 0.30);
   }
 
-  /* Stealth HUD Dynamic Notch Container */
-  .hud-notch {
-    background: #FFFFFF;
+  /* Dynamic Notch Container */
+  .hud-notch,
+  .dark .hud-notch {
+    background: rgba(14, 16, 27, 0.94);
     backdrop-filter: blur(28px) saturate(200%);
     -webkit-backdrop-filter: blur(28px) saturate(200%);
-    border: 1px solid #E2E6F0;
-    box-shadow: 0 16px 36px -10px rgba(23, 27, 53, 0.08),
-                0 0 20px -3px rgba(114, 135, 253, 0.15),
-                inset 0 1px 1px 0 rgba(255, 255, 255, 0.8);
-    transition: all 0.3s ease;
-  }
-  .dark .hud-notch {
-    background: rgba(14, 16, 24, 0.92);
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(150, 139, 255, 0.18);
     box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.8),
-                0 0 20px -3px rgba(0, 210, 255, 0.2),
-                inset 0 1px 1px 0 rgba(255, 255, 255, 0.2);
+                0 0 20px -3px rgba(150, 139, 255, 0.25),
+                inset 0 1px 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
   }
 
   /* Subtle Stealth Grid Background */
-  .stealth-grid {
+  .stealth-grid,
+  .dark .stealth-grid {
     background-size: 40px 40px;
     background-image: 
-      linear-gradient(to right, rgba(23, 27, 53, 0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(23, 27, 53, 0.04) 1px, transparent 1px);
-  }
-  .dark .stealth-grid {
-    background-image: 
-      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      linear-gradient(to right, rgba(150, 139, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(150, 139, 255, 0.05) 1px, transparent 1px);
   }
 
   /* Codia Exact Font-Size Hierarchy */

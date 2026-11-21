@@ -117,9 +117,9 @@ export function FaqAccordion() {
   };
 
   return (
-    <section id="faq" className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 border-t border-royal-border dark:border-codia-border">
+    <section id="faq" className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 border-t border-[#968BFF]/15">
       {/* Background Accent */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[750px] h-[400px] bg-royal-glow dark:bg-gradient-to-tr dark:from-codia-blue/15 dark:via-codia-cyan/10 to-transparent blur-[130px] pointer-events-none -z-10" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[750px] h-[400px] bg-gradient-to-tr from-[#968BFF]/15 via-[#5F84FF]/10 to-transparent blur-[130px] pointer-events-none -z-10" />
 
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto mb-16">
@@ -127,9 +127,9 @@ export function FaqAccordion() {
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-slate-900/80 border border-royal-border dark:border-codia-cyan/40 text-xs text-royal-indigo dark:text-codia-cyan uppercase tracking-wider mb-4 shadow-royal-sm dark:shadow-codia-cyan-sm font-semibold font-mono"
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141727] border border-[#968BFF]/25 text-xs text-[#968BFF] uppercase tracking-wider mb-4 shadow-sm font-semibold font-mono"
         >
-          <HelpCircle className="w-3.5 h-3.5 text-royal-indigo dark:text-codia-cyan" />
+          <HelpCircle className="w-3.5 h-3.5 text-[#968BFF]" />
           <span>Candidate Questions Answered</span>
         </motion.div>
 
@@ -138,10 +138,10 @@ export function FaqAccordion() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-3xl sm:text-5xl font-extrabold text-royal-text-primary dark:text-white tracking-tight leading-[1.15]"
+          className="text-3xl sm:text-5xl font-extrabold text-[#FEFEFF] tracking-tight leading-[1.15]"
         >
           Frequently Asked{' '}
-          <span className="text-gradient-royal dark:text-gradient-cyan-blue">Technical Questions.</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FEFEFF] via-[#968BFF] to-[#5F84FF]">Technical Questions.</span>
         </motion.h2>
 
         <motion.p
@@ -149,7 +149,7 @@ export function FaqAccordion() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="mt-4 text-base sm:text-lg text-royal-text-secondary dark:text-slate-400 leading-relaxed"
+          className="mt-4 text-base sm:text-lg text-[#A5A9C5] leading-relaxed"
         >
           Everything you need to know about OS-level window protection, interaction modes, latency, and global hotkeys.
         </motion.p>
@@ -171,8 +171,8 @@ export function FaqAccordion() {
               transition={{ delay: 0.05 * idx }}
               className={`rounded-2xl transition-all overflow-hidden ${
                 isOpen
-                  ? 'bg-white dark:bg-codia-card border-2 border-royal-indigo/40 dark:border-codia-cyan/50 shadow-royal-md dark:shadow-lg'
-                  : 'bg-white dark:bg-codia-card border border-royal-border dark:border-codia-border hover:border-royal-indigo/30 dark:hover:border-codia-border/80 shadow-royal-sm dark:shadow-none'
+                  ? 'bg-[#141727]/95 border-2 border-[#968BFF]/60 shadow-xl'
+                  : 'bg-[#141727]/80 border border-[#968BFF]/20 hover:border-[#968BFF]/45 shadow-sm'
               }`}
             >
               {/* Accordion Trigger Header */}
@@ -188,20 +188,20 @@ export function FaqAccordion() {
                       toggleItem(faq.id);
                     }
                   }}
-                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-royal-indigo/60 dark:focus-visible:ring-codia-cyan/60 rounded-2xl"
+                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#968BFF]/60 rounded-2xl"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
-                    <span className="text-royal-indigo dark:text-codia-cyan uppercase px-2 py-0.5 rounded bg-royal-highlight dark:bg-codia-cyan/10 border border-royal-indigo/30 dark:border-codia-cyan/30 self-start sm:self-auto text-[10px] font-mono font-bold tracking-wider">
+                    <span className="text-[#968BFF] uppercase px-2.5 py-0.5 rounded-full bg-[#0D0F1B] border border-[#968BFF]/25 self-start sm:self-auto text-[10px] font-mono font-bold tracking-wider">
                       {faq.category}
                     </span>
-                    <span className="font-bold text-sm sm:text-base text-royal-text-primary dark:text-white">
+                    <span className="font-bold text-sm sm:text-base text-[#FEFEFF]">
                       {faq.question}
                     </span>
                   </div>
 
-                  <div className="w-8 h-8 rounded-xl bg-royal-bg-secondary dark:bg-codia-surface/80 border border-royal-border dark:border-codia-border/60 flex items-center justify-center shrink-0 text-royal-indigo dark:text-slate-400">
+                  <div className="w-8 h-8 rounded-xl bg-[#0D0F1B] border border-[#968BFF]/25 flex items-center justify-center shrink-0 text-[#968BFF]">
                     <ChevronDown
-                      className={`w-4 h-4 text-royal-indigo dark:text-codia-cyan transition-transform duration-300 ${
+                      className={`w-4 h-4 text-[#968BFF] transition-transform duration-300 ${
                         isOpen ? 'rotate-180' : ''
                       }`}
                     />
@@ -222,40 +222,40 @@ export function FaqAccordion() {
                     transition={{ duration: 0.25, ease: 'easeInOut' }}
                     className="overflow-hidden"
                   >
-                    <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-royal-text-secondary dark:text-slate-300 leading-relaxed border-t border-royal-border/60 dark:border-codia-border/40 space-y-4">
-                      <p className="codia-answer-area text-royal-text-secondary dark:text-slate-300 leading-relaxed">{faq.answerText}</p>
+                    <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-[#A5A9C5] leading-relaxed border-t border-[#968BFF]/15 space-y-4">
+                      <p className="text-[#A5A9C5] leading-relaxed">{faq.answerText}</p>
 
                       {/* Technical Highlight Callout */}
                       {faq.technicalHighlight && (
-                        <div className="p-3.5 rounded-xl bg-royal-highlight dark:bg-codia-surface/90 border border-royal-indigo/30 dark:border-codia-cyan/30 flex items-center gap-2 text-xs text-royal-indigo dark:text-emerald-300 font-medium font-mono">
-                          <ShieldCheck className="w-4 h-4 text-royal-indigo dark:text-codia-cyan shrink-0" />
+                        <div className="p-3.5 rounded-xl bg-[#0D0F1B] border border-[#968BFF]/25 flex items-center gap-2 text-xs text-[#968BFF] font-medium font-mono">
+                          <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
                           <span>{faq.technicalHighlight}</span>
                         </div>
                       )}
 
                       {/* Official 8-Shortcut Table */}
                       {faq.hasShortcutTable && (
-                        <div className="mt-3 rounded-xl border border-royal-border dark:border-codia-border overflow-hidden bg-royal-bg-secondary/40 dark:bg-codia-bg/95">
-                          <div className="grid grid-cols-12 bg-royal-highlight dark:bg-codia-surface/90 border-b border-royal-border dark:border-codia-border p-2.5 text-[11px] tracking-[0.2px] font-bold text-royal-text-secondary dark:text-slate-400">
+                        <div className="mt-3 rounded-2xl border border-[#968BFF]/20 overflow-hidden bg-[#0D0F1B] shadow-sm">
+                          <div className="grid grid-cols-12 bg-[#141727] border-b border-[#968BFF]/20 p-3 text-[11px] tracking-[0.2px] font-bold text-[#A5A9C5]">
                             <span className="col-span-5 sm:col-span-4">Keyboard Shortcut</span>
                             <span className="col-span-7 sm:col-span-4">Command Action</span>
-                            <span className="col-span-12 sm:col-span-4 hidden sm:inline">Purpose / In-Game Function</span>
+                            <span className="col-span-12 sm:col-span-4 hidden sm:inline">Purpose / Function</span>
                           </div>
-                          <div className="divide-y divide-royal-border/40 dark:divide-codia-border/40 text-xs font-mono">
+                          <div className="divide-y divide-[#968BFF]/15 text-xs font-mono">
                             {OFFICIAL_KEYBOARD_SHORTCUTS.map((row, sIdx) => (
                               <div
                                 key={sIdx}
-                                className="grid grid-cols-12 p-2.5 items-center hover:bg-royal-highlight/40 dark:hover:bg-white/[0.02] transition-colors"
+                                className="grid grid-cols-12 p-3 items-center hover:bg-[#141727]/50 transition-colors"
                               >
                                 <div className="col-span-5 sm:col-span-4 pr-2">
-                                  <kbd className="kbd-badge bg-white dark:bg-white/10 text-royal-indigo dark:text-codia-cyan border border-royal-indigo/30 dark:border-codia-cyan/30 px-2 py-0.5 inline-block shadow-sm">
+                                  <kbd className="bg-[#141727] text-[#968BFF] border border-[#968BFF]/30 px-2 py-0.5 rounded-md inline-block shadow-sm">
                                     {row.key}
                                   </kbd>
                                 </div>
-                                <div className="col-span-7 sm:col-span-4 text-royal-text-primary dark:text-white font-semibold text-[11px] tracking-[0.2px]">
+                                <div className="col-span-7 sm:col-span-4 text-[#FEFEFF] font-semibold text-[11px] tracking-[0.2px]">
                                   {row.action}
                                 </div>
-                                <div className="col-span-12 sm:col-span-4 text-royal-text-secondary dark:text-slate-400 text-[11px] tracking-[0.2px] hidden sm:inline mt-1 sm:mt-0 font-sans">
+                                <div className="col-span-12 sm:col-span-4 text-[#A5A9C5] text-[11px] tracking-[0.2px] hidden sm:inline mt-1 sm:mt-0 font-sans">
                                   {row.desc}
                                 </div>
                               </div>

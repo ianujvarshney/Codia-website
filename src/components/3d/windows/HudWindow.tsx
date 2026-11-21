@@ -27,15 +27,15 @@ export function HudWindow({
   return (
     <WindowChassis
       id="hud"
-      width={4.6}
-      height={3.65}
+      width={3.65}
+      height={3.10}
       depth={0.14}
       radius={0.18}
       bevelSize={0.022}
       position={position}
       rotation={rotation}
       texture={hudTexture}
-      borderColor="#00d2ff"
+      borderColor="#5F84FF"
       glowIntensity={0.45}
       floatOffset={1.2}
       enableHoverTilt={true}
@@ -43,11 +43,11 @@ export function HudWindow({
       renderOrderBase={renderOrderBase}
     >
       {/* Floating Header Accent Bar - Placed cleanly in front of screenshot face */}
-      <group position={[0, 1.62, 0.104]}>
+      <group position={[0, 1.38, 0.104]}>
         {/* Subtle top indicator bar */}
         <mesh position={[0, 0, 0]} renderOrder={renderOrderBase + 4}>
           <planeGeometry args={[1.2, 0.04]} />
-          <meshBasicMaterial color="#00d2ff" transparent opacity={0.7} />
+          <meshBasicMaterial color="#5F84FF" transparent opacity={0.7} />
         </mesh>
       </group>
     </WindowChassis>

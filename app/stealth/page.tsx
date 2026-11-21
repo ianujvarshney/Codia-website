@@ -18,12 +18,12 @@ import {
 
 export default function StealthPage() {
   return (
-    <div className="relative min-h-screen bg-royal-bg-primary dark:bg-codia-bg text-royal-text-primary dark:text-slate-100 flex flex-col">
+    <div className="relative min-h-screen bg-[#0D0F1B] text-[#FEFEFF] flex flex-col">
       <SiteNavbar />
 
       <main className="flex-1 pt-28 sm:pt-36 pb-20">
         {/* Ambient Top Glow */}
-        <div className="absolute top-12 left-1/2 -translate-x-1/2 w-[900px] h-[400px] bg-royal-glow dark:bg-gradient-to-tr dark:from-codia-blue/20 dark:via-codia-cyan/15 to-transparent blur-[140px] pointer-events-none -z-10" />
+        <div className="absolute top-12 left-1/2 -translate-x-1/2 w-[900px] h-[400px] bg-gradient-to-tr from-[#968BFF]/20 via-[#5F84FF]/15 to-transparent blur-[140px] pointer-events-none -z-10" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
@@ -31,9 +31,9 @@ export default function StealthPage() {
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-slate-900/80 border border-royal-border dark:border-slate-700 text-xs font-mono text-royal-indigo dark:text-slate-300 uppercase tracking-wider mb-4 shadow-royal-sm dark:shadow-sm"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141727] border border-[#968BFF]/25 text-xs font-mono text-[#968BFF] uppercase tracking-wider mb-4 shadow-sm"
             >
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
               <span>Platform Window Content Protection</span>
             </motion.div>
 
@@ -41,17 +41,17 @@ export default function StealthPage() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-4xl sm:text-6xl font-extrabold text-royal-text-primary dark:text-white tracking-tight leading-[1.12]"
+              className="text-4xl sm:text-6xl font-extrabold text-[#FEFEFF] tracking-tight leading-[1.12]"
             >
               Engineered for Privacy on{' '}
-              <span className="text-gradient-royal dark:text-gradient-cyan-blue">Desktop Screen Shares.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FEFEFF] via-[#968BFF] to-[#5F84FF]">Desktop Screen Shares.</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="mt-5 text-base sm:text-lg text-royal-text-secondary dark:text-slate-300/90 leading-relaxed max-w-2xl mx-auto"
+              className="mt-5 text-base sm:text-lg text-[#A5A9C5] leading-relaxed max-w-2xl mx-auto"
             >
               Codia utilizes native operating system display affinity to exclude its overlay windows from standard screen capture pipelines. You view assistive guidance in real time while presenting a clean desktop.
             </motion.p>
@@ -61,30 +61,30 @@ export default function StealthPage() {
           <StealthComparison />
 
           {/* Pre-footer Callout */}
-          <section className="mt-24 p-8 sm:p-12 rounded-3xl bg-white dark:bg-gradient-to-b dark:from-codia-card dark:via-[#0c101a] dark:to-codia-bg border border-royal-border dark:border-slate-800 text-center relative overflow-hidden shadow-royal-lg dark:shadow-2xl">
-            <div className="absolute top-0 right-1/4 w-72 h-72 bg-royal-glow dark:bg-codia-cyan/10 blur-3xl pointer-events-none" />
+          <section className="mt-24 p-8 sm:p-12 rounded-3xl bg-[#141727]/90 border border-[#968BFF]/20 text-center relative overflow-hidden shadow-2xl">
+            <div className="absolute top-0 right-1/4 w-72 h-72 bg-[#968BFF]/10 blur-3xl pointer-events-none" />
 
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-royal-text-primary dark:text-white tracking-tight">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-[#FEFEFF] tracking-tight">
               Test Content Protection on Your Machine
             </h2>
-            <p className="text-royal-text-secondary dark:text-slate-300 mt-3 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
+            <p className="text-[#A5A9C5] mt-3 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
               Launch Codia alongside your preferred desktop meeting client to observe window display affinity behavior on your specific operating system.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
               <Link
                 href="/download"
-                className="btn-royal-primary dark:bg-gradient-to-r dark:from-codia-cyan dark:to-codia-blue dark:text-slate-950 dark:shadow-codia-cyan px-6 py-3.5 rounded-xl text-sm font-bold active:scale-98 transition-all flex items-center gap-2 cursor-pointer"
+                className="px-6 py-3.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-[#968BFF] to-[#5F84FF] shadow-[0_4px_20px_-2px_rgba(150,139,255,0.45)] hover:shadow-[0_6px_25px_-2px_rgba(150,139,255,0.65)] hover:brightness-110 active:scale-95 transition-all flex items-center gap-2 cursor-pointer"
               >
                 <Download className="w-4 h-4" />
                 <span>View Release Status</span>
               </Link>
               <Link
                 href="/how-it-works"
-                className="btn-royal-secondary dark:glass-card dark:border-slate-700 dark:text-white px-6 py-3.5 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer"
+                className="px-6 py-3.5 rounded-xl text-sm font-semibold text-[#DFD9FF] hover:text-[#FEFEFF] bg-[#0D0F1B] border border-[#968BFF]/25 hover:border-[#968BFF] transition-all flex items-center gap-2 shadow-sm"
               >
                 <span>View Technical Workflow</span>
-                <ArrowRight className="w-4 h-4 text-royal-indigo dark:text-codia-cyan" />
+                <ArrowRight className="w-4 h-4 text-[#968BFF]" />
               </Link>
             </div>
           </section>

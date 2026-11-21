@@ -141,11 +141,11 @@ export function LanguageCycler({
   };
 
   return (
-    <div className={`rounded-2xl bg-codia-bg border border-codia-border overflow-hidden shadow-2xl ${className}`}>
+    <div className={`rounded-3xl bg-white dark:bg-slate-950 border border-royal-border dark:border-slate-800 overflow-hidden shadow-royal-md dark:shadow-2xl transition-all ${className}`}>
       {/* Code Editor Header Bar */}
-      <div className="bg-codia-surface/90 border-b border-codia-border px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div className="bg-royal-bg-secondary dark:bg-slate-900/90 border-b border-royal-border dark:border-slate-800 px-4 py-3 flex flex-wrap items-center justify-between gap-3">
         {/* Language Tabs */}
-        <div className="flex items-center gap-1.5 p-1 rounded-xl bg-codia-bg/80 border border-codia-border/70">
+        <div className="flex items-center gap-1.5 p-1 rounded-xl bg-white dark:bg-slate-800/80 border border-royal-border dark:border-slate-700 shadow-sm">
           {(Object.keys(SNIPPETS) as SupportedCodeLang[]).map((lang) => {
             const snippet = SNIPPETS[lang];
             const isActive = selectedLang === lang;
@@ -155,8 +155,8 @@ export function LanguageCycler({
                 onClick={() => setSelectedLang(lang)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all flex items-center gap-1.5 cursor-pointer ${
                   isActive
-                    ? 'bg-gradient-to-r from-codia-cyan to-codia-blue text-slate-950 font-bold shadow-codia-cyan-sm'
-                    : 'text-slate-400 hover:text-white hover:bg-white/5'
+                    ? 'btn-royal-primary text-white shadow-royal-indigo font-bold dark:bg-gradient-to-r dark:from-codia-cyan dark:to-codia-blue dark:text-slate-950'
+                    : 'text-royal-text-secondary dark:text-slate-400 hover:text-royal-text-primary dark:hover:text-white'
                 }`}
               >
                 <span>{snippet.label}</span>
@@ -167,22 +167,22 @@ export function LanguageCycler({
 
         {/* Right Info & Copy Action */}
         <div className="flex items-center gap-3">
-          <span className="hidden sm:inline-flex text-[11px] font-mono text-codia-green bg-codia-green/10 px-2 py-0.5 rounded border border-codia-green/20">
+          <span className="hidden sm:inline-flex text-[11px] font-mono text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-1 rounded-full border border-emerald-200 dark:border-emerald-800/40 font-semibold">
             {activeSnippet.badge}
           </span>
           <button
             onClick={handleCopy}
-            className="glass-pill px-3 py-1 text-xs text-slate-300 hover:text-white hover:border-codia-cyan/50 transition-all flex items-center gap-1.5 cursor-pointer"
+            className="btn-royal-secondary text-xs px-3 py-1.5 text-royal-indigo dark:text-slate-200 dark:bg-slate-800 dark:border-slate-700 hover:bg-royal-highlight transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
             title="Copy Solution Code"
           >
             {isCopied ? (
               <>
-                <Check className="w-3.5 h-3.5 text-codia-green" />
-                <span className="text-codia-green font-bold">Copied!</span>
+                <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold">Copied!</span>
               </>
             ) : (
               <>
-                <Copy className="w-3.5 h-3.5 text-slate-400" />
+                <Copy className="w-3.5 h-3.5 text-royal-text-secondary dark:text-slate-400" />
                 <span>Copy Code</span>
               </>
             )}
@@ -191,22 +191,22 @@ export function LanguageCycler({
       </div>
 
       {/* Editor Sub-Header: File Name & Complexity SLA */}
-      <div className="px-4 py-2 bg-[#0c0f16] border-b border-codia-border/40 flex items-center justify-between text-[11px] font-mono text-slate-400">
+      <div className="px-4 py-2 bg-royal-highlight/60 dark:bg-[#0c0f16] border-b border-royal-border dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-royal-text-secondary dark:text-slate-400">
         <div className="flex items-center gap-2">
-          <Terminal className="w-3.5 h-3.5 text-codia-cyan" />
-          <span className="text-slate-300">{activeSnippet.fileName}</span>
-          <span className="text-slate-600">•</span>
-          <span className="text-slate-500">{problemTitle}</span>
+          <Terminal className="w-3.5 h-3.5 text-royal-indigo dark:text-codia-cyan" />
+          <span className="text-royal-text-primary dark:text-slate-300 font-semibold">{activeSnippet.fileName}</span>
+          <span className="text-royal-border dark:text-slate-600">•</span>
+          <span className="text-royal-text-secondary dark:text-slate-500">{problemTitle}</span>
         </div>
-        <div className="flex items-center gap-2 text-codia-cyan">
+        <div className="flex items-center gap-2 text-royal-indigo dark:text-codia-cyan font-semibold">
           <span>Time: O(N)</span>
-          <span className="text-slate-600">|</span>
-          <span className="text-emerald-400">Space: O(k)</span>
+          <span className="text-royal-border dark:text-slate-600">|</span>
+          <span className="text-emerald-600 dark:text-emerald-400">Space: O(k)</span>
         </div>
       </div>
 
       {/* Code Text Container */}
-      <div className="p-4 sm:p-5 overflow-x-auto font-mono text-xs sm:text-[13px] leading-relaxed text-slate-200 bg-[#080a0f]">
+      <div className="p-4 sm:p-5 overflow-x-auto font-mono text-xs sm:text-[13px] leading-relaxed text-emerald-400 bg-[#080a0f]">
         <AnimatePresence mode="wait">
           <motion.pre
             key={selectedLang}
@@ -222,10 +222,10 @@ export function LanguageCycler({
       </div>
 
       {/* Footer Pro-Tip Callout */}
-      <div className="p-3 bg-codia-surface/70 border-t border-codia-border/50 text-[11px] text-slate-400 font-mono flex items-center gap-2">
-        <CheckCircle2 className="w-3.5 h-3.5 text-codia-cyan shrink-0" />
+      <div className="p-3 bg-royal-bg-secondary dark:bg-slate-900/70 border-t border-royal-border dark:border-slate-800 text-[11px] text-royal-text-secondary dark:text-slate-400 font-mono flex items-center gap-2">
+        <CheckCircle2 className="w-3.5 h-3.5 text-royal-indigo dark:text-codia-cyan shrink-0" />
         <span>
-          <strong className="text-white">Senior Interview Note: </strong>
+          <strong className="text-royal-text-primary dark:text-white">Senior Interview Note: </strong>
           {activeSnippet.highlightNote}
         </span>
       </div>

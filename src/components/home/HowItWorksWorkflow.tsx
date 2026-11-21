@@ -14,10 +14,10 @@ const PipelineCore3D = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="w-full h-[440px] sm:h-[520px] lg:h-[580px] rounded-3xl bg-royal-highlight/50 dark:bg-slate-950/40 border border-royal-border dark:border-slate-800 flex items-center justify-center">
+      <div className="w-full h-[440px] sm:h-[520px] lg:h-[580px] rounded-3xl bg-[#141727] border border-[#968BFF]/20 flex items-center justify-center">
         <div className="flex flex-col items-center gap-2">
-          <div className="w-6 h-6 border-2 border-royal-indigo dark:border-codia-cyan border-t-transparent rounded-full animate-spin" />
-          <span className="text-xs font-mono text-royal-text-secondary dark:text-slate-400">Loading 3D Pipeline Core...</span>
+          <div className="w-6 h-6 border-2 border-[#968BFF] border-t-transparent rounded-full animate-spin" />
+          <span className="text-xs font-mono text-[#A5A9C5]">Loading 3D Pipeline Core...</span>
         </div>
       </div>
     ),
@@ -30,8 +30,8 @@ const STEPS = [
     title: 'Instant Screen Capture',
     hotkey: 'Ctrl + Shift + S',
     icon: Camera,
-    color: 'text-royal-indigo dark:text-codia-cyan',
-    bgColor: 'bg-royal-highlight dark:bg-cyan-950/40 border-royal-border dark:border-cyan-800/40',
+    color: 'text-[#968BFF]',
+    bgColor: 'bg-[#141727] border-[#968BFF]/30',
     description:
       'When triggered, Electron desktopCapturer captures the screen into an in-memory raw PNG buffer. It bypasses OCR entirely, routing the visual frame directly to your configured cloud vision model.',
     technicalDetail: 'In-memory PNG buffer · Direct cloud vision stream',
@@ -41,8 +41,8 @@ const STEPS = [
     title: 'Optional Speech Transcription',
     hotkey: 'Ctrl + Space',
     icon: Mic,
-    color: 'text-emerald-600 dark:text-emerald-400',
-    bgColor: 'bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800/40',
+    color: 'text-emerald-400',
+    bgColor: 'bg-[#141727] border-emerald-500/30',
     description:
       'Transcribes interview questions via optional local Whisper (whisper.cpp HTTP server on 127.0.0.1:8178, requiring separate binary & model setup) or Azure Speech SDK. Audio transcription is processed locally before text prompts are sent to cloud AI.',
     technicalDetail: 'Local Whisper STT · Speech transcription only',
@@ -52,8 +52,8 @@ const STEPS = [
     title: 'Multimodal AI Reasoning',
     hotkey: 'Gemini / Claude API',
     icon: Cpu,
-    color: 'text-blue-600 dark:text-blue-400',
-    bgColor: 'bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800/40',
+    color: 'text-[#5F84FF]',
+    bgColor: 'bg-[#141727] border-[#5F84FF]/30',
     description:
       'The visual frame, speech transcript, and candidate resume profile are routed to Google Gemini or Anthropic Claude cloud APIs for algorithmic reasoning and edge-case verification.',
     technicalDetail: 'Clamped token budget · Resume context injection',
@@ -63,8 +63,8 @@ const STEPS = [
     title: 'Structured HUD Response',
     hotkey: 'llm-response.html',
     icon: Terminal,
-    color: 'text-royal-indigo dark:text-indigo-400',
-    bgColor: 'bg-royal-highlight dark:bg-indigo-950/40 border-royal-border dark:border-indigo-800/40',
+    color: 'text-[#968BFF]',
+    bgColor: 'bg-[#141727] border-[#968BFF]/30',
     description:
       'The response streams directly into the floating HUD: a concise 2–4 sentence verbal explanation on the left, and complete, optimal code with Big-O complexity analysis on the right.',
     technicalDetail: '2–4 sentence verbal brevity · Big-O complexity',
@@ -101,7 +101,7 @@ export function HowItWorksWorkflow() {
     <section
       ref={containerRef}
       id="how-it-works"
-      className="relative py-20 sm:py-28 bg-royal-bg-secondary dark:bg-[#04070e] text-royal-text-primary dark:text-white overflow-hidden border-t border-royal-border dark:border-slate-900/80 transition-colors duration-300"
+      className="relative py-20 sm:py-28 bg-[#0D0F1B] text-[#FEFEFF] overflow-hidden border-t border-[#968BFF]/15 transition-colors duration-300"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* 1. PRIMARY CINEMATIC FOCUS: Large 3D Pipeline Core Appears First */}
@@ -122,9 +122,9 @@ export function HowItWorksWorkflow() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white dark:bg-slate-900/90 border border-royal-border dark:border-slate-800 text-royal-indigo dark:text-codia-cyan text-xs font-mono uppercase tracking-wider mb-4 shadow-royal-sm"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141727] border border-[#968BFF]/25 text-[#DFD9FF] text-xs font-mono uppercase tracking-wider mb-4 shadow-sm"
           >
-            <Cpu className="w-3.5 h-3.5" />
+            <Cpu className="w-3.5 h-3.5 text-[#968BFF]" />
             Execution Pipeline
           </motion.div>
 
@@ -133,10 +133,10 @@ export function HowItWorksWorkflow() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-royal-text-primary dark:text-slate-100"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#FEFEFF]"
           >
             How Codia Works.{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-royal-indigo to-royal-lavender dark:from-codia-cyan dark:to-blue-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#968BFF] via-[#7B8BFF] to-[#5F84FF]">
               From Trigger to Solution.
             </span>
           </motion.h2>
@@ -146,7 +146,7 @@ export function HowItWorksWorkflow() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.45 }}
-            className="mt-4 text-base sm:text-lg text-royal-text-secondary dark:text-slate-400 leading-relaxed"
+            className="mt-4 text-base sm:text-lg text-[#A5A9C5] leading-relaxed"
           >
             A cohesive 4-stage pipeline connecting native OS capture, local/cloud speech recognition, and multimodal reasoning into a real-time HUD stream.
           </motion.p>
@@ -163,30 +163,30 @@ export function HowItWorksWorkflow() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.15 * index }}
-                className="relative p-6 sm:p-7 rounded-2xl bg-white dark:bg-slate-950/70 border border-royal-border dark:border-slate-800/80 shadow-royal-md dark:shadow-none backdrop-blur-sm flex flex-col justify-between hover:border-royal-lavender dark:hover:border-slate-700 transition-all group"
+                className="relative p-6 sm:p-7 rounded-2xl bg-[#141727]/90 border border-[#968BFF]/15 shadow-sm backdrop-blur-sm flex flex-col justify-between hover:border-[#968BFF]/40 transition-all group"
               >
                 <div>
                   {/* Step Header */}
                   <div className="flex items-center justify-between mb-5">
-                    <span className="text-2xl font-mono font-bold text-royal-indigo/40 dark:text-slate-600 group-hover:text-royal-indigo dark:group-hover:text-slate-400 transition-colors">
+                    <span className="text-2xl font-mono font-bold text-[#968BFF]/40 group-hover:text-[#968BFF] transition-colors">
                       {item.step}
                     </span>
-                    <div className="w-9 h-9 rounded-xl border border-royal-border dark:border-cyan-800/40 bg-royal-highlight dark:bg-cyan-950/40 flex items-center justify-center text-royal-indigo dark:text-codia-cyan shadow-sm">
+                    <div className="w-9 h-9 rounded-xl border border-[#968BFF]/25 bg-[#0D0F1B] flex items-center justify-center text-[#968BFF] shadow-sm">
                       <Icon className="w-4 h-4" />
                     </div>
                   </div>
 
-                  <h3 className="text-base sm:text-lg font-semibold text-royal-text-primary dark:text-slate-100 mb-2">{item.title}</h3>
-                  <p className="text-xs sm:text-sm text-royal-text-secondary dark:text-slate-400 leading-relaxed">{item.description}</p>
+                  <h3 className="text-base sm:text-lg font-semibold text-[#FEFEFF] mb-2">{item.title}</h3>
+                  <p className="text-xs sm:text-sm text-[#A5A9C5] leading-relaxed">{item.description}</p>
                 </div>
 
                 {/* Footer Metadata */}
-                <div className="mt-6 pt-4 border-t border-royal-border dark:border-slate-900">
-                  <div className="flex items-center justify-between text-[11px] font-mono text-royal-text-secondary dark:text-slate-500 mb-1">
+                <div className="mt-6 pt-4 border-t border-[#968BFF]/15">
+                  <div className="flex items-center justify-between text-[11px] font-mono text-[#A5A9C5] mb-1">
                     <span>Trigger</span>
-                    <span className="text-royal-indigo dark:text-codia-cyan font-semibold">{item.hotkey}</span>
+                    <span className="text-[#968BFF] font-semibold">{item.hotkey}</span>
                   </div>
-                  <div className="text-[10px] font-mono text-royal-text-secondary dark:text-slate-400 truncate">
+                  <div className="text-[10px] font-mono text-[#A5A9C5]/80 truncate">
                     {item.technicalDetail}
                   </div>
                 </div>
