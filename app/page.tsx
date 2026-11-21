@@ -101,11 +101,11 @@ function HeroLoadingPlaceholder({ onOpenDownload }: { onOpenDownload?: () => voi
 }
 
 /**
- * Dynamically imported 3D Hero Scene with ssr: false.
- * Code-splits Three.js, React Three Fiber, and Drei away from the initial homepage bundle.
+ * Dynamically imported Apple-Style Exploded View Showcase with ssr: false.
+ * Pinned 5-scene scroll experience inspired by Apple MacBook exploded view.
  */
-const CinematicHero3D = dynamic(
-  () => import('@/components/3d/hero/CinematicHero3D').then((mod) => mod.CinematicHero3D),
+const ExplodedShowcase = dynamic(
+  () => import('@/components/3d/exploded/ExplodedShowcase').then((mod) => mod.ExplodedShowcase),
   {
     ssr: false,
     loading: () => <HeroLoadingPlaceholder />,
@@ -129,8 +129,8 @@ export default function HomePage() {
       <SiteNavbar onOpenDownload={handleOpenDownload} />
 
       <main className="flex-1 w-full">
-        {/* 1. Cinematic 3D Hero Scene (Loaded via dynamic code-splitting) */}
-        <CinematicHero3D onOpenDownload={handleOpenDownload} />
+        {/* 1. Apple-Style Exploded View Product Experience */}
+        <ExplodedShowcase onOpenDownload={handleOpenDownload} />
 
         {/* 2. Product Introduction */}
         <ProductIntroduction />
