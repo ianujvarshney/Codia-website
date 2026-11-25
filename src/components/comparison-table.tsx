@@ -114,15 +114,15 @@ export function ComparisonTable() {
   const renderBadge = (item: { status: 'yes' | 'no' | 'warning'; label: string; sublabel?: string }, isCodia = false) => {
     if (item.status === 'yes') {
       return (
-        <div className={`flex flex-col items-center sm:items-start ${isCodia ? 'text-royal-indigo dark:text-codia-cyan' : 'text-royal-text-secondary dark:text-slate-300'}`}>
+        <div className={`flex flex-col items-center sm:items-start ${isCodia ? 'text-[#968BFF]' : 'text-[#DFD9FF]'}`}>
           <div className="flex items-center gap-1.5 font-bold text-xs sm:text-sm">
-            <span className="w-4 h-4 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
+            <span className="w-4 h-4 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shrink-0">
               <Check className="w-2.5 h-2.5 stroke-[3]" />
             </span>
             <span>{item.label}</span>
           </div>
           {item.sublabel && (
-            <span className="text-[10px] text-royal-text-secondary/80 dark:text-slate-400 mt-0.5 ml-5 hidden sm:inline font-mono">
+            <span className="text-[10px] text-[#A5A9C5] mt-0.5 ml-5 hidden sm:inline font-mono">
               {item.sublabel}
             </span>
           )}
@@ -132,7 +132,7 @@ export function ComparisonTable() {
 
     if (item.status === 'warning') {
       return (
-        <div className="flex items-center gap-1.5 text-amber-600 dark:text-amber-400 text-xs">
+        <div className="flex items-center gap-1.5 text-amber-400 text-xs">
           <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
           <span>{item.label}</span>
         </div>
@@ -140,26 +140,32 @@ export function ComparisonTable() {
     }
 
     return (
-      <div className="flex items-center gap-1.5 text-royal-text-secondary/70 dark:text-slate-500 text-xs">
-        <span className="w-4 h-4 rounded-full bg-red-100 dark:bg-red-950/40 border border-red-300 dark:border-red-500/30 flex items-center justify-center text-red-500 dark:text-red-400 shrink-0">
+      <div className="flex items-center gap-1.5 text-[#7C809E] text-xs">
+        <span className="w-4 h-4 rounded-full bg-red-950/40 border border-red-500/30 flex items-center justify-center text-red-400 shrink-0">
           <X className="w-2.5 h-2.5 stroke-[3]" />
         </span>
-        <span className="text-royal-text-secondary dark:text-slate-400">{item.label}</span>
+        <span className="text-[#A5A9C5]">{item.label}</span>
       </div>
     );
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto mt-20">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className="w-full max-w-7xl mx-auto mt-20"
+    >
       {/* Table Header Section */}
       <div className="text-center max-w-3xl mx-auto mb-12">
-        <span className="text-xs uppercase tracking-widest text-royal-indigo dark:text-codia-cyan font-bold block mb-2 font-mono">
+        <span className="text-xs uppercase tracking-widest text-[#968BFF] font-bold block mb-2 font-mono">
           Architecture Comparison
         </span>
-        <h3 className="text-2xl sm:text-4xl font-extrabold text-royal-text-primary dark:text-white">
+        <h3 className="text-2xl sm:text-4xl font-extrabold text-[#FEFEFF]">
           Native Desktop Overlay vs Conventional Workflows
         </h3>
-        <p className="text-xs sm:text-sm text-royal-text-secondary dark:text-slate-400 mt-2">
+        <p className="text-xs sm:text-sm text-[#A5A9C5] mt-2">
           Compare Codia’s floating multi-window architecture with browser tabs, dual monitors, and manual chatbot prompts.
         </p>
       </div>
@@ -270,6 +276,6 @@ export function ComparisonTable() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

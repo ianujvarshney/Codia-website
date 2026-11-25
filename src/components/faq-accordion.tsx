@@ -107,7 +107,11 @@ const OFFICIAL_KEYBOARD_SHORTCUTS = [
   },
 ];
 
-export function FaqAccordion() {
+interface FaqAccordionProps {
+  showHeader?: boolean;
+}
+
+export function FaqAccordion({ showHeader = false }: FaqAccordionProps) {
   const [openItemIds, setOpenItemIds] = useState<string[]>(['faq-screen-share', 'faq-shortcuts']);
 
   const toggleItem = (id: string) => {
@@ -117,43 +121,49 @@ export function FaqAccordion() {
   };
 
   return (
-    <section id="faq" className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 border-t border-[#968BFF]/15">
+    <section id="faq" className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Background Accent */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[750px] h-[400px] bg-gradient-to-tr from-[#968BFF]/15 via-[#5F84FF]/10 to-transparent blur-[130px] pointer-events-none -z-10" />
 
-      {/* Header */}
-      <div className="text-center max-w-3xl mx-auto mb-16">
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141727] border border-[#968BFF]/25 text-xs text-[#968BFF] uppercase tracking-wider mb-4 shadow-sm font-semibold font-mono"
-        >
-          <HelpCircle className="w-3.5 h-3.5 text-[#968BFF]" />
-          <span>Candidate Questions Answered</span>
-        </motion.div>
+      {/* Optional Standalone Section Header */}
+      {showHeader && (
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141727] border border-[#968BFF]/30 text-xs text-[#968BFF] uppercase tracking-wider mb-4 shadow-sm font-semibold font-mono"
+          >
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <HelpCircle className="w-3.5 h-3.5 text-[#968BFF]" />
+            <span>Candidate Questions Answered</span>
+          </motion.div>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="text-3xl sm:text-5xl font-extrabold text-[#FEFEFF] tracking-tight leading-[1.15]"
-        >
-          Frequently Asked{' '}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FEFEFF] via-[#968BFF] to-[#5F84FF]">Technical Questions.</span>
-        </motion.h2>
+          <motion.h2
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="text-3xl sm:text-5xl font-extrabold text-[#FEFEFF] tracking-tight leading-[1.15]"
+          >
+            Frequently Asked{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FEFEFF] via-[#968BFF] to-[#5F84FF]">
+              Technical Questions.
+            </span>
+          </motion.h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="mt-4 text-base sm:text-lg text-[#A5A9C5] leading-relaxed"
-        >
-          Everything you need to know about OS-level window protection, interaction modes, latency, and global hotkeys.
-        </motion.p>
-      </div>
+          <motion.p
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-4 text-base sm:text-lg text-[#A5A9C5] leading-relaxed"
+          >
+            Everything you need to know about OS-level window protection, interaction modes, latency, and global hotkeys.
+          </motion.p>
+        </div>
+      )}
 
       {/* ACCORDION LIST (WAI-ARIA Pattern) */}
       <div className="space-y-4" role="region" aria-label="Frequently Asked Questions">

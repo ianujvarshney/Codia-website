@@ -61,45 +61,55 @@ const SECURITY_PILLARS: SecurityPillar[] = [
   },
 ];
 
-export function SecurityAssurance() {
+interface SecurityAssuranceProps {
+  showHeader?: boolean;
+}
+
+export function SecurityAssurance({ showHeader = false }: SecurityAssuranceProps) {
   return (
-    <section id="security" className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 border-t border-[#968BFF]/15">
+    <section id="security" className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[450px] bg-gradient-to-tr from-[#968BFF]/15 via-[#5F84FF]/10 to-transparent blur-[140px] pointer-events-none -z-10" />
 
-      {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-16">
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141727] border border-[#968BFF]/25 text-xs font-mono text-[#968BFF] uppercase tracking-wider mb-4 shadow-sm"
-        >
-          <Lock className="w-3.5 h-3.5 text-[#968BFF]" />
-          <span>Architecture & Data Flow Transparency</span>
-        </motion.div>
+      {/* Optional Standalone Section Header */}
+      {showHeader && (
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141727] border border-[#968BFF]/30 text-xs font-mono text-[#968BFF] uppercase tracking-wider mb-4 shadow-sm"
+          >
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <Lock className="w-3.5 h-3.5 text-[#968BFF]" />
+            <span>Architecture & Data Flow Transparency</span>
+          </motion.div>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="text-3xl sm:text-5xl font-extrabold text-[#FEFEFF] tracking-tight leading-[1.15]"
-        >
-          Clear Boundaries Between{' '}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FEFEFF] via-[#968BFF] to-[#5F84FF]">Local & Cloud Execution.</span>
-        </motion.h2>
+          <motion.h2
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="text-3xl sm:text-5xl font-extrabold text-[#FEFEFF] tracking-tight leading-[1.15]"
+          >
+            Clear Boundaries Between{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FEFEFF] via-[#968BFF] to-[#5F84FF]">
+              Local & Cloud Execution.
+            </span>
+          </motion.h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="mt-4 text-base sm:text-lg text-[#A5A9C5] leading-relaxed"
-        >
-          We believe in complete architectural transparency. Codia is engineered with local in-memory buffers and user-owned API key routing so you always know where your data travels.
-        </motion.p>
-      </div>
+          <motion.p
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-4 text-base sm:text-lg text-[#A5A9C5] leading-relaxed"
+          >
+            We believe in complete architectural transparency. Codia is engineered with local in-memory buffers and user-owned API key routing so you always know where your data travels.
+          </motion.p>
+        </div>
+      )}
 
       {/* 4 SECURITY PILLARS GRID */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
@@ -108,10 +118,10 @@ export function SecurityAssurance() {
           return (
             <motion.div
               key={pillar.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 * idx }}
+              transition={{ duration: 0.6, delay: 0.1 * idx, ease: [0.22, 1, 0.36, 1] }}
               className="rounded-3xl bg-[#141727]/90 p-6 sm:p-8 border border-[#968BFF]/20 shadow-xl hover:border-[#968BFF]/50 flex flex-col justify-between relative group transition-all"
             >
               <div>
@@ -140,7 +150,13 @@ export function SecurityAssurance() {
       </div>
 
       {/* REPOSITORY SOURCE TRANSPARENCY CARD */}
-      <div className="mt-14 max-w-5xl mx-auto rounded-3xl bg-[#141727]/90 border border-[#968BFF]/20 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-2xl">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-40px' }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="mt-14 max-w-5xl mx-auto rounded-3xl bg-[#141727]/90 border border-[#968BFF]/20 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-2xl"
+      >
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-[#0D0F1B] border border-[#968BFF]/25 flex items-center justify-center text-[#968BFF] shrink-0">
             <ShieldCheck className="w-6 h-6 text-emerald-400" />
@@ -164,7 +180,7 @@ export function SecurityAssurance() {
           <span>Inspect Source Code</span>
           <ExternalLink className="w-3.5 h-3.5 text-[#A5A9C5]" />
         </a>
-      </div>
+      </motion.div>
     </section>
   );
 }

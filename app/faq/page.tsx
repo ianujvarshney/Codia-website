@@ -17,7 +17,7 @@ import {
 
 export default function FaqPage() {
   return (
-    <div className="relative min-h-screen bg-[#0D0F1B] text-[#FEFEFF] flex flex-col">
+    <div className="relative min-h-screen bg-[#0D0F1B] text-[#FEFEFF] flex flex-col transition-colors duration-300">
       <SiteNavbar />
 
       <main className="flex-1 pt-28 sm:pt-36 pb-20">
@@ -25,11 +25,69 @@ export default function FaqPage() {
         <div className="absolute top-12 left-1/2 -translate-x-1/2 w-[900px] h-[400px] bg-gradient-to-tr from-[#968BFF]/20 via-[#5F84FF]/15 to-transparent blur-[140px] pointer-events-none -z-10" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Main FAQ Accordion Component */}
-          <FaqAccordion />
+          {/* Page Hero with Homepage-Grade Staggered Entrance Animations */}
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141727] border border-[#968BFF]/30 text-xs text-[#968BFF] uppercase tracking-wider mb-5 shadow-lg font-semibold font-mono"
+            >
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <HelpCircle className="w-3.5 h-3.5 text-[#968BFF]" />
+              <span>Candidate Knowledge Base</span>
+            </motion.div>
 
-          {/* Quick Help Card */}
-          <section className="mt-16 p-8 rounded-3xl bg-[#141727]/90 border border-[#968BFF]/20 shadow-2xl max-w-4xl mx-auto text-center">
+            <motion.h1
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="text-4xl sm:text-6xl font-extrabold text-[#FEFEFF] tracking-tight leading-[1.12]"
+            >
+              Frequently Asked{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FEFEFF] via-[#968BFF] to-[#5F84FF]">
+                Technical Questions.
+              </span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-5 text-base sm:text-lg text-[#A5A9C5] leading-relaxed max-w-2xl mx-auto"
+            >
+              Everything you need to know about OS-level window protection, interaction modes, latency, and global hotkeys.
+            </motion.p>
+
+            {/* Quick Topic Pills */}
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-6 flex flex-wrap items-center justify-center gap-2"
+            >
+              {['Screen Share Protection', 'Cursor Styling', 'Alt+A Click-Through', 'Resume Ingestion', 'Global Hotkeys'].map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3.5 py-1 rounded-full text-xs font-mono bg-[#141727]/80 border border-[#968BFF]/20 text-[#DFD9FF] shadow-sm"
+                >
+                  {tag}
+                </span>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Main FAQ Accordion Component */}
+          <FaqAccordion showHeader={false} />
+
+          {/* Quick Help Card with Scroll Reveal */}
+          <motion.section
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-16 p-8 rounded-3xl bg-[#141727]/90 border border-[#968BFF]/20 shadow-2xl max-w-4xl mx-auto text-center"
+          >
             <h3 className="text-xl sm:text-2xl font-bold text-[#FEFEFF]">
               Have a Question Not Listed Here?
             </h3>
@@ -54,7 +112,7 @@ export default function FaqPage() {
                 <span>View Release Status</span>
               </Link>
             </div>
-          </section>
+          </motion.section>
         </div>
       </main>
 

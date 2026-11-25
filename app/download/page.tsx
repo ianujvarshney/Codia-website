@@ -78,7 +78,7 @@ export default function DownloadPage() {
   const IconComp = activeOsInfo.icon;
 
   return (
-    <div className="relative min-h-screen bg-[#0D0F1B] text-[#FEFEFF] flex flex-col">
+    <div className="relative min-h-screen bg-[#0D0F1B] text-[#FEFEFF] flex flex-col transition-colors duration-300">
       <SiteNavbar />
 
       <main className="flex-1 pt-28 sm:pt-36 pb-20">
@@ -86,12 +86,12 @@ export default function DownloadPage() {
         <div className="absolute top-12 left-1/2 -translate-x-1/2 w-[900px] h-[400px] bg-gradient-to-tr from-[#968BFF]/20 via-[#5F84FF]/15 to-transparent blur-[140px] pointer-events-none -z-10" />
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Header */}
+          {/* Header with Homepage-Grade Staggered Entrance Animations */}
           <div className="text-center mb-12">
             <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.4 }}
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-[#141727] border border-[#968BFF]/30 p-2.5 shadow-xl flex items-center justify-center"
             >
               <Image
@@ -105,36 +105,62 @@ export default function DownloadPage() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
+              initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141727] border border-[#968BFF]/25 text-xs font-mono text-[#A5A9C5] uppercase tracking-wider mb-4 shadow-sm"
+              transition={{ duration: 0.5, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141727] border border-[#968BFF]/25 text-xs font-mono text-[#968BFF] uppercase tracking-wider mb-4 shadow-sm font-semibold"
             >
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <Clock className="w-3.5 h-3.5 text-amber-400" />
-              <span>Release Validation in Progress</span>
+              <span>Official Release Validation in Progress</span>
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
+              transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="text-4xl sm:text-5xl font-extrabold text-[#FEFEFF] tracking-tight leading-[1.15]"
             >
               Download Codia for{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FEFEFF] via-[#968BFF] to-[#5F84FF]">{activeOsInfo.name}</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FEFEFF] via-[#968BFF] to-[#5F84FF]">
+                {activeOsInfo.name}
+              </span>
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
+              transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
               className="mt-4 text-base sm:text-lg text-[#A5A9C5] leading-relaxed max-w-xl mx-auto"
             >
               Pre-built standalone desktop binaries are currently undergoing packaging and validation. You can inspect the source code or build the Electron client locally today.
             </motion.p>
+
+            {/* Quick Pills */}
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-6 flex flex-wrap items-center justify-center gap-2"
+            >
+              {['Native Electron 28', 'Windows 10/11 & macOS 12+', 'Node.js 18+ Local Build', 'Zero Cloud Telemetry'].map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3.5 py-1 rounded-full text-xs font-mono bg-[#141727]/80 border border-[#968BFF]/20 text-[#DFD9FF] shadow-sm"
+                >
+                  {tag}
+                </span>
+              ))}
+            </motion.div>
           </div>
 
           {/* OS Selector Tabs */}
-          <div className="mb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="mb-8"
+          >
             <span className="text-xs text-[#A5A9C5] block mb-2 font-semibold text-center font-mono uppercase tracking-wider">
               Select platform architecture:
             </span>
@@ -161,10 +187,16 @@ export default function DownloadPage() {
                 );
               })}
             </div>
-          </div>
+          </motion.div>
 
-          {/* Download Action Card */}
-          <div className="p-7 sm:p-9 rounded-3xl bg-[#141727]/90 border border-[#968BFF]/20 shadow-2xl relative overflow-hidden">
+          {/* Download Action Card with Scroll Reveal */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="p-7 sm:p-9 rounded-3xl bg-[#141727]/90 border border-[#968BFF]/20 shadow-2xl relative overflow-hidden"
+          >
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-6 border-b border-[#968BFF]/15">
               <div className="flex items-center gap-4">
                 <div className="w-14 h-14 rounded-2xl bg-[#0D0F1B] border border-[#968BFF]/25 flex items-center justify-center text-[#968BFF] shadow-sm shrink-0">
@@ -273,7 +305,7 @@ export default function DownloadPage() {
                 Capture resistance is platform-dependent
               </span>
             </div>
-          </div>
+          </motion.div>
         </div>
       </main>
 
