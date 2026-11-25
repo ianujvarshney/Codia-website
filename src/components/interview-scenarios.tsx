@@ -179,7 +179,7 @@ export function InterviewScenarios() {
                 </div>
                 <div className="p-3.5 rounded-2xl bg-royal-bg-secondary/70 dark:bg-slate-900 border border-royal-border dark:border-slate-800 text-center shadow-sm min-w-[120px]">
                   <span className="text-[10px] font-mono text-royal-text-secondary dark:text-slate-500 uppercase block font-semibold">Space Complexity</span>
-                  <span className="text-lg font-bold font-mono text-emerald-600 dark:text-emerald-400">O(K)</span>
+                  <span className="text-lg font-bold font-mono text-[#5F84FF]">O(K)</span>
                   <span className="text-[10px] text-royal-text-secondary dark:text-slate-400 block mt-0.5">Monotonic deque</span>
                 </div>
               </div>

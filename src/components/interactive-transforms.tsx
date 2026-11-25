@@ -20,6 +20,7 @@ import {
   ArrowRight,
   BookOpen,
 } from 'lucide-react';
+import { tokenizeLine, renderToken } from './language-cycler';
 
 export type TransformPillId =
   | 'bullets'
@@ -387,13 +388,27 @@ export function InteractiveTransforms() {
               {/* Type 3: Code Solution */}
               {activeData.content.type === 'code' && (
                 <div className="space-y-2">
-                  <div className="flex items-center justify-between text-xs font-mono text-royal-text-secondary dark:text-slate-400 pb-1">
+                  <div className="flex items-center justify-between text-xs font-mono text-[#A5A9C5] pb-1">
                     <span>Language: {activeData.content.codeLang}</span>
-                    <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Zero Garbage Collection Overhead</span>
+                    <span className="text-[#5F84FF] font-semibold">Zero Garbage Collection Overhead</span>
                   </div>
-                  <pre className="font-mono text-xs text-emerald-600 dark:text-emerald-400 overflow-x-auto leading-relaxed p-3.5 bg-white dark:bg-black/60 rounded-xl border border-royal-border dark:border-slate-800 shadow-sm">
-                    <code>{activeData.content.codeSnippet}</code>
-                  </pre>
+                  <div className="font-mono text-xs overflow-x-auto leading-relaxed p-4 bg-[#0B0E18] rounded-xl border border-[#968BFF]/20 shadow-md">
+                    <code>
+                      {(activeData.content.codeSnippet || '').split('\n').map((line, lineIdx) => {
+                        const tokens = tokenizeLine(line, 'typescript');
+                        return (
+                          <div key={lineIdx} className="table-row">
+                            <span className="table-cell select-none pr-3 text-right text-[#4B506D] text-[11px] font-mono w-7">
+                              {lineIdx + 1}
+                            </span>
+                            <span className="table-cell">
+                              {tokens.map((token, tokenIdx) => renderToken(token, tokenIdx))}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </code>
+                  </div>
                 </div>
               )}
 
