@@ -93,45 +93,55 @@ const PRICING_TIERS: PricingTier[] = [
   },
 ];
 
-export function Pricing() {
+interface PricingProps {
+  showHeader?: boolean;
+}
+
+export function Pricing({ showHeader = false }: PricingProps) {
   return (
-    <section id="pricing" className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 border-t border-royal-border dark:border-codia-border">
+    <section id="pricing" className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Background Accent Gradients */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[900px] h-[550px] bg-royal-glow dark:bg-gradient-to-tr dark:from-codia-blue/15 dark:via-codia-cyan/10 to-transparent blur-[140px] pointer-events-none -z-10" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[900px] h-[550px] bg-gradient-to-tr from-[#968BFF]/15 via-[#5F84FF]/10 to-transparent blur-[140px] pointer-events-none -z-10" />
 
-      {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-14">
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-slate-900/80 border border-royal-border dark:border-slate-700 text-xs font-mono text-royal-indigo dark:text-slate-300 uppercase tracking-wider mb-4 shadow-royal-sm dark:shadow-sm"
-        >
-          <KeyRound className="w-3.5 h-3.5 text-royal-indigo dark:text-codia-cyan" />
-          <span>Transparent Cost Architecture</span>
-        </motion.div>
+      {/* Optional Standalone Section Header */}
+      {showHeader && (
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141727] border border-[#968BFF]/30 text-xs font-mono text-[#968BFF] uppercase tracking-wider mb-4 shadow-sm"
+          >
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <KeyRound className="w-3.5 h-3.5 text-[#968BFF]" />
+            <span>Transparent Cost Architecture</span>
+          </motion.div>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="text-3xl sm:text-5xl font-extrabold text-royal-text-primary dark:text-white tracking-tight leading-[1.15]"
-        >
-          Free Desktop Client.{' '}
-          <span className="text-gradient-royal dark:text-gradient-cyan-blue">Direct Provider Pricing.</span>
-        </motion.h2>
+          <motion.h2
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="text-3xl sm:text-5xl font-extrabold text-[#FEFEFF] tracking-tight leading-[1.15]"
+          >
+            Free Desktop Client.{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FEFEFF] via-[#968BFF] to-[#5F84FF]">
+              Direct Provider Pricing.
+            </span>
+          </motion.h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="mt-4 text-base sm:text-lg text-royal-text-secondary dark:text-slate-400 leading-relaxed"
-        >
-          Codia does not charge subscription fees or resell AI tokens at inflated markups. You supply your own API keys and pay model providers directly, or run local speech models at zero API cost.
-        </motion.p>
-      </div>
+          <motion.p
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-4 text-base sm:text-lg text-[#A5A9C5] leading-relaxed"
+          >
+            Codia does not charge subscription fees or resell AI tokens at inflated markups. You supply your own API keys and pay model providers directly, or run local speech models at zero API cost.
+          </motion.p>
+        </div>
+      )}
 
       {/* 3 PRICING TIERS GRID */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
@@ -139,10 +149,10 @@ export function Pricing() {
           return (
             <motion.div
               key={tier.id}
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 * idx }}
+              transition={{ duration: 0.6, delay: 0.1 * idx, ease: [0.22, 1, 0.36, 1] }}
               className={`rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all relative ${
                 tier.isPopular
                   ? 'bg-[#141727] border-2 border-[#968BFF] shadow-[0_0_35px_-5px_rgba(150,139,255,0.35)] lg:-translate-y-2'
@@ -217,7 +227,7 @@ export function Pricing() {
                     {tier.ctaText}
                   </Link>
                 )}
-                <div className="mt-2.5 text-center text-[10px] text-royal-text-secondary dark:text-slate-500 font-mono">
+                <div className="mt-2.5 text-center text-[10px] text-[#7C809E] font-mono">
                   Direct provider billing · No subscription fees
                 </div>
               </div>

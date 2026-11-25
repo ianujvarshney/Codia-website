@@ -25,7 +25,11 @@ import { ComparisonSlider } from './ui/comparison-slider';
 
 type ViewTab = 'split' | 'candidate' | 'interviewer';
 
-export function StealthComparison() {
+interface StealthComparisonProps {
+  showHeader?: boolean;
+}
+
+export function StealthComparison({ showHeader = false }: StealthComparisonProps) {
   const [activeTab, setActiveTab] = useState<ViewTab>('split');
   const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
 
@@ -204,57 +208,65 @@ export function StealthComparison() {
   );
 
   return (
-    <section id="stealth-comparison" className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 border-t border-royal-border dark:border-codia-border">
+    <section id="stealth-comparison" className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Ambient Radial Accent */}
-      <div className="absolute top-24 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-royal-glow dark:bg-codia-cyan/10 blur-[130px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute top-24 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-tr from-[#968BFF]/15 via-[#5F84FF]/10 to-transparent blur-[140px] rounded-full pointer-events-none -z-10" />
 
-      {/* 1. SECTION HEADER */}
-      <div className="text-center max-w-3xl mx-auto mb-12">
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-slate-900/80 border border-royal-border dark:border-slate-700 text-xs font-mono text-royal-indigo dark:text-slate-300 uppercase tracking-wider mb-4 shadow-royal-sm dark:shadow-sm"
-        >
-          <Shield className="w-3.5 h-3.5 text-royal-indigo dark:text-codia-cyan" />
-          <span>Screen Capture Display Affinity</span>
-        </motion.div>
+      {/* Optional Standalone Section Header */}
+      {showHeader && (
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141727] border border-[#968BFF]/30 text-xs font-mono text-[#968BFF] uppercase tracking-wider mb-4 shadow-sm"
+          >
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <Shield className="w-3.5 h-3.5 text-[#968BFF]" />
+            <span>Screen Capture Display Affinity</span>
+          </motion.div>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="text-3xl sm:text-5xl font-extrabold text-royal-text-primary dark:text-white tracking-tight leading-[1.15]"
-        >
-          Window Protection on{' '}
-          <span className="text-gradient-royal dark:text-gradient-cyan-blue">Standard Screen Shares.</span>
-        </motion.h2>
+          <motion.h2
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="text-3xl sm:text-5xl font-extrabold text-[#FEFEFF] tracking-tight leading-[1.15]"
+          >
+            Window Protection on{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FEFEFF] via-[#968BFF] to-[#5F84FF]">
+              Standard Screen Shares.
+            </span>
+          </motion.h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="mt-4 text-base sm:text-lg text-royal-text-secondary dark:text-slate-400 leading-relaxed"
-        >
-          Operating system window display affinity instructs video conference software to omit Codia’s floating interfaces. You see real-time suggestions; meeting attendees see only your clean desktop.
-        </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-4 text-base sm:text-lg text-[#A5A9C5] leading-relaxed"
+          >
+            Operating system window display affinity instructs video conference software to omit Codia’s floating interfaces. You see real-time suggestions; meeting attendees see only your clean desktop.
+          </motion.p>
+        </div>
+      )}
 
-        {/* View Mode Switcher Tabs */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="mt-8 inline-flex items-center p-1.5 rounded-2xl bg-white dark:bg-codia-card border border-royal-border dark:border-slate-800 shadow-royal-sm dark:shadow-none"
-        >
+      {/* View Mode Switcher Tabs */}
+      <motion.div
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        className="mb-10 flex items-center justify-center"
+      >
+        <div className="inline-flex items-center p-1.5 rounded-2xl bg-[#0D0F1B] border border-[#968BFF]/20 shadow-inner">
           <button
             onClick={() => setActiveTab('candidate')}
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer ${
               activeTab === 'candidate'
-                ? 'btn-royal-primary dark:bg-gradient-to-r dark:from-codia-cyan dark:to-codia-blue dark:text-slate-950 font-bold shadow-royal-sm dark:shadow-codia-cyan-sm'
-                : 'text-royal-text-secondary dark:text-slate-400 hover:text-royal-text-primary dark:hover:text-white'
+                ? 'bg-gradient-to-r from-[#968BFF] to-[#5F84FF] text-[#FEFEFF] font-bold shadow-[0_4px_20px_-2px_rgba(150,139,255,0.4)]'
+                : 'text-[#A5A9C5] hover:text-[#FEFEFF] hover:bg-[#141727]'
             }`}
           >
             <Eye className="w-4 h-4" />
@@ -265,8 +277,8 @@ export function StealthComparison() {
             onClick={() => setActiveTab('split')}
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer ${
               activeTab === 'split'
-                ? 'btn-royal-primary dark:bg-gradient-to-r dark:from-codia-cyan dark:to-codia-blue dark:text-slate-950 font-bold shadow-royal-sm dark:shadow-codia-cyan-sm'
-                : 'text-royal-text-secondary dark:text-slate-400 hover:text-royal-text-primary dark:hover:text-white'
+                ? 'bg-gradient-to-r from-[#968BFF] to-[#5F84FF] text-[#FEFEFF] font-bold shadow-[0_4px_20px_-2px_rgba(150,139,255,0.4)]'
+                : 'text-[#A5A9C5] hover:text-[#FEFEFF] hover:bg-[#141727]'
             }`}
           >
             <Sparkles className="w-4 h-4" />
@@ -277,23 +289,23 @@ export function StealthComparison() {
             onClick={() => setActiveTab('interviewer')}
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer ${
               activeTab === 'interviewer'
-                ? 'btn-royal-primary dark:bg-gradient-to-r dark:from-codia-cyan dark:to-codia-blue dark:text-slate-950 font-bold shadow-royal-sm dark:shadow-codia-cyan-sm'
-                : 'text-royal-text-secondary dark:text-slate-400 hover:text-royal-text-primary dark:hover:text-white'
+                ? 'bg-gradient-to-r from-[#968BFF] to-[#5F84FF] text-[#FEFEFF] font-bold shadow-[0_4px_20px_-2px_rgba(150,139,255,0.4)]'
+                : 'text-[#A5A9C5] hover:text-[#FEFEFF] hover:bg-[#141727]'
             }`}
           >
             <EyeOff className="w-4 h-4" />
             <span>Interviewer Stream (Excluded by OS)</span>
           </button>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
 
       {/* 2. INTERACTIVE COMPARISON SLIDER SHOWCASE */}
       <motion.div
         initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ delay: 0.35 }}
-        className="max-w-5xl mx-auto rounded-2xl overflow-hidden border border-royal-border dark:border-slate-800 shadow-royal-lg dark:shadow-2xl"
+        transition={{ delay: 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="max-w-5xl mx-auto rounded-2xl overflow-hidden border border-[#968BFF]/20 shadow-2xl"
       >
         <ComparisonSlider
           sliderMode={activeTab}
