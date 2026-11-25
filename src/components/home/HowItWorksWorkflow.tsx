@@ -1,28 +1,9 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
-import dynamic from 'next/dynamic';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Camera, Mic, Cpu, Terminal, ArrowRight, ShieldCheck } from 'lucide-react';
-import { useReducedMotion } from '@/hooks/useReducedMotion';
-import { useGSAP } from '@/lib/gsap-register';
-import { ScrollTrigger } from '@/lib/gsap-register';
-
-// Dynamically import the 3D Pipeline Core stage
-const PipelineCore3D = dynamic(
-  () => import('../3d/pipeline/PipelineCore3D').then((mod) => mod.PipelineCore3D),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="w-full h-[440px] sm:h-[520px] lg:h-[580px] rounded-3xl bg-[#141727] border border-[#968BFF]/20 flex items-center justify-center">
-        <div className="flex flex-col items-center gap-2">
-          <div className="w-6 h-6 border-2 border-[#968BFF] border-t-transparent rounded-full animate-spin" />
-          <span className="text-xs font-mono text-[#A5A9C5]">Loading 3D Pipeline Core...</span>
-        </div>
-      </div>
-    ),
-  }
-);
+import { Camera, Mic, Cpu, Terminal, ArrowRight, ShieldCheck, Zap } from 'lucide-react';
+import { PipelineInteractiveShowcase } from './PipelineInteractiveShowcase';
 
 const STEPS = [
   {
@@ -73,29 +54,6 @@ const STEPS = [
 
 export function HowItWorksWorkflow() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const reducedMotion = useReducedMotion();
-
-  useGSAP(
-    () => {
-      if (typeof window === 'undefined' || reducedMotion || !containerRef.current) return;
-
-      const trigger = ScrollTrigger.create({
-        trigger: containerRef.current,
-        start: 'top 80%',
-        end: 'bottom 20%',
-        scrub: 1.0,
-        onUpdate: (self) => {
-          setScrollProgress(self.progress);
-        },
-      });
-
-      return () => {
-        trigger.kill();
-      };
-    },
-    { scope: containerRef, dependencies: [reducedMotion] }
-  );
 
   return (
     <section
@@ -103,40 +61,33 @@ export function HowItWorksWorkflow() {
       id="how-it-works"
       className="relative py-20 sm:py-28 bg-[#0D0F1B] text-[#FEFEFF] overflow-hidden border-t border-[#968BFF]/15 transition-colors duration-300"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* 1. PRIMARY CINEMATIC FOCUS: Large 3D Pipeline Core Appears First */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.94, y: 35 }}
-          whileInView={{ opacity: 1, scale: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.85, ease: 'easeOut' }}
-          className="mb-14 sm:mb-18"
-        >
-          <PipelineCore3D scrollProgress={scrollProgress} />
-        </motion.div>
+      {/* Background Ambient Radial Glow */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[500px] bg-gradient-to-tr from-[#968BFF]/15 via-[#5F84FF]/10 to-transparent blur-[140px] pointer-events-none -z-10 rounded-full" />
 
-        {/* 2. Visual Hierarchy Step 2 & 3: Section Header Reveals Afterward */}
-        <div className="max-w-3xl mx-auto text-center mb-16 sm:mb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* 1. SECTION HEADER: Prominent, Clean & Informative at the Top */}
+        <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141727] border border-[#968BFF]/25 text-[#DFD9FF] text-xs font-mono uppercase tracking-wider mb-4 shadow-sm"
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141727] border border-[#968BFF]/25 text-[#968BFF] text-xs font-mono uppercase tracking-wider mb-4 shadow-sm"
           >
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <Cpu className="w-3.5 h-3.5 text-[#968BFF]" />
-            Execution Pipeline
+            <span>Execution Pipeline</span>
           </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.3 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#FEFEFF]"
           >
             How Codia Works.{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#968BFF] via-[#7B8BFF] to-[#5F84FF]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FEFEFF] via-[#968BFF] to-[#5F84FF]">
               From Trigger to Solution.
             </span>
           </motion.h2>
@@ -145,14 +96,25 @@ export function HowItWorksWorkflow() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.45 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
             className="mt-4 text-base sm:text-lg text-[#A5A9C5] leading-relaxed"
           >
             A cohesive 4-stage pipeline connecting native OS capture, local/cloud speech recognition, and multimodal reasoning into a real-time HUD stream.
           </motion.p>
         </div>
 
-        {/* 3. Visual Hierarchy Step 4: 4-Step Pipeline Grid Reveals in Staggered Sequence */}
+        {/* 2. APPLE-GRADE INTERACTIVE PIPELINE SHOWCASE: Live Interactive Simulator */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-16 sm:mb-20"
+        >
+          <PipelineInteractiveShowcase />
+        </motion.div>
+
+        {/* 3. 4-STEP GLANCEABLE ARCHITECTURE MATRIX */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {STEPS.map((item, index) => {
             const Icon = item.icon;
@@ -162,8 +124,8 @@ export function HowItWorksWorkflow() {
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.15 * index }}
-                className="relative p-6 sm:p-7 rounded-2xl bg-[#141727]/90 border border-[#968BFF]/15 shadow-sm backdrop-blur-sm flex flex-col justify-between hover:border-[#968BFF]/40 transition-all group"
+                transition={{ duration: 0.6, delay: 0.1 * index }}
+                className="relative p-6 sm:p-7 rounded-2xl bg-[#141727]/90 border border-[#968BFF]/15 shadow-sm backdrop-blur-sm flex flex-col justify-between hover:border-[#968BFF]/45 transition-all group"
               >
                 <div>
                   {/* Step Header */}
